@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<can:Province xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://interoperability.gc.ca/address/Address/2.0/ ../xsd/extensions/address/2.0/Address.xsd"
+	xmlns:structures="http://release.niem.gov/niem/structures/4.0/" xmlns:nc="http://release.niem.gov/niem/niem-core/4.0/"
+	xmlns:add="http://interoperability.gc.ca/address/Address/2.0/" xmlns:can="http://interoperability.gc.ca/localize/Canadianize/2.0/"
+	xmlns:iso_639-3="http://release.niem.gov/niem/codes/iso_639-3/4.0/" xmlns:scr="http://release.niem.gov/niem/domains/screening/4.1/"
+	xmlns:cli="http://reference.niem.gov/niem/specification/code-lists/4.0/code-lists-instance/">
+	<nc:AssociationDateRange>
+		<nc:StartDate>
+			<nc:Date>1867-07-01</nc:Date>
+		</nc:StartDate>
+	</nc:AssociationDateRange>
+	<nc:LocationCountry>
+		<nc:LocationCountryISO3166Alpha3Code>CAN</nc:LocationCountryISO3166Alpha3Code>
+	</nc:LocationCountry>
+	<can:LocationProvince>
+		<can:LocationProvinceName xml:lang="eng">Ontario</can:LocationProvinceName>
+		<can:LocationProvinceName xml:lang="fre">Ontario</can:LocationProvinceName>
+		<can:LocationProvinceAbbreviatedName xml:lang="eng">Ont.</can:LocationProvinceAbbreviatedName>
+		<can:LocationProvinceAbbreviatedName xml:lang="fre">Ont.</can:LocationProvinceAbbreviatedName>
+		<nc:LocationCanadianProvinceCode>ON</nc:LocationCanadianProvinceCode>
+		<can:ProvinceISO3166Code>CA-ON</can:ProvinceISO3166Code>
+		<can:ProvinceCode cli:codeListURI="urn:iso:std:iso:3166:-2:ed-3:en,fr">CA-ON</can:ProvinceCode>
+		<can:ProvinceCode cli:codeListURI="urn:urn-3:ca.canadapost:provincecode">ON</can:ProvinceCode>
+		<can:ProvinceCode cli:codeListURI="urn:urn-3:ca.gc.statcan:provincecode">35</can:ProvinceCode>
+		<can:ProvinceCategoryCode>Province</can:ProvinceCategoryCode>
+		<can:ProvincePopulationQuantity>14446515</can:ProvincePopulationQuantity>
+		<can:ProvinceCapitalLocation>
+			<nc:Address>
+				<nc:LocationCityName>Toronto</nc:LocationCityName>
+			</nc:Address>
+		</can:ProvinceCapitalLocation>
+		<can:ProvinceOfficialLanguageCode>eng</can:ProvinceOfficialLanguageCode>
+		<can:ProvinceAreaMeasure>
+			<nc:MeasureUnsignedIntegerValue>1076395</nc:MeasureUnsignedIntegerValue>
+		</can:ProvinceAreaMeasure>
+		<can:ProvinceLandAreaMeasure>
+			<nc:MeasureUnsignedIntegerValue>917741</nc:MeasureUnsignedIntegerValue>
+		</can:ProvinceLandAreaMeasure>
+		<can:ProvinceWaterAreaMeasure>
+			<nc:MeasureUnsignedIntegerValue>158654</nc:MeasureUnsignedIntegerValue>
+		</can:ProvinceWaterAreaMeasure>
+		<can:ProvinceHouseOfCommonsSeatQuantity>121</can:ProvinceHouseOfCommonsSeatQuantity>
+		<can:ProvinceSenateSeatQuantity>24</can:ProvinceSenateSeatQuantity>
+	</can:LocationProvince>
+</can:Province>

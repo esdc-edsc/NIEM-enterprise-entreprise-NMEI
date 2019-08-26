@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE catalog
+  PUBLIC "-//OASIS//DTD Entity Resolution XML Catalog V1.0//EN" "http://www.oasis-open.org/committees/entity/release/1.0/catalog.dtd">
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="public">
+     <uri name="http://interoperability.gc.ca/address/Address/2.0/" uri="extensions/address/2.0/Address.xsd"/>
+     <uri name="http://interoperability.gc.ca/address/AddressValidation/2.0/" uri="extensions/address/2.0/AddressValidation.xsd"/>
+     <uri name="http://interoperability.gc.ca/address/Contact/2.0/" uri="extensions/address/2.0/Contact.xsd"/>
+     <uri name="http://interoperability.gc.ca/area/Area/2.0/" uri="extensions/area/2.0/Area.xsd"/>
+     <uri name="http://interoperability.gc.ca/codes/iso_3166-1/4.0/" uri="extensions/codes/extended_iso_3166-1/4.0/extended_iso_3166.xsd"/>
+     <uri name="http://interoperability.gc.ca/ReferenceDataSet/2.0" uri="extensions/codes/reference/2.0/ReferanceDataSet.xsd"/>
+     <uri name="http://interoperability.gc.ca/document/DocumentAndMetadata/2.0/" uri="extensions/document/2.0/DocumentAndMetadata.xsd"/>
+     <uri name="http://interoperability.gc.ca/education/Education/2.0/" uri="extensions/education/2.0/Education.xsd"/>
+     <uri name="http://interoperability.gc.ca/employment/EmploymentProgramCase/2.0/" uri="extensions/employment/2.1/EmploymentProgramCase.xsd"/>
+     <uri name="http://interoperability.gc.ca/employment/NationalOccupationClassification/2.0/"
+          uri="extensions/employment/2.1/NationalOccupationClassification.xsd"/>
+     <uri name="http://interoperability.gc.ca/employment/PersonEmploymentAssociation/2.0/" uri="extensions/employment/2.1/PersonEmploymentAssociation.xsd"/>
+     <uri name="http://interoperability.gc.ca/finance/ProgramObligation/2.0/" uri="extensions/finance/2.0/ProgramObligation.xsd"/>
+     <uri name="http://interoperability.gc.ca/finance/ProgramPaymentLot/2.0/" uri="extensions/finance/2.0/ProgramPaymentLot.xsd"/>
+     <uri name="http://interoperability.gc.ca/finance/Taxation/2.0/" uri="extensions/finance/2.0/Taxation.xsd"/>
+     <uri name="http://interoperability.gc.ca/localize/Canadianize/2.0/" uri="extensions/localize/2.0/Canadianize.xsd"/>
+     <uri name="http://interoperability.gc.ca/organization/Organization/2.0/" uri="extensions/organization/2.0/Organization.xsd"/>
+     <uri name="http://interoperability.gc.ca/person/Person/2.0/" uri="extensions/person/2.0/Person.xsd"/>
+     <uri name="http://interoperability.gc.ca/employment/PersonResidenceAssociation/2.0/" uri="extensions/person/2.0/PersonResidenceAssociation.xsd"/>
+     <uri name="http://interoperability.gc.ca/program/Program/2.0/" uri="extensions/program/2.0/Program.xsd"/>
+     <uri name="http://interoperability.gc.ca/technical/informationsharing/2.0/" uri="extensions/technical/2.0/InformationSharingAgreement.xsd"/>
+     <uri name="http://interoperability.gc.ca/technical/proxy/2.0/" uri="extensions/technical/2.0/proxy.xsd"/>
+     <uri name="http://interoperability.gc.ca/technical/QueryData/2.0/" uri="extensions/technical/2.0/QueryData.xsd"/>
+     <uri name="urn:us:gov:ic:ism" uri="extensions/technical/2.0/sort.xsd"/>
+     <uri name="http://interoperability.gc.ca/technical/transaction/2.0/" uri="extensions/technical/2.0/transaction.xsd"/>
+     <uri name="http://docs.oasis-open.org/codelist/ns/ContextValueAssociation/1.0/" uri="external/genericode/1.0/ContextValueAssociation.xsd"/>
+     <uri name="http://docs.oasis-open.org/codelist/ns/genericode/1.0/" uri="external/genericode/1.0/genericode.xsd"/>
+     <uri name="http://reference.niem.gov/niem/resource/mpd/catalog/3.0/" uri="mpd-catalog-3.0.xsd"/>
+     <uri name="http://release.niem.gov/niem/codes/aamva_d20/4.0/" uri="niem/codes/aamva_d20/4.0/aamva_d20.xsd"/>
+     <uri name="http://release.niem.gov/niem/codes/canada_post/4.0/" uri="niem/codes/canada_post/4.0/post-canada.xsd"/>
+     <uri name="http://release.niem.gov/niem/codes/dol_soc/4.0/" uri="niem/codes/dol_soc/4.0/dol_soc.xsd"/>
+     <uri name="http://release.niem.gov/niem/codes/fbi_ndex/4.1/" uri="niem/codes/fbi_ndex/4.1/fbi_ndex.xsd"/>
+     <uri name="http://release.niem.gov/niem/codes/fbi_ucr/4.1/" uri="niem/codes/fbi_ucr/4.1/fbi_ucr.xsd"/>
+     <uri name="http://release.niem.gov/niem/codes/iso_3166-1/4.0/" uri="niem/codes/iso_3166-1/4.0/iso_3166.xsd"/>
+     <uri name="http://release.niem.gov/niem/codes/iso_4217/4.0/" uri="niem/codes/iso_4217/4.0/iso_4217.xsd"/>
+     <uri name="http://release.niem.gov/niem/codes/iso_639-3/4.0/" uri="niem/codes/iso_639-3/4.0/iso_639-3.xsd"/>
+     <uri name="http://release.niem.gov/niem/codes/mmucc/4.1/" uri="niem/codes/mmucc/4.1/mmucc.xsd"/>
+     <uri name="http://release.niem.gov/niem/codes/nga_datum/4.0/" uri="niem/codes/nga_datum/4.0/nga_datum.xsd"/>
+     <uri name="http://release.niem.gov/niem/codes/unece_rec20/4.0/" uri="niem/codes/unece_rec20/4.0/unece_rec20-misc.xsd"/>
+     <uri name="http://release.niem.gov/niem/codes/usps_states/4.0/" uri="niem/codes/usps_states/4.0/usps_states.xsd"/>
+     <uri name="http://release.niem.gov/niem/codes/xCard/4.0/" uri="niem/codes/xCard/4.0/xCard.xsd"/>
+     <uri name="http://release.niem.gov/niem/domains/biometrics/4.1/" uri="niem/domains/biometrics/4.1/biom.xsd"/>
+     <uri name="http://release.niem.gov/niem/domains/emergencyManagement/4.1/" uri="niem/domains/emergencyManagement/4.1/emergencyManagement.xsd"/>
+     <uri name="http://release.niem.gov/niem/domains/humanServices/4.1/" uri="niem/domains/humanServices/4.1/hs.xsd"/>
+     <uri name="http://release.niem.gov/niem/domains/immigration/4.1/" uri="niem/domains/immigration/4.1/immigration.xsd"/>
+     <uri name="http://release.niem.gov/niem/domains/infrastructureProtection/4.0/" uri="niem/domains/infrastructureProtection/4.0/infrastructureProtection.xsd"/>
+     <uri name="http://release.niem.gov/niem/domains/intelligence/4.1/" uri="niem/domains/intelligence/4.1/intelligence.xsd"/>
+     <uri name="http://release.niem.gov/niem/domains/jxdm/6.1/" uri="niem/domains/jxdm/6.1/jxdm.xsd"/>
+     <uri name="http://release.niem.gov/niem/domains/maritime/4.1/" uri="niem/domains/maritime/4.1/maritime.xsd"/>
+     <uri name="http://release.niem.gov/niem/domains/militaryOperations/4.1/" uri="niem/domains/militaryOperations/4.1/mo.xsd"/>
+     <uri name="http://release.niem.gov/niem/domains/screening/4.1/" uri="niem/domains/screening/4.1/screening.xsd"/>
+     <uri name="http://www.w3.org/XML/1998/namespace" uri="niem/external/xml/1.0/xml.xsd"/>
+     <uri name="http://publication.niem.gov/niem/niem-core/4.0/1/" uri="niem/niem-core/4.0/1/niem-core.xsd"/>
+     <uri name="http://release.niem.gov/niem/niem-core/4.0/" uri="niem/niem-core/4.0/niem-core.xsd"/>
+     <uri name="http://release.niem.gov/niem/proxy/xsd/4.0/" uri="niem/proxy/xsd/4.0/xs.xsd"/>
+     <uri name="http://release.niem.gov/niem/appinfo/4.0/" uri="niem/utility/appinfo/4.0/appinfo.xsd"/>
+     <uri name="http://reference.niem.gov/niem/specification/code-lists/4.0/code-lists-instance/" uri="niem/utility/code-lists-spec/4.0/code-lists-instance.xsd"/>
+     <uri name="http://reference.niem.gov/niem/specification/code-lists/4.0/code-lists-schema-appinfo/"
+          uri="niem/utility/code-lists-spec/4.0/code-lists-schema-appinfo.xsd"/>
+     <uri name="http://release.niem.gov/niem/conformanceTargets/3.0/" uri="niem/utility/conformanceTargets/3.0/conformanceTargets.xsd"/>
+     <uri name="http://release.niem.gov/niem/structures/4.0/" uri="niem/utility/structures/4.0/structures.xsd"/>
+</catalog>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<c:Catalog xmlns:can="http://interoperability.gc.ca/localize/Canadianize/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://reference.niem.gov/niem/resource/mpd/catalog/4.0/ xsd/mpd-catalog-4.0.xsd"
+    xmlns:c="http://reference.niem.gov/niem/resource/mpd/catalog/4.0/"
+    xmlns:structures="http://release.niem.gov/niem/structures/4.0/" xmlns:nc="http://release.niem.gov/niem/niem-core/4.0/">
+    <c:MPD c:mpdURI="http://interoperability.gc.ca/localize/Canadianize/2.0/"
+        c:mpdClassURIList="http://reference.niem.gov/niem/specification/model-package-description/4.0/#MPD
+        http://reference.niem.gov/niem/specification/model-package-description/4.0/#EIEM"
+        c:mpdName="EIEM" c:mpdVersionID="1.0">
+        <c:MPDInformation>
+            <c:AuthoritativeSource>
+                <nc:EntityOrganization>
+                    <nc:OrganizationName>Employment and Social Development Canada</nc:OrganizationName>
+                    <nc:OrganizationPrimaryContactInformation>
+                        <nc:ContactWebsiteURI>https://www.canada.ca/en/employment-social-development.html</nc:ContactWebsiteURI>
+                    </nc:OrganizationPrimaryContactInformation>
+                </nc:EntityOrganization>
+            </c:AuthoritativeSource>
+            <c:CreationDate>2019-08-09</c:CreationDate>
+            <c:StatusText>Alpha</c:StatusText>
+        </c:MPDInformation>
+        <c:IEPConformanceTarget structures:id="NIEM-EIEM">
+            <nc:DescriptionText>Employment and Social Development Canada - Enterprise Information Exchange Model.</nc:DescriptionText>
+            <c:HasDocumentElement c:qualifiedNameList="can:Province"/>
+            <c:XMLSchemaValid>
+                <c:XMLCatalog c:pathURI="xsd/xml-catalog.xml"/>
+            </c:XMLSchemaValid>
+            <c:IEPSampleXMLDocument c:pathURI="eiem-samples/ON.xml"/>
+        </c:IEPConformanceTarget>
+        <c:ReadMe c:pathURI="readme.md"/>
+        <c:MPDChangeLog c:pathURI="changelog.txt"/>
+        <c:Wantlist c:pathURI="xsd/wantlist.xml"/>
+        <c:ConformanceAssertion c:pathURI="conformance-assertion.txt"/>
+        <c:ExtensionSchemaDocument c:pathURI="xsd/extensions/address/2.0/Address.xsd"/>
+    </c:MPD>
+</c:Catalog>
