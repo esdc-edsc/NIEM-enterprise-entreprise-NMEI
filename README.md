@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/DonClysdale/NIEM-EIEM.svg?branch=master)](https://travis-ci.org/DonClysdale/NIEM-EIEM)
+[![Build Status](https://travis-ci.org/esdc-edsc/NIEM-enterprise-entreprise-NMEI.svg?branch=master)](https://travis-ci.org/esdc-edsc/NIEM-enterprise-entreprise-NMEI)
 
 ([Français](#mod%C3%A8le-d%C3%A9change-dinformations-dentreprise-niem---emploi-et-d%C3%A9veloppement-social-canada-edsc))
 
