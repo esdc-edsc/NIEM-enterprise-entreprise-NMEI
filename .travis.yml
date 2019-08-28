@@ -1,0 +1,8 @@
+before_install:
+    - sudo apt-get update -qq
+    - sudo apt-get install -qq libxml2-utils
+
+script:
+    - xmllint --schema http://www.w3.org/2001/XMLSchema.xsd --noout xsd/extensions/address/2.0/Address.xsd
+    - xmllint --schema xsd/extensions/address/2.0/Address.xsd --noout eiem-samples/ON.xml
+    - xmllint --schema xsd/mpd-catalog-4.0.xsd --noout mpd-catalog.xml
