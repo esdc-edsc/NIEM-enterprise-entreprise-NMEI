@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="urn:us:gov:ic:ism"
+	xmlns:sort="urn:us:gov:ic:ism"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:structures="http://release.niem.gov/niem/structures/4.0/"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" vc:minVersion="1.0" 	version="2.0">
+    <xs:annotation>
+        <xs:documentation>Element and attributes needed to identify sorting order and directions on any element</xs:documentation>
+    </xs:annotation>
+    <xs:import schemaLocation="../../../niem/utility/structures/4.0/structures.xsd"
+        namespace="http://release.niem.gov/niem/structures/4.0/"/>
+    
+	<xs:simpleType name="SortDirectionType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="asc"/>
+			<xs:enumeration value="desc"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:attribute name="order" type="xs:positiveInteger"/>
+	<xs:attribute name="direction" type="sort:SortDirectionType" default="asc"/>
+</xs:schema>

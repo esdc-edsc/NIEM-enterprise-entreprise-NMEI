@@ -1,0 +1,169 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:org="http://interoperability.gc.ca/organization/Organization/2.0/"
+	xmlns:structures="http://release.niem.gov/niem/structures/4.0/" xmlns:nc="http://release.niem.gov/niem/niem-core/4.0/"
+	xmlns:niem-xs="http://release.niem.gov/niem/proxy/xsd/4.0/"
+	xmlns:ip="http://release.niem.gov/niem/domains/infrastructureProtection/4.0/"
+	targetNamespace="http://interoperability.gc.ca/organization/Organization/2.0/" elementFormDefault="qualified" version="2.0">
+	<xs:annotation>
+		<xs:documentation>Elements for employment cases (inspections) for employment related programs.</xs:documentation>
+	</xs:annotation>
+
+	<xs:import namespace="http://release.niem.gov/niem/structures/4.0/" schemaLocation="../../../niem/utility/structures/4.0/structures.xsd"/>
+	<xs:import schemaLocation="../../../niem/proxy/xsd/4.0/xs.xsd" namespace="http://release.niem.gov/niem/proxy/xsd/4.0/"/>
+	<xs:import namespace="http://release.niem.gov/niem/niem-core/4.0/" schemaLocation="../../../niem/niem-core/4.0/niem-core.xsd"/>
+	<xs:import namespace="http://release.niem.gov/niem/domains/infrastructureProtection/4.0/" schemaLocation="../../../niem/domains/infrastructureProtection/4.0/infrastructureProtection.xsd"/>
+	
+	<xs:simpleType name="OrganizationCategoryCodeSimpleType">
+		<xs:annotation>
+			<xs:documentation>A data type for the types of organization.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="01">
+				<xs:annotation>
+					<xs:documentation>Incorporated / Limited (Corporation)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="02">
+				<xs:annotation>
+					<xs:documentation>Partnership</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="03">
+				<xs:annotation>
+					<xs:documentation>Sole Proprietor</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="04">
+				<xs:annotation>
+					<xs:documentation>Co-operative</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="05">
+				<xs:annotation>
+					<xs:documentation>Registered Charity</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="06">
+				<xs:annotation>
+					<xs:documentation>Non-profit Organization</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="99">
+				<xs:annotation>
+					<xs:documentation>Other</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="OrganizationCategoryCodeType">
+		<xs:annotation>
+			<xs:documentation>A data type for a kind of labour market impact assessment exemption.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="org:OrganizationCategoryCodeSimpleType">
+				<xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="OrganizationCategoryCode" type="org:OrganizationCategoryCodeType" substitutionGroup="nc:OrganizationAugmentationPoint" nillable="true">
+		<xs:annotation>
+			<xs:documentation>A person or organization responsible to perform an activity.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="GrossAnnualIncomeCodeSimpleType">
+		<xs:annotation>
+			<xs:documentation>A data type for the size of an organization based on gross annual income.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="01">
+				<xs:annotation>
+					<xs:documentation>Less Than $300,000</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="02">
+				<xs:annotation>
+					<xs:documentation>$300,000 - 5 Million</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="03">
+				<xs:annotation>
+					<xs:documentation>Over $5 Million</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="GrossAnnualIncomeCodeType">
+		<xs:annotation>
+			<xs:documentation>A data type for a level of gross annual incode.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="org:GrossAnnualIncomeCodeSimpleType">
+				<xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="GrossAnnualIncomeCode" type="org:GrossAnnualIncomeCodeType" substitutionGroup="nc:OrganizationAugmentationPoint" nillable="true"/>
+	<xs:simpleType name="OrganizationSizeCodeSimpleType">
+		<xs:annotation>
+			<xs:documentation>A data type for the size of an organization based on the number of employees.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="01">
+				<xs:annotation>
+					<xs:documentation>Under 100 Employees</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="02">
+				<xs:annotation>
+					<xs:documentation>Over 100 Employees</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="Sector" type="ip:SectorType" substitutionGroup="nc:OrganizationAugmentationPoint" nillable="true"/>
+	<xs:complexType name="OrganizationSizeCodeType">
+		<xs:annotation>
+			<xs:documentation>A data type for a level of gross annual incode.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="org:OrganizationSizeCodeSimpleType">
+				<xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="OrganizationSizeCode" type="org:OrganizationSizeCodeType" substitutionGroup="nc:OrganizationAugmentationPoint" nillable="true"/>
+	<xs:element name="OrganizationSequenceID" type="niem-xs:string" substitutionGroup="nc:OrganizationAugmentationPoint" nillable="true"/>
+	
+	<xs:simpleType name="ObligationEntityTypeCodeSimpleType">
+		<xs:annotation>
+			<xs:documentation>A data type for the type of entity with the obligation.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="01">
+				<xs:annotation>
+					<xs:documentation>Individual</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="02">
+				<xs:annotation>
+					<xs:documentation>Small Business</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="03">
+				<xs:annotation>
+					<xs:documentation>Large BusinessC</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="ObligationEntityTypeCodeType">
+		<xs:annotation>
+			<xs:documentation>A data type for a kind of entity with the obligation.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="org:ObligationEntityTypeCodeSimpleType">
+				<xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="ObligationEntityTypeCode" type="org:ObligationEntityTypeCodeType" substitutionGroup="nc:EntityAugmentationPoint"/>
+</xs:schema>

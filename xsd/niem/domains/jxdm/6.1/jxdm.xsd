@@ -1,0 +1,1289 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<xs:schema targetNamespace="http://release.niem.gov/niem/domains/jxdm/6.1/" version="1" xsi:schemaLocation="http://release.niem.gov/niem/appinfo/4.0/ ../../../utility/appinfo/4.0/appinfo.xsd http://release.niem.gov/niem/conformanceTargets/3.0/ ../../../utility/conformanceTargets/3.0/conformanceTargets.xsd" ct:conformanceTargets="http://reference.niem.gov/niem/specification/naming-and-design-rules/4.0/#ReferenceSchemaDocument" xmlns:structures="http://release.niem.gov/niem/structures/4.0/" xmlns:biom="http://release.niem.gov/niem/domains/biometrics/4.1/" xmlns:appinfo="http://release.niem.gov/niem/appinfo/4.0/" xmlns:ct="http://release.niem.gov/niem/conformanceTargets/3.0/" xmlns:nc="http://release.niem.gov/niem/niem-core/4.0/" xmlns:j="http://release.niem.gov/niem/domains/jxdm/6.1/" xmlns:mmucc="http://release.niem.gov/niem/codes/mmucc/4.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ndex="http://release.niem.gov/niem/codes/fbi_ndex/4.1/" xmlns:ucr="http://release.niem.gov/niem/codes/fbi_ucr/4.1/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:niem-xs="http://release.niem.gov/niem/proxy/xsd/4.0/">
+  <xs:annotation>
+    <xs:documentation>Justice</xs:documentation>
+  </xs:annotation>
+  <xs:import schemaLocation="../../../codes/fbi_ndex/4.1/fbi_ndex.xsd" namespace="http://release.niem.gov/niem/codes/fbi_ndex/4.1/"/>
+  <xs:import schemaLocation="../../../codes/fbi_ucr/4.1/fbi_ucr.xsd" namespace="http://release.niem.gov/niem/codes/fbi_ucr/4.1/"/>
+  <xs:import schemaLocation="../../../codes/mmucc/4.1/mmucc.xsd" namespace="http://release.niem.gov/niem/codes/mmucc/4.1/"/>
+  <xs:import schemaLocation="../../biometrics/4.1/biom.xsd" namespace="http://release.niem.gov/niem/domains/biometrics/4.1/"/>
+  <xs:import schemaLocation="../../../niem-core/4.0/niem-core.xsd" namespace="http://release.niem.gov/niem/niem-core/4.0/"/>
+  <xs:import schemaLocation="../../../proxy/xsd/4.0/xs.xsd" namespace="http://release.niem.gov/niem/proxy/xsd/4.0/"/>
+  <xs:import schemaLocation="../../../utility/structures/4.0/structures.xsd" namespace="http://release.niem.gov/niem/structures/4.0/"/>
+  <xs:complexType name="ActivityAugmentationType">
+    <xs:annotation>
+      <xs:documentation>A data type for additional information about an activity.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="structures:AugmentationType">
+        <xs:sequence>
+          <xs:element ref="j:ActivityActualDuration" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:ActivityApprovedIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:ActivityAssignedDate" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:ActivityCapacityQuantity" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:ActivityComment" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:ActivityCompletedIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:ActivityDocumentServer" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:ActivityDueDate" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:ActivityEffectiveDate" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:ActivityEstimatedDuration" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:ActivityFrequencyText" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:ActivityPrescribedDuration" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:ActivityReportedDate" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:ActivityRequestedDate" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:ActivityScheduledDate" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:ActivitySequenceNumeric" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:ActivitySignature" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:ActivityVerifiedDate" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:CaseLinkage" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:CaseNumberText" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:Narrative" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:ActivityDocumentValidator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:ActivityOfficial" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="BirthType">
+    <xs:annotation>
+      <xs:documentation>A data type for a live birth of a human being.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="nc:ActivityType">
+        <xs:sequence>
+          <xs:element ref="j:BirthAttendant" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:BirthChildBirthOrderNumeric" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:BirthRegistration" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:PersonHospitalBirthIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:BirthAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="CaseLinkageType">
+    <xs:annotation>
+      <xs:documentation>A data type for an identifying number for a case submitted by an agency which is known or believed to be related to the case of this activity.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="structures:ObjectType">
+        <xs:sequence>
+          <xs:element ref="j:CaseLinkageNumberText" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:OrganizationORIIdentification" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:CaseLinkageAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="CauseOfDeathAssessmentType">
+    <xs:annotation>
+      <xs:documentation>A data type for an assessment process to determine factors of the cause of death.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="nc:AssessmentType">
+        <xs:sequence>
+          <xs:element ref="j:CauseOfDeathAssessmentAutopsyPerformedIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:CauseOfDeathAssessmentBetweenEventAndDeathDuration" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:CauseOfDeathAssessmentBiopsyPerformedIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:CauseOfDeathAssessmentFemalePregnantInLastYearIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:CauseOfDeathAssessmentImmediateCauseText" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:CauseOfDeathAssessmentOperationsPerformedText" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:CauseOfDeathAssessmentOtherSignificantConditionsText" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:CauseOfDeathAssessmentReportedToCoronerIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:CauseOfDeathAssessmentUnderlyingConditionText" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:CauseOfDeathCategoryAbstract" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:CauseOfDeathHomicideIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:CauseOfDeathAssessmentAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="CertificationType">
+    <xs:annotation>
+      <xs:documentation>A data type for an official process of distinguishing the credentials of person or entity.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="nc:ActivityType">
+        <xs:sequence>
+          <xs:element ref="j:CertificationExpirationDate" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:CertificationExpirationReasonText" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:CertificationIdentification" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:CertificationIssuingAuthority" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:CertificationName" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:CertificationReviewDate" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:CertificationAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="CustodyTransferType">
+    <xs:annotation>
+      <xs:documentation>A data type for a transfer of custody or a transfer of a subject or property from one enforcement party to another.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="nc:ActivityType"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DebtCreditorAssociationType">
+    <xs:annotation>
+      <xs:documentation>A data type for a relationship between a debt and a person or organization to which the debt is owed.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="nc:AssociationType">
+        <xs:sequence>
+          <xs:element ref="j:Debt" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="nc:Organization" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="nc:Person" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:DebtCreditorAssociationAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DebtType">
+    <xs:annotation>
+      <xs:documentation>A data type for a set of details describing the debt owed by a person.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="structures:ObjectType">
+        <xs:sequence>
+          <xs:element ref="j:DebtAlimonyEstablishedDate" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:DebtAlimonyIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:DebtAmount" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:DebtChildSupportEstablishedDate" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:DebtChildSupportIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:DebtDescriptionText" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:DebtGarnishmentEstablishedDate" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:DebtGarnishmentIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:DebtAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EvidenceType">
+    <xs:annotation>
+      <xs:documentation>A data type for an item received by or submitted to an agency for use in ascertaining the truth of a matter.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="structures:ObjectType">
+        <xs:sequence>
+          <xs:element ref="j:EvidenceAmount" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:EvidenceDocumentationBinary" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:EvidenceItemContactInformation" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:EvidenceItemText" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:IBISNumberText" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:RoleOfBinary" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:RoleOfBiometric" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="nc:RoleOfItem" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:EvidenceCollector" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:EvidenceCustodyTransfer" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:EvidenceKit" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:EvidenceNumberIdentification" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:EvidenceOtherIdentification" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:EvidencePreviousLocation" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:EvidenceQuantityText" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:EvidenceReceiptIdentification" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:EvidenceReturnedIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:EvidenceTakenLocation" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:EvidenceReturnRecipientEntity" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:EvidenceTakenFromEntity" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:EvidenceAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="InjuryAugmentationType">
+    <xs:annotation>
+      <xs:documentation>A data type for additional information about a Injury.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="structures:AugmentationType">
+        <xs:sequence>
+          <xs:element ref="j:InjuryCircumstancesText" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:InjuryDispositionDate" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:InjuryDispositionText" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:InjuryModeOfArrivalAbstract" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:InjuryNoticedDate" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:InjuryOccurrenceLocation" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:InjuryOtherDetailsText" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:InjuryReceivedMedicalAttentionDate" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:InjuryReportedDate" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:InjuryWitness" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="InspectionType">
+    <xs:annotation>
+      <xs:documentation>A data type for a checking or testing of an individual or entity against established standards.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="nc:ActivityType"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PersonDeathIncidentType">
+    <xs:annotation>
+      <xs:documentation>A data type for a set of details about an incident causing a person's death.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="nc:IncidentType">
+        <xs:sequence>
+          <xs:element ref="j:PersonDeathIncidentCertification" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:PersonDeathIncidentCoroner" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:PersonDeathIncidentDeathOccurredElsewhereIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:PersonDeathIncidentEmbalmer" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:PersonDeathIncidentInjury" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:PersonDeathIncidentInvestigationRequiredIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:PersonDeathIncidentLastSeenAliveDate" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:PersonDeathIncidentAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PersonDeathType">
+    <xs:annotation>
+      <xs:documentation>A data type for a set of details about a person's death.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="nc:ActivityType">
+        <xs:sequence>
+          <xs:element ref="j:PersonCauseOfDeath" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:PersonDeathIncident" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:PersonDeathInvestigatorRequestedIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:PersonDeathLitigationProbabilityAbstract" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:PersonDeathLocationText" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:PersonDeathPronouncedDate" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:PersonDeathPronouncedDeadByText" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:PersonDeathResuscitationAttemptedIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:PersonDeclinedFirstInvestigativeEmployeeIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:PersonDecliningFirstStaffAssistantAssignmentIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:PersonDeathAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PersonEmploymentAssociationAugmentationType">
+    <xs:annotation>
+      <xs:documentation>A data type for additional information about a person employment association.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="structures:AugmentationType">
+        <xs:sequence>
+          <xs:element ref="j:EmployeeHoursText" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:PersonEmploymentAuthorizedEndDate" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:PersonEmploymentBondPostedToGainEmploymentIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:PersonEmploymentDuration" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:PersonEmploymentEmployeeOccupationTitleText" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:PersonEmploymentEmployerJobReferenceAbstract" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:PersonEmploymentEmployerTestimonialText" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:PersonEmploymentEndReasonText" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:PersonEmploymentFacility" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:PersonEmploymentFullTimeIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:PersonEmploymentIncludesCommunityServiceIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:PersonEmploymentNumberOfDaysEmployedNumeric" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:PersonEmploymentPlan" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:PersonEmploymentSupervisor" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:PersonEmploymentUnemploymentStatusAbstract" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PersonNameAugmentationType">
+    <xs:annotation>
+      <xs:documentation>A data type for additional information about a name of a person.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="structures:AugmentationType">
+        <xs:sequence>
+          <xs:element ref="j:PersonNameSoundexText" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:PersonNameInitialsText" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PlanType">
+    <xs:annotation>
+      <xs:documentation>A data type for a detailed proposal for doing or achieving something.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="structures:ObjectType"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="RiskType">
+    <xs:annotation>
+      <xs:documentation>A data type for a field from COMPAS that identifies the risk that needs to be addressed during programming for community rehabilitation.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="structures:ObjectType">
+        <xs:sequence>
+          <xs:element ref="j:RiskLevelAbstract" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:RiskScoreValue" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:RiskAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SignatureType">
+    <xs:annotation>
+      <xs:documentation>A data type for a handwritten (and often stylized) depiction of someone's name, nickname, or even a simple X or other mark that a person writes on documents as a proof of identity and intent.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="structures:ObjectType">
+        <xs:sequence>
+          <xs:element ref="j:SignatureDate" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:SignatureImage" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:SignatureLocationText" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:SignatureMethodText" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:SignatureNameText" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:SignaturePersonName" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:SignatureAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="TermType">
+    <xs:annotation>
+      <xs:documentation>A data type for a duration length either in specific terms or as a range.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="nc:ActivityType">
+        <xs:sequence>
+          <xs:element ref="j:TermDuration" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:TermLifeIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:TermMaximumDuration" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:TermMinimumDuration" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:TermAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="WitnessType">
+    <xs:annotation>
+      <xs:documentation>A data type for a person who has observed an incident.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="structures:ObjectType">
+        <xs:sequence>
+          <xs:element ref="nc:RoleOfPerson" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:WitnessIdentification" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:WitnessSequenceNumberText" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:WitnessAccountDescriptionText" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:WitnessDate" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:WitnessLocationDescriptionText" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:WitnessReportVerifiedIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:WitnessSpecialConditionText" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:WitnessWillTestifyIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="j:WitnessAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ActivityActualDuration" type="niem-xs:duration" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An actual duration of an activity.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ActivityApprovedIndicator" type="niem-xs:boolean" nillable="true">
+    <xs:annotation>
+      <xs:documentation>True if the activity request was approved; false otherwise.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ActivityAssignedDate" type="nc:DateType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A date on which an activity was assigned.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ActivityAugmentation" type="j:ActivityAugmentationType" substitutionGroup="nc:ActivityAugmentationPoint">
+    <xs:annotation>
+      <xs:documentation>Additional information about an activity.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ActivityCapacityQuantity" type="nc:QuantityType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A number for the specified maximum enrollment capacity of an activity.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ActivityComment" type="nc:CommentType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A comment about the activity.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ActivityCompletedIndicator" type="niem-xs:boolean" nillable="true">
+    <xs:annotation>
+      <xs:documentation>True if an activity event has ended; false otherwise.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ActivityDocumentServer" type="nc:EntityType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An entity responsible for service of a legal document.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ActivityDocumentValidator" type="nc:EntityType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An entity to contact to validate a document.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ActivityDueDate" type="nc:DateType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A date when an activity is expected to be completed.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ActivityEffectiveDate" type="nc:DateType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A date when an activity is ready for service or action.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ActivityEstimatedDuration" type="niem-xs:duration" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An expected amount of time an activity should last.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ActivityFrequencyText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A description of the number of occurrences of an activity over a period of time.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ActivityOfficial" type="nc:PersonType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An official associated with an activity</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ActivityPrescribedDuration" type="niem-xs:duration" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A prescribed period of time allowed or required for an activity.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ActivityReportedDate" type="nc:DateType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A date an activity was reported to some entity.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ActivityRequestedDate" type="nc:DateType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A date an activity was requested by an entity.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ActivityScheduledDate" type="nc:DateType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A date when an activity is scheduled.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ActivitySequenceNumeric" type="nc:NumericType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A numerical identifier across multiple activities to define the order that they should be scheduled and undertaken.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ActivitySignature" type="j:SignatureType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A signature associated with an activity event.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ActivityVerifiedDate" type="nc:DateType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A date when an activity is verified.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ApprovalStatusCode" type="ndex:ApprovalStatusCodeType" substitutionGroup="nc:StatusAbstract">
+    <xs:annotation>
+      <xs:documentation>A code that identifies the status of a request.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="BirthAttendant" type="nc:PersonType">
+    <xs:annotation>
+      <xs:documentation>A person or entity who attended the birth.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="BirthAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for type j:BirthType</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="BirthChildBirthOrderNumeric" type="nc:NumericType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A number indicating the order of birth specified on the birth certificate (e.g., first, second).</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="BirthRegistration" type="nc:DocumentType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A registration for a government certificate of live birth.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="CaseLinkage" type="j:CaseLinkageType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An identifying number for a case submitted by an agency which is known or believed to be related to the case of this activity.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="CaseLinkageAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for CaseLinkageType.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="CaseLinkageNumberText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An identifying number for a case which is known or believed to be related to the activity.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="CaseNumberText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An identifying number for a case that this activity is a part of, where the case number belongs to the agency that owns the activity information.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="CauseOfDeathAssessmentAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for type j:CauseOfDeathAssessmentType</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="CauseOfDeathAssessmentAutopsyPerformedIndicator" type="niem-xs:boolean" nillable="true">
+    <xs:annotation>
+      <xs:documentation>True if the autopsy was used to determine the cause of death; false otherwise.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="CauseOfDeathAssessmentBetweenEventAndDeathDuration" type="niem-xs:duration" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A time interval between the underlying cause or event and death.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="CauseOfDeathAssessmentBiopsyPerformedIndicator" type="niem-xs:boolean" nillable="true">
+    <xs:annotation>
+      <xs:documentation>True if a biopsy was performed; false otherwise.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="CauseOfDeathAssessmentFemalePregnantInLastYearIndicator" type="niem-xs:boolean" nillable="true">
+    <xs:annotation>
+      <xs:documentation>True if a female is pregnant in the last year; false otherwise.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="CauseOfDeathAssessmentImmediateCauseText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An immediate cause of death.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="CauseOfDeathAssessmentOperationsPerformedText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A list of operations performed, if any, to address any of the underlying conditions.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="CauseOfDeathAssessmentOtherSignificantConditionsText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An other significant conditions that could have contributed to death.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="CauseOfDeathAssessmentReportedToCoronerIndicator" type="niem-xs:boolean" nillable="true">
+    <xs:annotation>
+      <xs:documentation>True if the death was reported to the coroner; false otherwise.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="CauseOfDeathAssessmentUnderlyingConditionText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An underlying condition, injury or disease, that contributed to the death.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="CauseOfDeathCategoryAbstract" abstract="true">
+    <xs:annotation>
+      <xs:documentation>A data concept for a description of the cause of death.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="CauseOfDeathHomicideIndicator" type="niem-xs:boolean" nillable="true">
+    <xs:annotation>
+      <xs:documentation>True if cause of death was ruled a homicide; false otherwise.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="CauseOfDeathText" type="nc:TextType" substitutionGroup="j:CauseOfDeathCategoryAbstract">
+    <xs:annotation>
+      <xs:documentation>A description of the cause of death.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="CertificationAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for type j:CertificationType</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="CertificationExpirationDate" type="nc:DateType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A date the certification expires.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="CertificationExpirationReasonText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A reason for certification expiration, if/when the certification has expired.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="CertificationIdentification" type="nc:IdentificationType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An identification for a person or entity certification.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="CertificationIssuingAuthority" type="nc:EntityType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A name of a certifying authority who issued the certification.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="CertificationName" type="nc:ProperNameTextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A name of the certifying authority.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="CertificationReviewDate" type="nc:DateType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A date on which the certification review took place.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="Debt" type="j:DebtType">
+    <xs:annotation>
+      <xs:documentation>A financial debt owed to a person or organization.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="DebtAlimonyEstablishedDate" type="nc:DateType">
+    <xs:annotation>
+      <xs:documentation>A date the alimony debt was established.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="DebtAlimonyIndicator" type="niem-xs:boolean" nillable="true">
+    <xs:annotation>
+      <xs:documentation>True if the debt is part of alimony awarded by a court; false otherwise.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="DebtAmount" type="nc:AmountType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A total amount of debt owed to a person or organization.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="DebtAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for DebtType.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="DebtChildSupportEstablishedDate" type="nc:DateType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A date the child support debt was established.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="DebtChildSupportIndicator" type="niem-xs:boolean" nillable="true">
+    <xs:annotation>
+      <xs:documentation>True if the debt is part of a child support obligation awarded by a court; false otherwise.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="DebtCreditorAssociation" type="j:DebtCreditorAssociationType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A relationship between a debt and a person or organization to which the debt is owed.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="DebtCreditorAssociationAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for DebtCreditorAssociationType.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="DebtDescriptionText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A description of the debt owed, obligations associated with that debt, and the reason for which the debt was incurred.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="DebtGarnishmentEstablishedDate" type="nc:DateType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A date income was garnished to recoup debt.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="DebtGarnishmentIndicator" type="niem-xs:boolean" nillable="true">
+    <xs:annotation>
+      <xs:documentation>True if income was garnished by a person or organization to recoup debt; false otherwise.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="DebtTotalAmount" type="nc:AmountType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A total amount of debt represented in this financial compilation.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="DocumentSignature" type="j:SignatureType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A signature on a document.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="EmployeeHoursText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A number of hours spent at workplace or working in a given week.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="EmploymentAssignedUnitAbstract" abstract="true">
+    <xs:annotation>
+      <xs:documentation>A data concept for a unit commonly used by the person in a particular position.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="EmploymentAssignedUnitOrganization" type="nc:OrganizationType" substitutionGroup="j:EmploymentAssignedUnitAbstract" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A unit commonly used by the person in a particular position.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="Evidence" type="j:EvidenceType">
+    <xs:annotation>
+      <xs:documentation>An item legally received by or submitted to an agency for use in ascertaining the truth of a matter.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="EvidenceAmount" type="nc:AmountType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An estimated or actual monetary value of a piece of evidence.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="EvidenceAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for EvidenceType.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="EvidenceCollector" type="nc:PersonType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A person who collected a particular piece of evidence.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="EvidenceCustodyTransfer" type="j:CustodyTransferType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A transfer of custody of evidence from one agency to another.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="EvidenceDocumentationBinary" type="nc:BinaryType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An evidentiary document encoded in binary relating to the evidence.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="EvidenceItemContactInformation" type="nc:ContactInformationType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A set of contact information for a piece of evidence.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="EvidenceItemText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A piece of evidence.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="EvidenceKit" type="nc:ItemType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A kit used to collect evidence.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="EvidenceNumberIdentification" type="nc:IdentificationType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An identification number that identifies a piece of evidence.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="EvidenceOtherIdentification" type="nc:IdentificationType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An identification of an item associated with evidence not explicitly referenced.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="EvidencePreviousLocation" type="nc:LocationType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A previous location of a piece of evidence.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="EvidenceQuantityText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A number of individual items that represent a piece of evidence.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="EvidenceReceiptIdentification" type="nc:IdentificationType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An identification for a receipt issued for collection, analysis, and movement of Evidence.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="EvidenceReturnRecipientEntity" type="nc:EntityType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An entity to which a particular piece of property was returned</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="EvidenceReturnedIndicator" type="niem-xs:boolean" nillable="true">
+    <xs:annotation>
+      <xs:documentation>True if a piece of evidence was returned to its owner; false otherwise.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="EvidenceTakenFromEntity" type="nc:EntityType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An entity from which a particular piece of evidence was taken or seized from.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="EvidenceTakenLocation" type="nc:LocationType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A location where a particular piece of evidence was taken, collected, or removed.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="Felony" type="nc:IncidentType">
+    <xs:annotation>
+      <xs:documentation>A crime which is punishable by death or imprisonment in a state facility.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="IBISNumberText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A number assigned by the Integrated Ballistic Identification System (IBIS) to a bullet or cartridge casing image maintained in the IBIS System which is maintained by the Bureau of Alcohol, Tobacco, and Firearms.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="IncidentStatusCode" type="ndex:IncidentStatusCodeType" substitutionGroup="nc:StatusAbstract">
+    <xs:annotation>
+      <xs:documentation>A status of the current disposition of an incident.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="InjuryAugmentation" type="j:InjuryAugmentationType" substitutionGroup="nc:InjuryAugmentationPoint" nillable="true">
+    <xs:annotation>
+      <xs:documentation>Additional information about a Injury.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="InjuryCategoryCode" type="ucr:InjuryCategoryCodeType" substitutionGroup="nc:InjuryCategoryAbstract" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A general category of harm or injury.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="InjuryCircumstancesText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A description of the circumstances of the injury.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="InjuryDispositionDate" type="nc:DateType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A date the disposition of an injury was recorded.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="InjuryDispositionText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A disposition of an injury.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="InjuryLocationCode" type="mmucc:PersonInjuryLocationCodeType" substitutionGroup="nc:InjuryLocationAbstract" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A primary or most obvious area of the persons body injured during the crash.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="InjuryModeOfArrivalAbstract" abstract="true">
+    <xs:annotation>
+      <xs:documentation>A data concept for a kind of method of how an injured person arrived for medical treatment.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="InjuryModeOfArrivalText" type="nc:TextType" substitutionGroup="j:InjuryModeOfArrivalAbstract">
+    <xs:annotation>
+      <xs:documentation>A kind of method of how an injured person arrived for medical treatment.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="InjuryNoticedDate" type="nc:DateType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A date and time the medical unit was notified of the injury.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="InjuryOccurrenceLocation" type="nc:LocationType">
+    <xs:annotation>
+      <xs:documentation>A location description of an injury incident.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="InjuryOtherDetailsText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A set of details on the other type of issue associated with the injury.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="InjuryReceivedMedicalAttentionDate" type="nc:DateType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A date the injured person received medical attention.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="InjuryReportedDate" type="nc:DateType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A date on which the injury report was prepared.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="InjuryWitness" type="j:WitnessType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A witness to the event that resulted in the injury.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="LocationCategoryCode" type="ucr:LocationCategoryCodeType" substitutionGroup="nc:LocationCategoryAbstract" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A kind or functional description of a location.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="Narrative" type="nc:CommentType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An account as reported by an observer.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="OrganizationORIIdentification" type="nc:IdentificationType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A unique nine character NCIC identification (ORI) assigned to a justice-related organization by the FBI CJIS Division.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonBirth" type="j:BirthType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An event or details of a persons birth.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonBirthLocationAssociation" type="nc:PersonLocationAssociationType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A relationship between a person and a location where they were born.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonCauseOfDeath" type="j:CauseOfDeathAssessmentType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A set of details of the determination of the cause of death for a human being.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonDeath" type="j:PersonDeathType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A set of details about a person's death.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonDeathAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for type j:PersonDeathType</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonDeathIncident" type="nc:IncidentType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A set of details about an incident causing the person's death.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonDeathIncidentAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for type j:PersonDeathIncidentType</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonDeathIncidentCertification" type="j:CertificationType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An official certification of an incident causing the person's death.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonDeathIncidentCoroner" type="nc:PersonType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A coroner or deputy coroner reporting on the death of a person.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonDeathIncidentDeathOccurredElsewhereIndicator" type="niem-xs:boolean" nillable="true">
+    <xs:annotation>
+      <xs:documentation>True if the decedent died at another place; false otherwise.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonDeathIncidentEmbalmer" type="nc:PersonType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A person that embalmed the body of the decedent.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonDeathIncidentInjury" type="nc:InjuryType">
+    <xs:annotation>
+      <xs:documentation>A set of details about a person's injury from an incident causing his death.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonDeathIncidentInvestigationRequiredIndicator" type="niem-xs:boolean" nillable="true">
+    <xs:annotation>
+      <xs:documentation>True if an investigator has not been requested; false otherwise.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonDeathIncidentLastSeenAliveDate" type="nc:DateType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A date on which the decedent was last seen alive.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonDeathInvestigatorRequestedIndicator" type="niem-xs:boolean" nillable="true">
+    <xs:annotation>
+      <xs:documentation>True if an investigator has been requested; false otherwise.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonDeathLitigationProbabilityAbstract" abstract="true">
+    <xs:annotation>
+      <xs:documentation>A data concept for a kind of probability the litigation occurring because of the death of the person.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonDeathLitigationProbabilityText" type="nc:TextType" substitutionGroup="j:PersonDeathLitigationProbabilityAbstract" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A kind of probability the litigation occurring because of the death of the person.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonDeathLocationText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A kind of location where the death of the person occurred</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonDeathPronouncedDate" type="nc:DateType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A date on which the person was pronounced to be dead.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonDeathPronouncedDeadByText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A name of the official who pronounced the subject person.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonDeathResuscitationAttemptedIndicator" type="niem-xs:boolean" nillable="true">
+    <xs:annotation>
+      <xs:documentation>True if resuscitation was attempted; false otherwise.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonDeclinedFirstInvestigativeEmployeeIndicator" type="niem-xs:boolean" nillable="true">
+    <xs:annotation>
+      <xs:documentation>True if the person declined the first Investigative employee; false otherwise.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonDecliningFirstStaffAssistantAssignmentIndicator" type="niem-xs:boolean" nillable="true">
+    <xs:annotation>
+      <xs:documentation>True if the person declines the first staff assistant assignment; false otherwise.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonEmploymentAssociationAugmentation" type="j:PersonEmploymentAssociationAugmentationType" substitutionGroup="nc:PersonEmploymentAssociationAugmentationPoint" nillable="true">
+    <xs:annotation>
+      <xs:documentation>Additional information about a person employment association.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonEmploymentAuthorizedEndDate" type="nc:DateType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A date that the subject last worked at the referenced employer location.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonEmploymentBondPostedToGainEmploymentIndicator" type="niem-xs:boolean" nillable="true">
+    <xs:annotation>
+      <xs:documentation>True if the subject posted bond to gain or return to employment; false otherwise.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonEmploymentDuration" type="niem-xs:duration" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A duration in years and months that the instance of employment lasted.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonEmploymentEmployeeOccupationTitleText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A title of a subject's occupation.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonEmploymentEmployerJobReferenceAbstract" abstract="true">
+    <xs:annotation>
+      <xs:documentation>A data concept for a document or person or entity that serves as reference to a subject's employment.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonEmploymentEmployerTestimonialText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A comment from an employer regarding a subject.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonEmploymentEndReasonText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A comment indicating the reason for the end of an instance of employment.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonEmploymentFacility" type="nc:FacilityType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A physical building or plant where employment occurred.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonEmploymentFullTimeIndicator" type="niem-xs:boolean" nillable="true">
+    <xs:annotation>
+      <xs:documentation>True if the subject has part-time employment; false otherwise.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonEmploymentIncludesCommunityServiceIndicator" type="niem-xs:boolean" nillable="true">
+    <xs:annotation>
+      <xs:documentation>True if the subject's employment contains community service; false otherwise.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonEmploymentNumberOfDaysEmployedNumeric" type="nc:NumericType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A number value for the total days of a subject's employment.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonEmploymentPlan" type="j:PlanType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An employment or vocational plan for a person.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonEmploymentSupervisor" type="nc:EntityType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A title of employment supervisor.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonEmploymentUnemploymentStatusAbstract" abstract="true">
+    <xs:annotation>
+      <xs:documentation>A data concept for a kind of unemployment.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonEmploymentUnemploymentStatusText" type="nc:TextType" substitutionGroup="j:PersonEmploymentUnemploymentStatusAbstract" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A kind of unemployment.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonHospitalBirthIndicator" type="niem-xs:boolean" nillable="true">
+    <xs:annotation>
+      <xs:documentation>True if a person was born in a hospital; false otherwise.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonNameAugmentation" type="j:PersonNameAugmentationType" substitutionGroup="nc:PersonNameAugmentationPoint" nillable="true">
+    <xs:annotation>
+      <xs:documentation>Additional information about a name of a person.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonNameInitialsText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A first letter of a persons given, possibly middle, and last names.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonNameSoundexText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A name encoding such that similar sounding names with different spellings appear the same.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonSignature" type="j:SignatureType">
+    <xs:annotation>
+      <xs:documentation>A date on which the Staff Member signed the subject screening form.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ReasonForSeparationText" type="nc:TextType">
+    <xs:annotation>
+      <xs:documentation>A description of the reason a person is to be kept separated from someone else.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="Risk" type="j:RiskType">
+    <xs:annotation>
+      <xs:documentation>A field from COMPAS that identifies the risk that needs to be addressed during programming for community rehabilitation.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="RiskAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for type j:RiskType</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="RiskLevelAbstract" abstract="true">
+    <xs:annotation>
+      <xs:documentation>A data concept for a kind of risk level.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="RiskLevelText" type="nc:TextType" substitutionGroup="j:RiskLevelAbstract" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A kind of risk level.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="RiskScoreValue" type="nc:NumericType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A numeric score for the risk based on assessment.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="RoleOfBinary" type="nc:BinaryType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A binary object of which the role object is a function.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="RoleOfBiometric" type="biom:BiometricDataType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A biometric object of which the role object is a function.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="Signature" type="j:SignatureType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A handwritten (and often stylized) depiction of someone's name, nickname, or even a simple X or other mark that a person writes on documents as a proof of identity and intent.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="SignatureAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for type j:SignatureType</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="SignatureDate" type="nc:DateType">
+    <xs:annotation>
+      <xs:documentation>A date associated with a signature.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="SignatureImage" type="nc:ImageType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An image of a signature.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="SignatureLocationText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A location where a signature was captured.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="SignatureMethodText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A method used for capturing a signature (i.e. wet, digital, etc.)</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="SignatureNameText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A name used in a signature.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="SignaturePersonName" type="nc:PersonNameType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A full name of an individual associated with a signature.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="SupervisedReleaseStatusCode" type="ndex:SupervisedReleaseStatusCodeType" substitutionGroup="nc:StatusAbstract">
+    <xs:annotation>
+      <xs:documentation>A status of a supervised release.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="Term" type="j:TermType">
+    <xs:annotation>
+      <xs:documentation>A duration length specified as either a specific term in days-months-years or as a minimum - maximum range.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="TermAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for TermType.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="TermDeathIndicator" type="niem-xs:boolean" nillable="true">
+    <xs:annotation>
+      <xs:documentation>True if a subject is sentenced to death; false otherwise.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="TermDuration" type="niem-xs:duration" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A specific range or duration of a term.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="TermLifeIndicator" type="niem-xs:boolean" nillable="true">
+    <xs:annotation>
+      <xs:documentation>True if the term is not for a set duration length but for life; false otherwise.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="TermMaximumDuration" type="niem-xs:duration" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A maximum range or duration for a term.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="TermMinimumDuration" type="niem-xs:duration" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A minimum range or duration for a term.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="WitnessAccountDescriptionText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A description or narrative of an incident as reported by the witness.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="WitnessAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for WitnessType.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="WitnessDate" type="nc:DateType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A date a witness observed an incident.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="WitnessIdentification" type="nc:IdentificationType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An identification number or string identifying a witness.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="WitnessLocationDescriptionText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A description of a location from which the witness observed an incident.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="WitnessReportVerifiedIndicator" type="niem-xs:boolean" nillable="true">
+    <xs:annotation>
+      <xs:documentation>True if a witness's story has been corroborated or validated; false otherwise.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="WitnessSequenceNumberText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A sequential number assigned to the witness of an incident.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="WitnessSpecialConditionText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A special condition a witness requires to testify.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="WitnessWillTestifyIndicator" type="niem-xs:boolean" nillable="true">
+    <xs:annotation>
+      <xs:documentation>True if a witness is willing to testify; false otherwise.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://interoperability.gc.ca/technical/informationsharing/2.0/" version="2"
+	xmlns:isa="http://interoperability.gc.ca/technical/informationsharing/2.0/" xmlns:tran="http://interoperability.gc.ca/technical/transaction/2.0/"
+	xmlns:structures="http://release.niem.gov/niem/structures/4.0/" xmlns:nc="http://release.niem.gov/niem/niem-core/4.0/"
+	xmlns:iso_639-3="http://release.niem.gov/niem/codes/iso_639-3/4.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:niem-xs="http://release.niem.gov/niem/proxy/xsd/4.0/"
+	xmlns:fault="http://interoperability.gc.ca/fault/2.0/">
+
+	<xs:import schemaLocation="../../../niem/niem-core/4.0/niem-core.xsd" namespace="http://release.niem.gov/niem/niem-core/4.0/"/>
+
+	<xs:element name="Provider" substitutionGroup="nc:Organization"/>
+	<xs:element name="Consumer" substitutionGroup="nc:Organization"/>
+	<xs:element name="Data" type="isa:DataType"/>
+	<xs:element name="InformationSharingAgreement" type="isa:InformationSharingAgreementType"/>
+
+	<xs:complexType name="DataType">
+		<xs:sequence>
+			<xs:any minOccurs="0" maxOccurs="unbounded" processContents="skip"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="InformationSharingAgreementType">
+		<xs:complexContent>
+			<xs:extension base="nc:AssociationType">
+				<xs:sequence>
+					<xs:element ref="isa:Provider"/>
+					<xs:element ref="isa:Consumer"/>
+					<xs:element ref="isa:Data" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

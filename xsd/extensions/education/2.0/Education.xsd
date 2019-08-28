@@ -1,0 +1,92 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:edu="http://interoperability.gc.ca/education/Education/2.0/" xmlns:structures="http://release.niem.gov/niem/structures/4.0/"
+	targetNamespace="http://interoperability.gc.ca/education/Education/2.0/" elementFormDefault="qualified" version="2.0">
+	<xs:annotation>
+		<xs:documentation>Elements for education.</xs:documentation>
+	</xs:annotation>
+
+	<xs:import namespace="http://release.niem.gov/niem/structures/4.0/" schemaLocation="../../../niem/utility/structures/4.0/structures.xsd"/>
+
+	<xs:simpleType name="StudentEducationLevelCodeSimpleType">
+		<xs:annotation>
+			<xs:documentation>A data type for the classification of the current education level requirements of a non-immigrant alien student.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="05">
+				<xs:annotation>
+					<xs:documentation>College Level Diploma./Certificate</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="06">
+				<xs:annotation>
+					<xs:documentation>Bachelor’s degree.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="07">
+				<xs:annotation>
+					<xs:documentation>Master’s Degree.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="09">
+				<xs:annotation>
+					<xs:documentation>No Formal Education Requirement.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="24">
+				<xs:annotation>
+					<xs:documentation>Lower Secondary Education.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="34">
+				<xs:annotation>
+					<xs:documentation>Secondary School.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="35">
+				<xs:annotation>
+					<xs:documentation>Vocational School Diploma/Certificate.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="44">
+				<xs:annotation>
+					<xs:documentation>Apprenticeship Diploma/Certificate.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="45">
+				<xs:annotation>
+					<xs:documentation>Trade Diplomat/Certificate.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="65">
+				<xs:annotation>
+					<xs:documentation>Bachelor’s or equivalent level, professional.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="84">
+				<xs:annotation>
+					<xs:documentation>Doctorate/PhD.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="85">
+				<xs:annotation>
+					<xs:documentation>Doctor of Medicine.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="99">
+				<xs:annotation>
+					<xs:documentation>Not known or unspecified.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="StudentEducationLevelCodeType">
+		<xs:annotation>
+			<xs:documentation>A data type for the classification of the current education level requirements of a non-immigrant alien student.</xs:documentation>
+			<xs:documentation>The classification is based on International Standard Classification of Education (ISCED) 2011.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="edu:StudentEducationLevelCodeSimpleType">
+				<xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+</xs:schema>

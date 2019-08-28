@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<xs:schema targetNamespace="http://release.niem.gov/niem/codes/fbi_ndex/4.1/" version="1" xsi:schemaLocation="http://release.niem.gov/niem/appinfo/4.0/ ../../../utility/appinfo/4.0/appinfo.xsd http://release.niem.gov/niem/conformanceTargets/3.0/ ../../../utility/conformanceTargets/3.0/conformanceTargets.xsd" ct:conformanceTargets="http://reference.niem.gov/niem/specification/naming-and-design-rules/4.0/#ReferenceSchemaDocument" xmlns:appinfo="http://release.niem.gov/niem/appinfo/4.0/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ndex="http://release.niem.gov/niem/codes/fbi_ndex/4.1/" xmlns:ct="http://release.niem.gov/niem/conformanceTargets/3.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:structures="http://release.niem.gov/niem/structures/4.0/">
+  <xs:annotation>
+    <xs:documentation>Source: FBI Crminal Justice Information Systems (CJIS) Division; 
+Publication: National Data Exchange (N-Dex) Specification (a NIEM IEPD); 
+Version: 2.2; 
+Date: 2013; 
+http://www.it.ojp.gov/framesets/iepd-clearinghouse-noClose.htm</xs:documentation>
+  </xs:annotation>
+  <xs:import schemaLocation="../../../utility/structures/4.0/structures.xsd" namespace="http://release.niem.gov/niem/structures/4.0/"/>
+  <xs:simpleType name="ApprovalStatusCodeSimpleType">
+    <xs:annotation>
+      <xs:documentation>A data type for a code that identifies the status of the request for addition to the approved visitor list.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="APPROVED">
+        <xs:annotation>
+          <xs:documentation>Approved</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DENIED">
+        <xs:annotation>
+          <xs:documentation>Denied</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PENDING">
+        <xs:annotation>
+          <xs:documentation>Pending</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="REVOKED">
+        <xs:annotation>
+          <xs:documentation>Revoked</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ApprovalStatusCodeType">
+    <xs:annotation>
+      <xs:documentation>A data type for a code that identifies the status of the request for addition to the approved visitor list.</xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="ndex:ApprovalStatusCodeSimpleType">
+        <xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="IncidentStatusCodeSimpleType">
+    <xs:annotation>
+      <xs:documentation>A data type for a code that identifies the current disposition of the incident.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="ACTIVE">
+        <xs:annotation>
+          <xs:documentation>Active</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ADMINISTRATIVELY CLOSED">
+        <xs:annotation>
+          <xs:documentation>Administratively Closed</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CLEARED BY ARREST">
+        <xs:annotation>
+          <xs:documentation>Cleared by Arrest</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CLEARED BY EXCEPTIONAL MEANS">
+        <xs:annotation>
+          <xs:documentation>Cleared by Exceptional Means</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CLOSED">
+        <xs:annotation>
+          <xs:documentation>Closed</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="COLD">
+        <xs:annotation>
+          <xs:documentation>Cold</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="INACTIVE">
+        <xs:annotation>
+          <xs:documentation>Inactive</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="OPEN">
+        <xs:annotation>
+          <xs:documentation>Open</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PENDING">
+        <xs:annotation>
+          <xs:documentation>Pending</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RE_OPENED">
+        <xs:annotation>
+          <xs:documentation>Re_opened</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="UNFOUNDED">
+        <xs:annotation>
+          <xs:documentation>Unfounded</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="IncidentStatusCodeType">
+    <xs:annotation>
+      <xs:documentation>A data type for a code that identifies the current disposition of the incident.</xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="ndex:IncidentStatusCodeSimpleType">
+        <xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="ItemValueCategoryCodeSimpleType">
+    <xs:annotation>
+      <xs:documentation>A data type for a code that identifies the method used to assign the value of the property item(s).</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="FAIR MARKET VALUE">
+        <xs:annotation>
+          <xs:documentation>Fair market value</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="LAW ENFORCEMENT FAIR MARKET ESTIMATE">
+        <xs:annotation>
+          <xs:documentation>Law enforcement fair market estimate</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="REPLACEMENT COST OR ACTUAL CASH COST">
+        <xs:annotation>
+          <xs:documentation>Replacement cost or actual cash cost</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="VICTIMS VALUATION">
+        <xs:annotation>
+          <xs:documentation>Victims valuation</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="WHOLESALE COST">
+        <xs:annotation>
+          <xs:documentation>Wholesale cost</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ItemValueCategoryCodeType">
+    <xs:annotation>
+      <xs:documentation>A data type for a code that identifies the method used to assign the value of the property item(s).</xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="ndex:ItemValueCategoryCodeSimpleType">
+        <xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="SupervisedReleaseStatusCodeSimpleType">
+    <xs:annotation>
+      <xs:documentation>A data type for a code that indicates the release status of the subject involved in supervised release.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="ABSCONDER">
+        <xs:annotation>
+          <xs:documentation>Subject is out of compliance with release conditions, subject is sought, and subjects whereabouts are unknown.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ACTIVE">
+        <xs:annotation>
+          <xs:documentation>Subject is on supervised release.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CANCELED">
+        <xs:annotation>
+          <xs:documentation>Supervised release was discontinued before it could be successfully completed.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CANCELED DECEASED">
+        <xs:annotation>
+          <xs:documentation>Supervised release was canceled because subject died.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CANCELED REVOKED">
+        <xs:annotation>
+          <xs:documentation>Supervised release is unsuccessful and discontinued with subject being returned to jail, facility corrections, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CANCELED TRANSFERRED">
+        <xs:annotation>
+          <xs:documentation>Supervised release was canceled and oversight responsibility for the subject was transferred to another supervising agency.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CANCELED UNSUCCESSFUL">
+        <xs:annotation>
+          <xs:documentation>Supervised release is unsuccessful and discontinued because the subject was not totally compliant with release conditions and the court, supervising organization, and/or supervising official believed that keeping the subject under supervision was not working and/or there was not a reasonable expectation for improvement in future.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="COMPLETED">
+        <xs:annotation>
+          <xs:documentation>Supervised release is successfully completed.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="COMPLETED EARLY">
+        <xs:annotation>
+          <xs:documentation>Supervised release is successfully completed with early termination afforded the subject as reward for the subjects compliance (paid fines, fulfilled obligations, completed community service, etc.) with release conditions of the court, supervising agency, and/or authorizing organization, or the subject was deemed to have health or life threatening issues at hand that otherwise precluded the subject from otherwise participating in/completing the specified period of supervision.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="SupervisedReleaseStatusCodeType">
+    <xs:annotation>
+      <xs:documentation>A data type for a code that indicates the release status of the subject involved in supervised release.</xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="ndex:SupervisedReleaseStatusCodeSimpleType">
+        <xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+</xs:schema>

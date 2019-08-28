@@ -1,0 +1,46 @@
+<xs:schema elementFormDefault="qualified" targetNamespace="http://interoperability.gc.ca/person/Person/2.0/" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:per="http://interoperability.gc.ca/person/Person/2.0/" xmlns:nc="http://release.niem.gov/niem/niem-core/4.0/" xmlns:j="http://release.niem.gov/niem/domains/jxdm/6.1/"
+	xmlns:hs="http://release.niem.gov/niem/domains/humanServices/4.1/" xmlns:im="http://release.niem.gov/niem/domains/immigration/4.1/" xmlns:tran="http://interoperability.gc.ca/technical/transaction/2.0/"
+	xmlns:structures="http://release.niem.gov/niem/structures/4.0/" xmlns:niem-xs="http://release.niem.gov/niem/proxy/xsd/4.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:iso_3166="http://release.niem.gov/niem/codes/iso_3166-1/4.0/"
+	version="2.0">
+	<xs:annotation>
+		<xs:documentation>Additional elements for person.</xs:documentation>
+	</xs:annotation>
+	<xs:import schemaLocation="../../../niem/domains/jxdm/6.1/jxdm.xsd" namespace="http://release.niem.gov/niem/domains/jxdm/6.1/"/>
+	<xs:import schemaLocation="../../../niem/domains/humanServices/4.1/hs.xsd" namespace="http://release.niem.gov/niem/domains/humanServices/4.1/"/>
+	<xs:import schemaLocation="../../../niem/domains/immigration/4.1/immigration.xsd" namespace="http://release.niem.gov/niem/domains/immigration/4.1/"/>
+	<xs:import schemaLocation="../../../niem/niem-core/4.0/niem-core.xsd" namespace="http://release.niem.gov/niem/niem-core/4.0/"/>
+	<xs:import schemaLocation="../../../niem/codes/iso_3166-1/4.0/iso_3166.xsd" namespace="http://release.niem.gov/niem/codes/iso_3166-1/4.0/"/>
+	<xs:import schemaLocation="../../../niem/utility/structures/4.0/structures.xsd" namespace="http://release.niem.gov/niem/structures/4.0/"/>
+	<xs:import schemaLocation="../../../niem/proxy/xsd/4.0/xs.xsd" namespace="http://release.niem.gov/niem/proxy/xsd/4.0/"/>
+	<xs:import schemaLocation="../../technical/2.0/transaction.xsd" namespace="http://interoperability.gc.ca/technical/transaction/2.0/"/>
+
+	<xs:element name="PersonCitizenshipISO3166Alpha3Code" type="iso_3166:CountryAlpha3CodeType" substitutionGroup="nc:PersonCitizenshipAbstract" nillable="true">
+		<xs:annotation>
+			<xs:documentation>A country that assigns rights, duties, and privileges to a person because of the birth or naturalization of the person in that country.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="PersonSINIdentification" substitutionGroup="nc:PersonSSNIdentification"/>
+
+	<xs:element name="PersonDeathIncident" type="j:PersonDeathIncidentType" substitutionGroup="j:PersonDeathAugmentationPoint"/>
+	
+	<xs:element name="PersonDeathNotification" type="per:PersonDeathNotificationType"/>
+	<xs:complexType name="PersonDeathNotificationType">
+		<xs:complexContent>
+			<xs:extension base="structures:ObjectType">
+				<xs:sequence>
+					<xs:element ref="nc:Person"/>
+					<xs:element ref="nc:PersonResidenceAssociation" minOccurs="0"/>
+					<xs:element ref="j:PersonDeath"/>
+					<xs:element ref="nc:PersonUnionAssociation" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="hs:ParentChildAssociation" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="hs:PersonOtherKinAssociation" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tran:Transaction" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:element name="PersonInternationalAgreementIndicator" type="niem-xs:boolean" substitutionGroup="nc:PersonAugmentationPoint" nillable="true"/>
+	<xs:element name="IdentificationRestrictionIndicator" type="niem-xs:boolean" substitutionGroup="nc:IdentificationAugmentationPoint" nillable="true"/>
+</xs:schema>

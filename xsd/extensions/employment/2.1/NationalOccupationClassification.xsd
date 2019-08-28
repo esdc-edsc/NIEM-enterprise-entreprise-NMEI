@@ -1,0 +1,1693 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:noc="http://interoperability.gc.ca/employment/NationalOccupationClassification/2.0/"
+	xmlns:niem-xs="http://release.niem.gov/niem/proxy/xsd/4.0/"
+	xmlns:structures="http://release.niem.gov/niem/structures/4.0/"
+	xmlns:cli="http://reference.niem.gov/niem/specification/code-lists/4.0/code-lists-instance/"
+	xmlns:appinfo="http://release.niem.gov/niem/appinfo/4.0/"
+	xmlns:nc="http://release.niem.gov/niem/niem-core/4.0/"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mo="http://release.niem.gov/niem/domains/militaryOperations/4.1/"
+	xmlns:im="http://release.niem.gov/niem/domains/immigration/4.1/"
+	xmlns:proxy="http://interoperability.gc.ca/technical/proxy/2.0/"
+	xmlns:query="http://interoperability.gc.ca/technical/QueryData/2.0/"
+	xmlns:tran="http://interoperability.gc.ca/technical/transaction/2.0/"
+	targetNamespace="http://interoperability.gc.ca/employment/NationalOccupationClassification/2.0/"
+	elementFormDefault="qualified" version="2.0">
+	<xs:annotation>
+		<xs:documentation>Base container for any NOC elements.</xs:documentation>
+		<xs:documentation xml:lang="en">National Occupational Classification</xs:documentation>
+		<xs:documentation xml:lang="en">Overview</xs:documentation>
+		<xs:documentation xml:lang="en">The National Occupational Classification (NOC) is a system
+			for describing the occupations of Canadians. It gives statisticians, labour market
+			analysts, career counsellors, employers and individual job seekers a standardized way of
+			describing and understanding the nature of work. The system includes a series of
+			publications that help these people to organize and use statistics and other labour
+			market facts.</xs:documentation>
+		<xs:documentation xml:lang="en">History</xs:documentation>
+		<xs:documentation xml:lang="en">The NOC was implemented in 1991/92 as a replacement for the
+			Canadian Classification and Dictionary of Occupations (CCDO). It was created through an
+			extensive program of research, collecting information from employers, workers, educators
+			and associations. Analyses and consultations were also conducted with providers and
+			users of labour market data across the country. Employment and Social Development Canada
+			(ESDC) worked closely with Statistics Canada to ensure strong links between the NOC and
+			Statistics Canada's Standard Occupational Classification (SOC), for the collection and
+			publication of labour market data.</xs:documentation>
+		<xs:documentation xml:lang="en">The first revised edition of the NOC, NOC 2001, replaced the
+			original publication and the parallel 1991 SOC produced by Statistics Canada. The
+			revised SOC was then replaced with the National Occupational Classification for
+			Statistics (NOC-S). The NOC 2001 and the NOC-S filled the gaps that were identified as
+			shortcomings of the 1992 NOC. These included a missing technical level for information
+			technology occupations, inconsistencies in relation to the statistical structure and the
+			challenges in capturing the emergence of new work methods and new titles used in the
+			labour market. The NOC 2001, while conservative with respect to structural change,
+			reflected the evolution of occupations over the decade between 1991 and 2001 in
+			Canada.</xs:documentation>
+		<xs:documentation xml:lang="en">The NOC is updated on a regular basis through ongoing
+			research and modifications to content are published on a regular basis. Historically,
+			the NOC was revised to coincide with Census cycles. The NOC 2011, published to coincide
+			with Census 2011, represented a major structural revision unifying the NOC and the
+			NOC-S. Significant content and structural revisions affecting the coding system were
+			implemented. The 2016 edition of the NOC reflects changes in content but maintains the
+			same structure as the NOC 2011.</xs:documentation>
+		<xs:documentation xml:lang="en">The goal of the NOC is to make it easier for users at all
+			levels to achieve a better understanding of work in the Canadian labour market. The
+			Occupational Descriptions provide formal descriptions of 500 occupational groups. These
+			descriptions are identified by codes and titles organized in a four-level numerical
+			hierarchy.</xs:documentation>
+		<xs:documentation xml:lang="en">The NOC ensures that labour market statistics are collected
+			and assembled in a standard way that will be meaningful to users. At the same time, the
+			descriptions allow technical users, such as economists and business analysts, to
+			understand exactly what the statistics mean.</xs:documentation>
+		<xs:documentation xml:lang="en">Applications</xs:documentation>
+		<xs:documentation xml:lang="en">The NOC provides a standardized language for describing the
+			work performed by Canadians. It is used at all stages of the process from defining and
+			collecting data, to managing information databases, to analyzing labour market trends
+			and extracting practical career planning information.</xs:documentation>
+		<xs:documentation xml:lang="en">By providing a standard way of organizing occupational
+			information, the NOC also supports a variety of career information resources published
+			by the Government of Canada and others. For example, information on occupational
+			outlooks, the national Job Bank listing of jobs available across Canada, and dynamic
+			labour market information are all organized according to the structure of the
+			NOC.</xs:documentation>
+		<xs:documentation xml:lang="en">Data Collection</xs:documentation>
+		<xs:documentation xml:lang="en">The hierarchical coding structure of the NOC is used in the
+			collection of occupational information. For example, economists and statisticians use
+			the NOC to guide the collection and compilation of data. The Government of Canada uses
+			it for the analysis of occupational data collected from the Census, Labour Force Survey
+			and other surveys.</xs:documentation>
+		<xs:documentation xml:lang="en">The NOC is also used for a variety of special surveys with
+			respect to labour mobility, technological change, administrative data and other
+			indicators of labour market activity. In addition, provincial governments and private
+			survey companies use the NOC to ensure that the information they collect will be
+			directly comparable to data they get from other sources.</xs:documentation>
+		<xs:documentation xml:lang="en">Labour Market Analysis</xs:documentation>
+		<xs:documentation xml:lang="en">Labour market researchers use the NOC to understand the
+			underpinnings of the statistics they use, and more importantly, to interpret them
+			correctly. The NOC provides the context for the interpretation of statistical
+			information. These users analyze the Canadian labour market to understand emerging
+			trends, to guide policy decisions and to develop systems for training, recruiting and
+			job matching. National, regional and local labour market information can be accessed by
+			visiting Job Bank (www.jobbank.gc.ca).</xs:documentation>
+		<xs:documentation xml:lang="en">Labour market analyses include work done within the
+			government to set policy and improve labour market efficiency. For example, all levels
+			of government use this type of analysis to allocate spending for labour market programs,
+			to manage systems for matching jobs with workers who have the required skills, and for
+			immigration selection procedures.</xs:documentation>
+		<xs:documentation xml:lang="en">Career Planning and Job Seeking</xs:documentation>
+		<xs:documentation xml:lang="en">Career developers, counsellors and students use the NOC and
+			related resources such as the Career Handbook for career planning and exploration
+			purposes. An understanding of occupational definitions, employment requirements and
+			opportunities is central to the goal of matching the interests and aptitudes of
+			individuals to the requirements and opportunities associated with
+			occupations.</xs:documentation>
+		<xs:documentation xml:lang="en">Job seekers, employment counsellors and employers rely on
+			the NOC to make effective use of labour market information services provided by the
+			government, organizations and stakeholders. Job Bank offers a free and bilingual job
+			website and job matching service which provides timely and relevant labour market
+			information on employment opportunities across Canada and allows employers to post
+			available job opportunities and job seekers to search for jobs.</xs:documentation>
+		<xs:documentation xml:lang="en">Exploring the NOC</xs:documentation>
+		<xs:documentation xml:lang="en">In a nutshell, the NOC is a tool that is used to classify
+			occupations according to their Skill Level and Skill Type. A four-digit code, called the
+			"NOC code", identifies the occupation. Each digit of this code reflects an important
+			trait of the occupation it represents.</xs:documentation>
+		<xs:documentation xml:lang="en">Let's begin by looking at each digit and the significance it
+			has with respect to the NOC.</xs:documentation>
+		<xs:documentation xml:lang="en">Skill Type</xs:documentation>
+		<xs:documentation xml:lang="en">Skill Type is the broadest occupational category and is
+			based on the type of work performed. It also reflects the field of training or
+			experience that is normally required for entry into occupations. This includes the
+			educational area of study required, as well as the industry of employment in cases where
+			experience within an internal job ladder is required for entry. These categories are
+			intended to indicate easily understood segments of the world of work.</xs:documentation>
+		<xs:documentation xml:lang="en">The first digit of the NOC code designates the Skill Type.
+			For example, Occupations in manufacturing and utilities start with the digit 9.
+			Management Occupations, which are found across all Skill Types, start with the digit
+			0.</xs:documentation>
+		<xs:documentation xml:lang="en">Skill Level</xs:documentation>
+		<xs:documentation xml:lang="en">In the context of the NOC, Skill Level corresponds to the
+			type and/or amount of training or education typically required to work in an occupation.
+			The NOC consists of four Skill Levels identified A through D with each level assigned
+			one of two numerical codes ranging from 0 to 7. To illustrate this concept, have a look
+			at the chart below to see the relationship between the alphabetical indicator of each
+			Skill Level and its accompanying numerical digits.</xs:documentation>
+		<xs:documentation xml:lang="en">Skill Level is primarily based on the nature of education
+			and training required to enter an occupation. This criterion also reflects the
+			experience required and the complexity of the responsibilities involved in the work,
+			compared with other occupations. In most cases, progression to Skill Level A, from B, is
+			not usually possible without completion of additional formal education, whereas
+			progression from Skill Level D to Skill Level C is often achievable through on-the-job
+			training and experience.</xs:documentation>
+		<xs:documentation xml:lang="en">Each Skill Level is intended to reflect commonly accepted
+			paths to employment in an occupation. Where there are several paths to employment, the
+			Skill Level most commonly identified by employers is used, considering the context of
+			the occupation and the trends in hiring requirements.</xs:documentation>
+		<xs:documentation xml:lang="en">The second digit of the NOC code represents the Skill Level
+			for all occupations, with the exception of Management which will be discussed
+			below.</xs:documentation>
+		<xs:documentation xml:lang="en">Management Occupations</xs:documentation>
+		<xs:documentation xml:lang="en">Management occupations classified as Skill Type 0, span all
+			other Skill Types from 1 through 9 of the classification structure, and are found in all
+			areas of the labour market. All NOC codes that begin with a zero represent management
+			occupations. When the second digit is also zero, this represents "senior" management
+			occupations. To identify all other management occupations, the second digit (1 through
+			9) corresponds to management within each Skill Type.</xs:documentation>
+		<xs:documentation xml:lang="en">To illustrate this concept, let us look at the
+			following:</xs:documentation>
+		<xs:documentation xml:lang="en">• Management occupations in sales and services begin with
+			06. The 0 indicates that it is a management level occupation and the 6 indicates that
+			the occupation falls under the Sales and Service Skill Type.</xs:documentation>
+		<xs:documentation xml:lang="en">• Now consider a NOC code that has a zero as its first and
+			second digit. Similar to the example above, we know that this occupation is a management
+			occupation because it begins with zero. We also know that the second digit for
+			management occupations reflects the Skill Type. However, because there is no Skill Type
+			0, we can conclude that this is a senior management occupation.</xs:documentation>
+		<xs:documentation xml:lang="en">Management occupations are at the top of all organizational
+			hierarchies. These occupations are characterized by high levels of responsibility and
+			are also included in Skill Level A.</xs:documentation>
+		<xs:documentation xml:lang="en">Major Groups</xs:documentation>
+		<xs:documentation xml:lang="en">Major groups follow the broadest categorization of
+			occupations and are identified by the first two digits of a NOC code. It is a roll-up,
+			or, an aggregation of minor groups (which we will look at shortly).</xs:documentation>
+		<xs:documentation xml:lang="en">Minor Groups</xs:documentation>
+		<xs:documentation xml:lang="en">The major groups are further divided at the three-digit
+			level, into 140 minor groups.</xs:documentation>
+		<xs:documentation xml:lang="en">By now you have probably realized that each digit of the NOC
+			code helps to further specify an occupation. At the minor group level, you can pinpoint
+			a domain in which an occupation is carried out. However, we need to go one step further
+			to identify an actual occupational group.</xs:documentation>
+		<xs:documentation xml:lang="en">Unit Groups</xs:documentation>
+		<xs:documentation xml:lang="en">At the detailed four-digit level, the system is expanded
+			into 500 occupational groups identified as unit groups, each with a unique code. Unit
+			groups represent further specificity within an occupational domain.</xs:documentation>
+		<xs:documentation xml:lang="en">You have now learned about the structure of the NOC and how
+			codes are related to Skill Type and Skill Level. The question now is: how do you find
+			these codes and use them in practical terms? This will be addressed in the following
+			section, which will introduce you to the NOC tools that you can use to code and describe
+			occupations. We will begin by looking at the Occupational Descriptions that contain all
+			of the information that you need to code occupations.</xs:documentation>
+		<xs:documentation xml:lang="en">Occupational Descriptions</xs:documentation>
+		<xs:documentation xml:lang="en">Whether you are an economist analyzing labour market data
+			for a specific occupation or an employment counsellor helping someone determine what
+			type of training to take, occupational descriptions help us understand an occupation
+			using a standardized language.</xs:documentation>
+		<xs:documentation xml:lang="en">Occupational descriptions have been developed for each of
+			the 500 unit groups included in the NOC. Each description is referred to as an "NOC
+			group". Each description includes the following elements:</xs:documentation>
+		<xs:documentation xml:lang="en">Lead Statement</xs:documentation>
+		<xs:documentation xml:lang="en">The lead statement provides a general description of the
+			occupation and the boundaries of the unit group. It also indicates the kinds of
+			industries, workplaces or establishments where the occupation is
+			found.</xs:documentation>
+		<xs:documentation xml:lang="en">Example Titles</xs:documentation>
+		<xs:documentation xml:lang="en">Example titles are the occupational titles commonly found
+			within the group. This list is an extraction of a more expansive listing of alphabetical
+			job titles found in the NOC Index of Titles.</xs:documentation>
+		<xs:documentation xml:lang="en">Main Duties</xs:documentation>
+		<xs:documentation xml:lang="en">The main duties section describes the most significant
+			duties of the occupations in the group. It may include:</xs:documentation>
+		<xs:documentation xml:lang="en">• type and level of education including specific subject
+			matter if relevant, starting with the lowest possible requirement for entry into the
+			occupation;</xs:documentation>
+		<xs:documentation xml:lang="en">• two or more sub-sets of occupations with statements that
+			apply to each sub-set or component; and/or</xs:documentation>
+		<xs:documentation xml:lang="en">• a series of brief statements that are linked to specific
+			occupations, that, while similar enough to be in the same group, can be described
+			separately.</xs:documentation>
+		<xs:documentation xml:lang="en">Statements in Italics, at the end of this section, identify
+			a specialization that may exist within the occupation.</xs:documentation>
+		<xs:documentation xml:lang="en">Employment Requirements</xs:documentation>
+		<xs:documentation xml:lang="en">Employment requirements are prerequisites generally needed
+			to enter the occupation. Several types of requirements are listed:</xs:documentation>
+		<xs:documentation xml:lang="en">• type and level of education including specific subject
+			matter if relevant, starting with the lowest possible requirement for entry into the
+			occupation;</xs:documentation>
+		<xs:documentation xml:lang="en">• specific training required, including apprenticeship,
+			on-the-job or internal training;</xs:documentation>
+		<xs:documentation xml:lang="en">• experience in a related occupation, especially for
+			supervisory or managerial occupations;</xs:documentation>
+		<xs:documentation xml:lang="en">• licences, certificates or affiliations;
+			and/or</xs:documentation>
+		<xs:documentation xml:lang="en">• other requirements not dependent on formal education, such
+			as athletic abilities, artistic talent or presentation of a
+			portfolio.</xs:documentation>
+		<xs:documentation xml:lang="en">While some occupations have very specific employment
+			requirements, others have a wide range of acceptable requirements. The following
+			terminology is used to indicate the level of the requirement:</xs:documentation>
+		<xs:documentation xml:lang="en">• "Is required" indicates a definite
+			requirement.</xs:documentation>
+		<xs:documentation xml:lang="en">• "Is usually required" means that the qualification is
+			generally expressed as required by a majority of employers, but not always
+			mandatory.</xs:documentation>
+		<xs:documentation xml:lang="en">• "May be required" describes requirements that some
+			employers may impose, but are not universal.</xs:documentation>
+		<xs:documentation xml:lang="en">Qualities related to personal suitability that may have an
+			impact on employability are not described in the classification. These factors are
+			subjective and determined by employers and assessed during the hiring
+			process.</xs:documentation>
+		<xs:documentation xml:lang="en">Additional Information</xs:documentation>
+		<xs:documentation xml:lang="en">Some descriptions include additional information to give
+			details on:</xs:documentation>
+		<xs:documentation xml:lang="en">• mobility patterns;</xs:documentation>
+		<xs:documentation xml:lang="en">• progression to supervisory positions, specializations or
+			to other occupations such as management;</xs:documentation>
+		<xs:documentation xml:lang="en">• other information that may clarify the occupational
+			description.</xs:documentation>
+		<xs:documentation xml:lang="en">Exclusion</xs:documentation>
+		<xs:documentation xml:lang="en">The Exclusion section helps to clarify the boundaries of the
+			unit group by identifying similar groups or related occupations, such as supervisory
+			groups, that are separately classified.</xs:documentation>
+		<xs:documentation xml:lang="en">The Matrix</xs:documentation>
+		<xs:documentation xml:lang="en">A chart called the NOC Matrix illustrates the Major and the
+			Minor groups, and the relationship between Skill Types and Skill Levels. This provides
+			an overview of the entire classification structure.</xs:documentation>
+		<xs:documentation xml:lang="en">Skill Types are represented in the columns while the Skill
+			Levels are found in rows. Managerial occupations are found in the top portion of the
+			chart, indicating the presence of management across all segments of the labour
+			market.</xs:documentation>
+		<xs:documentation xml:lang="en">While the Matrix can be helpful in identifying Major and
+			Minor Groups, it does not identify Unit Groups due to space
+			limitations.</xs:documentation>
+		<xs:documentation xml:lang="en">Index of Titles</xs:documentation>
+		<xs:documentation xml:lang="en">As useful as the unit group headings or labels are, they do
+			not always correspond with the real-world job titles in use every day. For this reason,
+			the Index of Titles is a tool used to search for occupational titles in addition to
+			those that appear in the occupational descriptions.</xs:documentation>
+		<xs:documentation xml:lang="en">Scope of the Index of Titles</xs:documentation>
+		<xs:documentation xml:lang="en">The Index of Titles contains thousands of titles classified
+			within the 500 occupational groups of the NOC. With millions of people in the employed
+			labour force, it is impossible to capture all of the individualized job titles that
+			could potentially exist. While the listing in the Index is not meant to be exhaustive,
+			it does provide extensive coverage of commonly used and understood titles in the
+			economy, as well as the more obscure and specific titles found in many occupational
+			areas. Some of the more commonly used titles in an occupation are listed as examples
+			within each NOC unit group description.</xs:documentation>
+		<xs:documentation xml:lang="en">To assist users, the Index includes both formally recognized
+			occupational titles (e.g., radiography technologist) and less formal titles that are
+			commonly used (e.g., X-ray technician). Some titles represent occupations (e.g.,
+			librarian; chef), while other titles refer to specializations within an occupation
+			(e.g., music librarian; pastry chef). Still, others correspond to a range of jobs (e.g.,
+			furniture assembler; sawmill machine operator).</xs:documentation>
+		<xs:documentation xml:lang="en">Modifiers</xs:documentation>
+		<xs:documentation xml:lang="en">Industry, institution or subject matter modifiers are added
+			to many titles. This information is attached to the title following a dash (e.g.,
+			customer service supervisor - retail; electronics mechanic - avionics) to provide a
+			means of differentiation among titles. Often, the extensions provide further information
+			to clarify the placement of titles in the classification structure (e.g., painter -
+			visual arts; painter - motor vehicle manufacturing). These modifiers should be
+			considered when coding an occupational title.</xs:documentation>
+		<xs:documentation xml:lang="en">Military Titles</xs:documentation>
+		<xs:documentation xml:lang="en">Prior to the 2011 revision, titles of military occupations
+			were indicated by adding the modifier military after a dash (e.g., sonar technician -
+			military). Military occupations are now classified according to rank. These titles are
+			now found within the unit groups for either the commissioned ranks or non-commissioned
+			ranks of the armed forces.</xs:documentation>
+		<xs:documentation xml:lang="en">Concordance Between Languages</xs:documentation>
+		<xs:documentation xml:lang="en">The terminological research conducted for the translation
+			and adaptation of the titles contained in this revised Index of Titles has dealt with a
+			component that was not previously addressed. Concordances for all titles in both
+			official languages have been identified. The level of concordance identifies
+			correspondence between one title (or several where there are equivalent titles) to one
+			or many titles in the other language.</xs:documentation>
+		<xs:documentation xml:lang="en">Career Handbook</xs:documentation>
+		<xs:documentation xml:lang="en">Purpose</xs:documentation>
+		<xs:documentation xml:lang="en">Finding understandable information about the entire world of
+			work and how it is organized can be difficult. The purpose of the Career Handbook is to
+			provide useful, reliable and accessible information about occupations to counsellors and
+			their clients.</xs:documentation>
+		<xs:documentation xml:lang="en">The Career Handbook has been developed by occupational
+			researchers, analysts and trained raters. The ratings assigned to each group are global
+			and describe the occupation with respect to skills and other variables to provide
+			important indicators for career exploration. The Handbook will help counsellors and
+			their clients investigate occupations and make informed career
+			decisions.</xs:documentation>
+		<xs:documentation xml:lang="en">The Career Handbook is intended for career counselling,
+			development and exploration purposes. ESDC neither condones nor recommends the use of
+			this information for other purposes. The profiles presented here are not appropriate for
+			other uses such as screening applicants for particular positions or determining
+			insurance benefits. The data do not replace the use of criterion-referenced testing to
+			establish performance requirements for work as it occurs in the labour market. There are
+			three major reasons for this limitation:</xs:documentation>
+		<xs:documentation xml:lang="en">• The conceptual foundation of the NOC and the Handbook is
+			occupations, not jobs. An occupation is a collection of similar jobs that share some or
+			all of a set of Main Duties. The tasks of specific jobs vary from establishment to
+			establishment.</xs:documentation>
+		<xs:documentation xml:lang="en">• The rated information in the Handbook is not based on
+			experimental data collected from representative samples of the employed labour force for
+			the occupations of the NOC.</xs:documentation>
+		<xs:documentation xml:lang="en">• Development of the NOC and the Handbook did not include
+			the collection of data on specific working conditions for jobs contained within
+			occupational groups of the NOC.</xs:documentation>
+		<xs:documentation xml:lang="en">Occupation Code, Title and Introductory</xs:documentation>
+		<xs:documentation xml:lang="en">The occupation code appears at the top of both pages of an
+			entry. It is either identical to the four-digit NOC unit group code, or it has a digit
+			added after a decimal identifying it as a subgroup of the original NOC unit
+			group.</xs:documentation>
+		<xs:documentation xml:lang="en">The title of the group follows the code on the first page.
+			The titles are either those of the original NOC unit group or are taken from the Main
+			Duties subgroup descriptions.</xs:documentation>
+		<xs:documentation xml:lang="en">The introductory statement, which provides a general
+			overview of the occupation, is taken from the lead statement of the NOC unit group. When
+			there are subgroups, this same pattern is followed.</xs:documentation>
+		<xs:documentation xml:lang="en">Data/Information, People, Things</xs:documentation>
+		<xs:documentation xml:lang="en">This section identifies all the ratings in an abbreviated
+			alphanumeric format, providing counsellors with a quick overview of the nature of the
+			occupation.</xs:documentation>
+		<xs:documentation xml:lang="en">A Synopsis of Descriptors and Labels as well as Descriptor
+			Definitions provide detailed information on the factor ratings, their labels and
+			levels.</xs:documentation>
+		<xs:documentation xml:lang="en">Examples of Job Titles</xs:documentation>
+		<xs:documentation xml:lang="en">The NOC and the Career Handbook do not provide an exhaustive
+			list of job titles. The list provided in the group indicates the most commonly used
+			titles in an occupation across the country. This list also presents a conceptual
+			boundary around an occupation by identifying the range of job titles contained within a
+			group.</xs:documentation>
+		<xs:documentation xml:lang="en">Main Characteristics</xs:documentation>
+		<xs:documentation xml:lang="en">The Descriptor Profile provides, in narrative form, the Main
+			Characteristics of an occupation by describing its predominant n, interest and
+			functional elements.</xs:documentation>
+		<xs:documentation xml:lang="en">The Descriptor Profile highlights the aptitudes most
+			relevant in the performance of the work. They are based on the same theoretical
+			principles and level configuration as that of the predecessor of the NOC, the Canadian
+			Classification and Dictionary of Occupations (CCDO), Volume 2. Aptitude ratings are
+			further discussed in the Descriptor Definitions and Rating Methodology
+			sections.</xs:documentation>
+		<xs:documentation xml:lang="en">The interests for the occupation are assigned in order of
+			predominance. Interests are based on the Canadian Work Preference Inventory (CWPI). They
+			are highlighted, along with worker functions (Data/People/Things - DPT) as further
+			qualifiers, to describe the involvement that a worker in the occupation will have with
+			data/information, people and things. DPT is adopted from the scales used in the
+			CCDO.</xs:documentation>
+		<xs:documentation xml:lang="en">This interpretative narrative is based on the Main Duties
+			section of the NOC unit group descriptions as well as on the assigned ratings for the
+			above-mentioned scales. For some groups derived from NOC subgroups with little
+			information, research, secondary sources and the CCDO were used to provide additional
+			narrative content. The CCDO information is generally from Volume 2, which identifies
+			skills rather than specific job tasks.</xs:documentation>
+		<xs:documentation xml:lang="en">Physical Activities Environmental
+			Conditions</xs:documentation>
+		<xs:documentation xml:lang="en">The Physical Activities and Environmental Conditions scales
+			follow the Main Characteristics. Refer to the Remarks section for the explanation of
+			asterisks (*) used in both these scales.</xs:documentation>
+		<xs:documentation xml:lang="en">Since there is no direct link between the ratings in these
+			sections and the content presented in the NOC’s Main Duties, it was not possible to
+			incorporate them into the narrative. However, they are an integral part of the
+			Descriptor Profile for the occupation and provide important information for counsellor
+			use.</xs:documentation>
+		<xs:documentation xml:lang="en">The ratings for Physical Activities factors in an
+			occupational profile do not indicate that persons with disabilities can or cannot
+			perform the duties of that occupation. However, counsellors of clients with disabilities
+			may find the information useful in terms of considering workplace accommodations that
+			would enhance their client’s employability.</xs:documentation>
+		<xs:documentation xml:lang="en">Employment Requirements</xs:documentation>
+		<xs:documentation xml:lang="en">In this section, the employment requirements from the NOC
+			unit group are assigned indicators to provide a numerical reference for counsellors. The
+			Education/Training Indicators identify a hierarchical order for types of education and
+			training, and also incorporate two other criteria represented by "+" and "R" where
+			applicable. These symbols indicate that requirements other than education and training
+			are relevant for the occupation.</xs:documentation>
+		<xs:documentation xml:lang="en">Occupational Options</xs:documentation>
+		<xs:documentation xml:lang="en">For most occupations there is some form of mobility such as
+			transferability, lateral mobility, upward progression and specialization. Although these
+			patterns of mobility are different, their presence indicates that there are skills or
+			competencies that can be adapted from one occupation and applied to another. This
+			section identifies the possibility for worker mobility within the group or the potential
+			to move to other occupations.</xs:documentation>
+		<xs:documentation xml:lang="en">Remarks</xs:documentation>
+		<xs:documentation xml:lang="en">The Remarks section provides free-standing comments as well
+			as statements for Physical Activities and Environmental Conditions ratings that appear
+			with an asterisk (*). Free-standing comments, which precede statements about ratings,
+			usually provide information related to specializations for an
+			occupation.</xs:documentation>
+		<xs:documentation xml:lang="en">An asterisk for a Physical Activity rating will appear after
+			that rating. There are no asterisks under Physical Activities in the sample group –
+			2212.1 Geological and Mineral Technologists. However, if an asterisk appeared beside
+			Strength 2 Light, it would affect the meaning of the rating. Strength 2 Light –
+			indicates that Strength for the occupational group as a whole is 2, which has the label
+			Light. The presence of an asterisk would indicate that some jobs within the group have a
+			rating of 3, which is labelled Medium. In general, an asterisk for Physical Activities
+			indicates a level up for the rating.</xs:documentation>
+		<xs:documentation xml:lang="en">For Environmental Conditions, an asterisk indicates that the
+			potential condition in a group is limited to some jobs, not the occupation as a whole.
+			For example, in 2212.1 Geological and Mineral Technologists, the asterisk for Hazards
+			H8* Dangerous locations – indicates that this is a potential hazard for some but not all
+			jobs within the group.</xs:documentation>
+		<xs:appinfo>
+			<appinfo:LocalTerm term="NOC" literal="National Occupational Classification"/>
+		</xs:appinfo>
+	</xs:annotation>
+	<xs:import namespace="http://release.niem.gov/niem/structures/4.0/"
+		schemaLocation="../../../niem/utility/structures/4.0/structures.xsd"/>
+	<xs:import
+		schemaLocation="../../technical/2.0/proxy.xsd"
+		namespace="http://interoperability.gc.ca/technical/proxy/2.0/"/>
+	<xs:import
+		schemaLocation="../../technical/2.0/QueryData.xsd"
+		namespace="http://interoperability.gc.ca/technical/QueryData/2.0/"/>
+	<xs:import namespace="http://release.niem.gov/niem/niem-core/4.0/"
+		schemaLocation="../../../niem/niem-core/4.0/niem-core.xsd"/>
+	<xs:import namespace="http://release.niem.gov/niem/domains/militaryOperations/4.1/"
+		schemaLocation="../../../niem/domains/militaryOperations/4.1/mo.xsd"/>
+	<xs:import namespace="http://release.niem.gov/niem/domains/immigration/4.1/"
+		schemaLocation="../../../niem/domains/immigration/4.1/immigration.xsd"/>
+	<xs:import schemaLocation="../../technical/2.0/transaction.xsd"
+		namespace="http://interoperability.gc.ca/technical/transaction/2.0/"/>
+	<xs:attribute name="documentPublicationDate" type="xs:date">
+		<xs:annotation>
+			<xs:documentation>A date of the first public dissemination of the content in any
+				media.</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="documentPostDate" type="xs:date">
+		<xs:annotation>
+			<xs:documentation>A date a document is entered or posted to an information system or
+				network; used when the date of posting is different from the date on which a
+				document was officially filed.</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="versionID" type="xs:string">
+		<xs:annotation>
+			<xs:documentation>A date a document is entered or posted to an information system or
+				network; used when the date of posting is different from the date on which a
+				document was officially filed.</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attributeGroup name="PublishAttributeGroup">
+		<xs:attribute ref="noc:documentPublicationDate" use="optional"/>
+		<xs:attribute ref="noc:documentPostDate" use="optional"/>
+		<xs:attribute ref="noc:versionID" use="optional"/>
+	</xs:attributeGroup>
+	<xs:attribute name="sequenceNumeric" type="xs:positiveInteger">
+		<xs:annotation>
+			<xs:documentation>A numeric ordering.</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="header" type="xs:boolean">
+		<xs:annotation>
+			<xs:documentation>Indicator of whether the text is header text.</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="subheader" type="xs:boolean">
+		<xs:annotation>
+			<xs:documentation>Indicator of whether the text is subheader text.</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="specialization" type="xs:boolean">
+		<xs:annotation>
+			<xs:documentation>Indicator of whether the employment category has a specialization
+				identified.</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="example" type="xs:boolean">
+		<xs:annotation>
+			<xs:documentation>Indicator of whether the title is an example.</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="index" type="xs:boolean">
+		<xs:annotation>
+			<xs:documentation>Indicator of whether the title is included in the
+				index.</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="inclusion" type="xs:boolean">
+		<xs:annotation>
+			<xs:documentation>Indicator of whether the title is an inclusion.</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="weaker" type="xs:boolean">
+		<xs:annotation>
+			<xs:documentation>Indicator of whether the item is weaker.</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="remarks" type="xs:boolean">
+		<xs:annotation>
+			<xs:documentation>Indicator of whether there are associated remarks.</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="additionalRequirements" type="xs:boolean">
+		<xs:annotation>
+			<xs:documentation>Indicator of whether there are additional education/training
+				requirements.</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:element name="NationalOccupationClassificationGroup" abstract="true"/>
+	<xs:element name="NationalOccupationClassification"
+		type="noc:NationalOccupationClassificationType"/>
+	<xs:element name="NationalOccupationClassificationAugmentationPoint" abstract="true"/>
+	<xs:complexType name="NationalOccupationClassificationType">
+		<xs:annotation>
+			<xs:documentation>Base containter for any NOC elements.</xs:documentation>
+			<xs:documentation xml:lang="en">The National Occupational Classification (NOC) is a
+				system for describing the occupations of Canadians. It gives statisticians, labour
+				market analysts, career counsellors, employers and individual job seekers a
+				standardized way of describing and understanding the nature of work. The system
+				includes a series of publications that help these people to organize and use
+				statistics and other labour market facts.</xs:documentation>
+			<xs:documentation xml:lang="en">Exploring the NOC</xs:documentation>
+			<xs:documentation xml:lang="en">In a nutshell, the NOC is a tool that is used to
+				classify occupations according to their Skill Level and Skill Type. A four-digit
+				code, called the "NOC code", identifies the occupation. Each digit of this code
+				reflects an important trait of the occupation it represents.</xs:documentation>
+			<xs:documentation xml:lang="en">Let's begin by looking at each digit and the
+				significance it has with respect to the NOC.</xs:documentation>
+			<xs:documentation xml:lang="en">Skill Type is the broadest occupational category and is
+				based on the type of work performed. It also reflects the field of training or
+				experience that is normally required for entry into occupations. This includes the
+				educational area of study required, as well as the industry of employment in cases
+				where experience within an internal job ladder is required for entry. These
+				categories are intended to indicate easily understood segments of the world of
+				work.</xs:documentation>
+			<xs:documentation xml:lang="en">The first digit of the NOC code designates the Skill
+				Type. For example, Occupations in manufacturing and utilities start with the digit
+				9. Management Occupations, which are found across all Skill Types, start with the
+				digit 0.</xs:documentation>
+			<xs:documentation xml:lang="en">In the context of the NOC, Skill Level corresponds to
+				the type and/or amount of training or education typically required to work in an
+				occupation. The NOC consists of four Skill Levels identified A through D with each
+				level assigned one of two numerical codes ranging from 0 to 7. To illustrate this
+				concept, have a look at the chart below to see the relationship between the
+				alphabetical indicator of each Skill Level and its accompanying numerical
+				digits.</xs:documentation>
+			<xs:documentation xml:lang="en">Skill Level is primarily based on the nature of
+				education and training required to enter an occupation. This criterion also reflects
+				the experience required and the complexity of the responsibilities involved in the
+				work, compared with other occupations. In most cases, progression to Skill Level A,
+				from B, is not usually possible without completion of additional formal education,
+				whereas progression from Skill Level D to Skill Level C is often achievable through
+				on-the-job training and experience.</xs:documentation>
+			<xs:documentation xml:lang="en">Each Skill Level is intended to reflect commonly
+				accepted paths to employment in an occupation. Where there are several paths to
+				employment, the Skill Level most commonly identified by employers is used,
+				considering the context of the occupation and the trends in hiring
+				requirements.</xs:documentation>
+			<xs:documentation xml:lang="en">The second digit of the NOC code represents the Skill
+				Level for all occupations, with the exception of Management which will be discussed
+				below.</xs:documentation>
+			<xs:documentation xml:lang="en">Management Occupations</xs:documentation>
+			<xs:documentation xml:lang="en">Management occupations classified as Skill Type 0, span
+				all other Skill Types from 1 through 9 of the classification structure, and are
+				found in all areas of the labour market. All NOC codes that begin with a zero
+				represent management occupations. When the second digit is also zero, this
+				represents "senior" management occupations. To identify all other management
+				occupations, the second digit (1 through 9) corresponds to management within each
+				Skill Type.</xs:documentation>
+			<xs:documentation xml:lang="en">Management occupations are at the top of all
+				organizational hierarchies. These occupations are characterized by high levels of
+				responsibility and are also included in Skill Level A.</xs:documentation>
+			<xs:documentation xml:lang="en">Major Groups</xs:documentation>
+			<xs:documentation xml:lang="en">Major groups follow the broadest categorization of
+				occupations and are identified by the first two digits of a NOC code. It is a
+				roll-up, or, an aggregation of minor groups (which we will look at
+				shortly).</xs:documentation>
+			<xs:documentation xml:lang="en">Minor Groups</xs:documentation>
+			<xs:documentation xml:lang="en">The major groups are further divided at the three-digit
+				level, into 140 minor groups.</xs:documentation>
+			<xs:documentation xml:lang="en">By now you have probably realized that each digit of the
+				NOC code helps to further specify an occupation. At the minor group level, you can
+				pinpoint a domain in which an occupation is carried out. However, we need to go one
+				step further to identify an actual occupational group.</xs:documentation>
+			<xs:documentation xml:lang="en">Unit Groups</xs:documentation>
+			<xs:documentation xml:lang="en">At the detailed four-digit level, the system is expanded
+				into 500 occupational groups identified as unit groups, each with a unique code.
+				Unit groups represent further specificity within an occupational
+				domain.</xs:documentation>
+			<xs:appinfo>
+				<appinfo:LocalTerm term="NOC" literal="National Occupational Classification"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="noc:SkillLevel" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="noc:SkillType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="noc:MajorGroup" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="noc:MinorGroup" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="noc:UnitGroup" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="noc:UnitSubGroup" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="noc:NationalOccupationClassificationAugmentationPoint" minOccurs="0"
+				maxOccurs="unbounded"/>
+			<xs:element ref="tran:Transaction" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ParentSkillLevel" type="noc:SkillLevelType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Parent Skill Level - the skill level that is the parent
+				of the object occupational category.</xs:documentation>
+			<xs:documentation xml:lang="en">Skill Level</xs:documentation>
+			<xs:documentation xml:lang="en">In the context of the NOC, Skill Level corresponds to
+				the type and/or amount of training or education typically required to work in an
+				occupation. The NOC consists of four Skill Levels identified A through D with each
+				level assigned one of two numerical codes ranging from 0 to 7. To illustrate this
+				concept, have a look at the chart below to see the relationship between the
+				alphabetical indicator of each Skill Level and its accompanying numerical
+				digits.</xs:documentation>
+			<xs:documentation xml:lang="en">Skill Level is primarily based on the nature of
+				education and training required to enter an occupation. This criterion also reflects
+				the experience required and the complexity of the responsibilities involved in the
+				work, compared with other occupations. In most cases, progression to Skill Level A,
+				from B, is not usually possible without completion of additional formal education,
+				whereas progression from Skill Level D to Skill Level C is often achievable through
+				on-the-job training and experience.</xs:documentation>
+			<xs:documentation xml:lang="en">Each Skill Level is intended to reflect commonly
+				accepted paths to employment in an occupation. Where there are several paths to
+				employment, the Skill Level most commonly identified by employers is used,
+				considering the context of the occupation and the trends in hiring
+				requirements.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="SkillLevel" type="noc:SkillLevelType"
+		substitutionGroup="noc:NationalOccupationClassificationGroup">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Skill Level</xs:documentation>
+			<xs:documentation xml:lang="en">In the context of the NOC, Skill Level corresponds to
+				the type and/or amount of training or education typically required to work in an
+				occupation. The NOC consists of four Skill Levels identified A through D with each
+				level assigned one of two numerical codes ranging from 0 to 7. To illustrate this
+				concept, have a look at the chart below to see the relationship between the
+				alphabetical indicator of each Skill Level and its accompanying numerical
+				digits.</xs:documentation>
+			<xs:documentation xml:lang="en">Skill Level is primarily based on the nature of
+				education and training required to enter an occupation. This criterion also reflects
+				the experience required and the complexity of the responsibilities involved in the
+				work, compared with other occupations. In most cases, progression to Skill Level A,
+				from B, is not usually possible without completion of additional formal education,
+				whereas progression from Skill Level D to Skill Level C is often achievable through
+				on-the-job training and experience.</xs:documentation>
+			<xs:documentation xml:lang="en">Each Skill Level is intended to reflect commonly
+				accepted paths to employment in an occupation. Where there are several paths to
+				employment, the Skill Level most commonly identified by employers is used,
+				considering the context of the occupation and the trends in hiring
+				requirements.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="SkillLevelCategoryCode" type="nc:CodeType"/>
+	<xs:complexType name="SkillLevelType">
+		<xs:complexContent>
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Skill Level</xs:documentation>
+				<xs:documentation xml:lang="en">In the context of the NOC, Skill Level corresponds
+					to the type and/or amount of training or education typically required to work in
+					an occupation. The NOC consists of four Skill Levels identified A through D with
+					each level assigned one of two numerical codes ranging from 0 to 7. To
+					illustrate this concept, have a look at the chart below to see the relationship
+					between the alphabetical indicator of each Skill Level and its accompanying
+					numerical digits.</xs:documentation>
+				<xs:documentation xml:lang="en">Skill Level is primarily based on the nature of
+					education and training required to enter an occupation. This criterion also
+					reflects the experience required and the complexity of the responsibilities
+					involved in the work, compared with other occupations. In most cases,
+					progression to Skill Level A, from B, is not usually possible without completion
+					of additional formal education, whereas progression from Skill Level D to Skill
+					Level C is often achievable through on-the-job training and
+					experience.</xs:documentation>
+				<xs:documentation xml:lang="en">Each Skill Level is intended to reflect commonly
+					accepted paths to employment in an occupation. Where there are several paths to
+					employment, the Skill Level most commonly identified by employers is used,
+					considering the context of the occupation and the trends in hiring
+					requirements.</xs:documentation>
+			</xs:annotation>
+			<xs:extension base="noc:EmployeeOccupationCategory">
+				<xs:sequence>
+					<xs:element ref="noc:SkillLevelCategoryCode" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="noc:MajorGroup" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="ParentSkillType" type="noc:SkillTypeType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Parent Skill Type - the skill type that is the parent of
+				the object occupational category.</xs:documentation>
+			<xs:documentation xml:lang="en">Skill Type</xs:documentation>
+			<xs:documentation xml:lang="en">Skill Type is the broadest occupational category and is
+				based on the type of work performed. It also reflects the field of training or
+				experience that is normally required for entry into occupations. This includes the
+				educational area of study required, as well as the industry of employment in cases
+				where experience within an internal job ladder is required for entry. These
+				categories are intended to indicate easily understood segments of the world of
+				work.</xs:documentation>
+			<xs:documentation xml:lang="en">The first digit of the NOC code designates the Skill
+				Type. For example, Occupations in manufacturing and utilities start with the digit
+				9. Management Occupations, which are found across all Skill Types, start with the
+				digit 0.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="SkillType" type="noc:SkillTypeType"
+		substitutionGroup="noc:NationalOccupationClassificationGroup">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Skill Type</xs:documentation>
+			<xs:documentation xml:lang="en">Skill Type is the broadest occupational category and is
+				based on the type of work performed. It also reflects the field of training or
+				experience that is normally required for entry into occupations. This includes the
+				educational area of study required, as well as the industry of employment in cases
+				where experience within an internal job ladder is required for entry. These
+				categories are intended to indicate easily understood segments of the world of
+				work.</xs:documentation>
+			<xs:documentation xml:lang="en">The first digit of the NOC code designates the Skill
+				Type. For example, Occupations in manufacturing and utilities start with the digit
+				9. Management Occupations, which are found across all Skill Types, start with the
+				digit 0.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="SkillTypeType">
+		<xs:complexContent>
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Skill Type</xs:documentation>
+				<xs:documentation xml:lang="en">Skill Type is the broadest occupational category and
+					is based on the type of work performed. It also reflects the field of training
+					or experience that is normally required for entry into occupations. This
+					includes the educational area of study required, as well as the industry of
+					employment in cases where experience within an internal job ladder is required
+					for entry. These categories are intended to indicate easily understood segments
+					of the world of work.</xs:documentation>
+				<xs:documentation xml:lang="en">The first digit of the NOC code designates the Skill
+					Type. For example, Occupations in manufacturing and utilities start with the
+					digit 9. Management Occupations, which are found across all Skill Types, start
+					with the digit 0.</xs:documentation>
+			</xs:annotation>
+			<xs:extension base="noc:EmployeeOccupationCategory">
+				<xs:sequence>
+					<xs:element ref="noc:MajorGroup" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="MajorGroup" type="noc:MajorGroupType" substitutionGroup="noc:Group">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Major Groups</xs:documentation>
+			<xs:documentation xml:lang="en">Major groups follow the broadest categorization of
+				occupations and are identified by the first two digits of a NOC code. It is a
+				roll-up, or, an aggregation of minor groups (which we will look at
+				shortly).</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ParentMajorGroup" type="noc:MajorGroupType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Parent Major Group - the major group that is the parent
+				of the object occupational category.</xs:documentation>
+			<xs:documentation xml:lang="en">Major Groups</xs:documentation>
+			<xs:documentation xml:lang="en">Major groups follow the broadest categorization of
+				occupations and are identified by the first two digits of a NOC code. It is a
+				roll-up, or, an aggregation of minor groups (which we will look at
+				shortly).</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="MajorGroupType">
+		<xs:complexContent>
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Major Groups</xs:documentation>
+				<xs:documentation xml:lang="en">Major groups follow the broadest categorization of
+					occupations and are identified by the first two digits of a NOC code. It is a
+					roll-up, or, an aggregation of minor groups (which we will look at
+					shortly).</xs:documentation>
+			</xs:annotation>
+			<xs:extension base="noc:EmployeeOccupationCategory">
+				<xs:sequence>
+					<xs:element ref="noc:ParentSkillLevel" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="noc:ParentSkillType" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="noc:MinorGroup" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="MinorGroup" type="noc:MinorGroupType" substitutionGroup="noc:Group">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Minor Groups</xs:documentation>
+			<xs:documentation xml:lang="en">The major groups are further divided at the three-digit
+				level, into 140 minor groups.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ParentMinorGroup" type="noc:MinorGroupType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Parent Minor Group - the minor group that is the parent
+				of the object occupational category.</xs:documentation>
+			<xs:documentation xml:lang="en">Minor Groups</xs:documentation>
+			<xs:documentation xml:lang="en">The major groups are further divided at the three-digit
+				level, into 140 minor groups.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="MinorGroupType">
+		<xs:complexContent>
+			<xs:annotation>
+				<xs:documentation xml:lang="en">Minor Groups</xs:documentation>
+				<xs:documentation xml:lang="en">The major groups are further divided at the
+					three-digit level, into 140 minor groups.</xs:documentation>
+			</xs:annotation>
+			<xs:extension base="noc:EmployeeOccupationCategory">
+				<xs:sequence>
+					<xs:element ref="noc:ParentSkillLevel" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="noc:ParentSkillType" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="noc:ParentMajorGroup" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="noc:UnitGroup" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="Group" abstract="true"
+		substitutionGroup="noc:NationalOccupationClassificationGroup">
+		<xs:annotation>
+			<xs:documentation>A data concept for a unit of money or exchange.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="UnitGroup" type="noc:UnitGroupType" substitutionGroup="noc:Group">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">A general kind of job of an employee.</xs:documentation>
+			<xs:documentation xml:lang="en">Unit Groups</xs:documentation>
+			<xs:documentation xml:lang="en">At the detailed four-digit level, the system is expanded
+				into 500 occupational groups identified as unit groups, each with a unique code.
+				Unit groups represent further specificity within an occupational
+				domain.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ParentUnitGroup" type="noc:UnitGroupType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Parent Unit Group - the unit group that is the parent of
+				the object occupational category.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="UnitGroupDataElementSelectionType">
+		<xs:annotation>
+			<xs:documentation>A data type for data elements in a NOC Unit Group that can be searched using Advanced Criteria.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:restriction base="proxy:TokenType">
+				<xs:enumeration value="/query:QueryData/query:Data/noc:NationalOccupationClassification/noc:UnitGroup/noc:EmployeeOccupationCategoryAdditionalInformation">
+					<xs:annotation>
+						<xs:documentation>EmployeeOccupationCategoryAdditionalInformation</xs:documentation>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="/query:QueryData/query:Data/noc:NationalOccupationClassification/noc:UnitGroup/noc:EmployeeOccupationCategoryExclusions">
+					<xs:annotation>
+						<xs:documentation>EmployeeOccupationCategoryExclusions</xs:documentation>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="/query:QueryData/query:Data/noc:NationalOccupationClassification/noc:UnitGroup/noc:EmployeeOccupationCategoryEmploymentRequirements">
+					<xs:annotation>
+						<xs:documentation>EmployeeOccupationCategoryEmploymentRequirements</xs:documentation>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="/query:QueryData/query:Data/noc:NationalOccupationClassification/noc:UnitGroup/noc:EmployeeOccupationCategoryOccupationTexts">
+					<xs:annotation>
+						<xs:documentation>EmployeeOccupationCategoryOccupationTexts</xs:documentation>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="/query:QueryData/query:Data/noc:NationalOccupationClassification/noc:UnitGroup/noc:EmployeeOccupationCategoryOccupationExampleTexts">
+					<xs:annotation>
+						<xs:documentation>EmployeeOccupationCategoryOccupationExampleTexts</xs:documentation>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="/query:QueryData/query:Data/noc:NationalOccupationClassification/noc:UnitGroup/noc:EmployeeOccupationCategoryLeadStatement">
+					<xs:annotation>
+						<xs:documentation>EmployeeOccupationCategoryLeadStatement</xs:documentation>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="/query:QueryData/query:Data/noc:NationalOccupationClassification/noc:UnitGroup/noc:EmployeeOccupationCategoryMainDuties">
+					<xs:annotation>
+						<xs:documentation>EmployeeOccupationCategoryMainDuties</xs:documentation>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="/query:QueryData/query:Data/noc:NationalOccupationClassification/noc:UnitGroup/noc:EmployeeOccupationCategoryMainDuties/noc:EmployeeOccupationCategoryMainDutiesSpecializationText">
+					<xs:annotation>
+						<xs:documentation>EmployeeOccupationCategoryMainDutiesSpecializationText</xs:documentation>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="/query:QueryData/query:Data/noc:NationalOccupationClassification/noc:UnitGroup/noc:ParentMajorGroup">
+					<xs:annotation>
+						<xs:documentation>ParentMajorGroup</xs:documentation>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="/query:QueryData/query:Data/noc:NationalOccupationClassification/noc:UnitGroup/noc:ParentMinorGroup">
+					<xs:annotation>
+						<xs:documentation>ParentMinorGroup</xs:documentation>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="/query:QueryData/query:Data/noc:NationalOccupationClassification/noc:UnitGroup/noc:ParentSkillLevel">
+					<xs:annotation>
+						<xs:documentation>ParentSkillLevel</xs:documentation>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="/query:QueryData/query:Data/noc:NationalOccupationClassification/noc:UnitGroup/noc:ParentSkillType">
+					<xs:annotation>
+						<xs:documentation>ParentSkillType</xs:documentation>
+					</xs:annotation>
+				</xs:enumeration>
+				<xs:enumeration value="/query:QueryData/query:Data/noc:NationalOccupationClassification/noc:UnitGroup">
+					<xs:annotation>
+						<xs:documentation>UnitGroup</xs:documentation>
+					</xs:annotation>
+				</xs:enumeration>    
+			</xs:restriction>
+		</xs:simpleContent>
+	</xs:complexType> 
+	<xs:element name="UnitGroupDataElementSelection" type="noc:UnitGroupDataElementSelectionType"/>
+	<xs:element name="UnitGroupDataElementLookup" type="noc:UnitGroupDataElementSelectionType"/>
+	<xs:complexType name="UnitGroupAdvancedCriteriaType">
+		<xs:sequence>
+			<xs:element ref="query:AdvancedCriteria" minOccurs="1" maxOccurs="1"/>
+			<xs:element ref="noc:UnitGroupDataElementLookup" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element ref="noc:UnitGroupDataElementSelection" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element ref="query:Date" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="query:Language" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="UnitGroupAdvancedCriteria" type="noc:UnitGroupAdvancedCriteriaType">
+		<xs:annotation>
+			<xs:documentation>NOC Service Advanced Search Request for one or more NOC Unit Group Data Selection(s) by advanced criteria,
+				date and/or language.</xs:documentation>
+			<xs:appinfo>
+				<appinfo:LocalTerm term="NOC" literal="National Occupational Classification"/>
+			</xs:appinfo>
+		</xs:annotation>
+	</xs:element>	
+	<xs:element name="UnitGroupAugmentationPoint" abstract="true"/>
+	<xs:complexType name="UnitGroupType">
+		<xs:complexContent>
+			<xs:annotation>
+				<xs:documentation xml:lang="en">A general kind of job of an
+					employee.</xs:documentation>
+				<xs:documentation xml:lang="en">Unit Groups</xs:documentation>
+				<xs:documentation xml:lang="en">At the detailed four-digit level, the system is
+					expanded into 500 occupational groups identified as unit groups, each with a
+					unique code. Unit groups represent further specificity within an occupational
+					domain.</xs:documentation>
+			</xs:annotation>
+			<xs:extension base="noc:EmployeeOccupationCategory">
+				<xs:sequence>
+					<xs:element ref="noc:ParentSkillLevel" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="noc:ParentSkillType" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="noc:ParentMajorGroup" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="noc:ParentMinorGroup" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="noc:EmployeeOccupationCategoryLeadStatement" minOccurs="0"
+						maxOccurs="1"/>
+					<xs:element ref="noc:EmployeeOccupationCategoryOccupationTexts" minOccurs="0"
+						maxOccurs="1"/>
+					<xs:element ref="noc:EmployeeOccupationCategoryMainDuties" minOccurs="0"
+						maxOccurs="1"/>
+					<xs:element ref="noc:EmployeeOccupationCategoryEmploymentRequirements"
+						minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="noc:EmployeeOccupationCategoryAdditionalInformation"
+						minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="noc:EmployeeOccupationCategoryExclusions" minOccurs="0"
+						maxOccurs="1"/>
+					<xs:element ref="noc:UnitSubGroups" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="noc:UnitGroupDataElementLookup" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="noc:UnitGroupAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="UnitSubGroupType">
+		<xs:complexContent>
+			<xs:annotation>
+				<xs:documentation xml:lang="en">A more specific kind of job of an
+					employee.</xs:documentation>
+				<xs:documentation xml:lang="en">Unit Sub Groups</xs:documentation>
+				<xs:documentation xml:lang="en">The occupation code is either identical to the
+					four-digit NOC unit group code, or it has a digit added after a decimal
+					identifying it as a subgroup of the original NOC unit group.</xs:documentation>
+				<xs:documentation xml:lang="en">Provides global ratings assigned to occupations to
+					further define skills, worker characteristics and other indicators related to
+					occupations that are important for career exploration and informed career
+					decision-making. This counselling resource is used by a wide range of
+					professionals for many applications, and by individuals engaged in self-directed
+					career planning.</xs:documentation>
+			</xs:annotation>
+			<xs:extension base="noc:EmployeeOccupationCategory">
+				<xs:sequence>
+					<xs:element ref="noc:ParentSkillLevel" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="noc:ParentSkillType" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="noc:ParentMajorGroup" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="noc:ParentMinorGroup" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="noc:ParentUnitGroup" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="noc:EmployeeOccupationCategoryLeadStatement" minOccurs="0"
+						maxOccurs="1"/>
+					<xs:element ref="noc:EmployeeOccupationCategoryOccupationTexts" minOccurs="0"
+						maxOccurs="1"/>
+					<xs:element ref="noc:EmployeeOccupationCategoryAptitude" minOccurs="0"
+						maxOccurs="unbounded"/>
+					<xs:element ref="noc:EmployeeOccupationCategoryCapabilityRegardingInterests"
+						minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element
+						ref="noc:EmployeeOccupationCategoryCapabilityRegardingDataPeopleThings"
+						minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element
+						ref="noc:EmployeeOccupationCategoryCapabilityRegardingPhysicalActivities"
+						minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="noc:EmployeeOccupationCategoryEnvironmentalConditions"
+						minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="noc:EmployeeOccupationEducationLevel" minOccurs="0"
+						maxOccurs="unbounded"/>
+					<xs:element ref="noc:EmployeeOccupationOptions" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="noc:EmployerCategories" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="noc:EmployeeOccupationComment" minOccurs="0"
+						maxOccurs="unbounded"/>
+					<xs:element ref="noc:EmployeeOccupationCategoryExclusions" minOccurs="0"
+						maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="UnitSubGroup" type="noc:UnitSubGroupType"
+		substitutionGroup="noc:NationalOccupationClassificationGroup"/>
+	<xs:complexType name="UnitSubGroupsType">
+		<xs:annotation>
+			<xs:documentation>A container for the unit subgroups for a unit group which is a general
+				kind of job of an employee.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="noc:UnitSubGroup" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="UnitSubGroups" type="noc:UnitSubGroupsType"/>
+	<xs:complexType name="PublishedObjectType">
+		<xs:complexContent>
+			<xs:annotation>
+				<xs:documentation>An object type with the NOC published
+					attributes.</xs:documentation>
+			</xs:annotation>
+			<xs:extension base="structures:ObjectType">
+				<xs:attributeGroup ref="noc:PublishAttributeGroup"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="EmployeeOccupationCategoryDescriptionText" type="nc:TextType">
+		<xs:annotation>
+			<xs:documentation>A detailed description of a general kind of job of an
+				employee.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="EmployeeOccupationCategoryAugmentationPoint" abstract="true"/>
+	<xs:complexType name="EmployeeOccupationCategory">
+		<xs:complexContent>
+			<xs:annotation>
+				<xs:documentation>More elements of the type will be added here.</xs:documentation>
+			</xs:annotation>
+			<xs:extension base="noc:PublishedObjectType">
+				<xs:sequence>
+					<xs:element ref="noc:EmployeeOccupationCategoryCode" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>A code for the general category of job of an
+								employee.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="nc:EmployeeOccupationCategoryText" minOccurs="0" maxOccurs="2">
+						<xs:annotation>
+							<xs:documentation>A general kind of job of an
+								employee.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="noc:EmployeeOccupationCategoryDescriptionText" minOccurs="0"
+						maxOccurs="2">
+						<xs:annotation>
+							<xs:documentation>A general kind of job of an
+								employee.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="noc:EmployeeOccupationCategoryAugmentationPoint" minOccurs="0"
+						maxOccurs="unbounded">
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="EmployeeOccupationCategoryCode" type="noc:EmployeeOccupationCategoryCodeType"
+		substitutionGroup="nc:EmployeeOccupationCategoryAbstract"/>
+	<xs:complexType name="EmployeeOccupationCategoryCodeType">
+		<xs:simpleContent>
+			<xs:restriction base="nc:CodeType">
+				<xs:pattern value="(Z|((\d{1,4}(\.\d)?)))"/>
+			</xs:restriction>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="EmployeeOccupationTextAbstract" abstract="true">
+		<xs:annotation>
+			<xs:documentation>A data concept for a general kind of job title of an
+				employee.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="MandatoryTextType">
+		<xs:simpleContent>
+			<xs:restriction base="nc:TextType">
+				<xs:pattern value="(.|\n)+"/>
+			</xs:restriction>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="EmployeeOccupationTextType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Index of Titles</xs:documentation>
+			<xs:documentation xml:lang="en">As useful as the unit group headings or labels are, they
+				do not always correspond with the real-world job titles in use every day. For this
+				reason, the Index of Titles is a tool used to search for occupational titles in
+				addition to those that appear in the occupational descriptions.</xs:documentation>
+			<xs:documentation xml:lang="en">Scope of the Index of Titles</xs:documentation>
+			<xs:documentation xml:lang="en">The Index of Titles contains thousands of titles
+				classified within the 500 occupational groups of the NOC. With millions of people in
+				the employed labour force, it is impossible to capture all of the individualized job
+				titles that could potentially exist. While the listing in the Index is not meant to
+				be exhaustive, it does provide extensive coverage of commonly used and understood
+				titles in the economy, as well as the more obscure and specific titles found in many
+				occupational areas. Some of the more commonly used titles in an occupation are
+				listed as examples within each NOC unit group description.</xs:documentation>
+			<xs:documentation xml:lang="en">To assist users, the Index includes both formally
+				recognized occupational titles (e.g., radiography technologist) and less formal
+				titles that are commonly used (e.g., X-ray technician). Some titles represent
+				occupations (e.g., librarian; chef), while other titles refer to specializations
+				within an occupation (e.g., music librarian; pastry chef). Still, others correspond
+				to a range of jobs (e.g., furniture assembler; sawmill machine
+				operator).</xs:documentation>
+			<xs:documentation xml:lang="en">Modifiers</xs:documentation>
+			<xs:documentation xml:lang="en">Industry, institution or subject matter modifiers are
+				added to many titles. This information is attached to the title following a dash
+				(e.g., customer service supervisor - retail; electronics mechanic - avionics) to
+				provide a means of differentiation among titles. Often, the extensions provide
+				further information to clarify the placement of titles in the classification
+				structure (e.g., painter - visual arts; painter - motor vehicle manufacturing).
+				These modifiers should be considered when coding an occupational
+				title.</xs:documentation>
+			<xs:documentation xml:lang="en">Military Titles</xs:documentation>
+			<xs:documentation xml:lang="en">Prior to the 2011 revision, titles of military
+				occupations were indicated by adding the modifier military after a dash (e.g., sonar
+				technician - military). Military occupations are now classified according to rank.
+				These titles are now found within the unit groups for either the commissioned ranks
+				or non-commissioned ranks of the armed forces.</xs:documentation>
+			<xs:documentation xml:lang="en">Concordance Between Languages</xs:documentation>
+			<xs:documentation xml:lang="en">The terminological research conducted for the
+				translation and adaptation of the titles contained in this revised Index of Titles
+				has dealt with a component that was not previously addressed. Concordances for all
+				titles in both official languages have been identified. The level of concordance
+				identifies correspondence between one title (or several where there are equivalent
+				titles) to one or many titles in the other language.</xs:documentation>
+			<xs:documentation xml:lang="en">Example Titles</xs:documentation>
+			<xs:documentation xml:lang="en">Example titles are the occupational titles commonly
+				found within the group. This list is an extraction of a more expansive listing of
+				alphabetical job titles found in the NOC Index of Titles.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="noc:MandatoryTextType">
+				<xs:attribute ref="noc:example" use="optional"/>
+				<xs:attribute ref="noc:index" use="optional"/>
+				<xs:attribute ref="noc:inclusion" use="optional"/>
+				<xs:attributeGroup ref="noc:PublishAttributeGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="EmployeeOccupationText" type="noc:EmployeeOccupationTextType"
+		substitutionGroup="noc:EmployeeOccupationTextAbstract"/>
+	<xs:complexType name="EmployeeOccupationTextAssociationType">
+		<xs:annotation>
+			<xs:documentation>A data type for an association between an activity and its
+				schedule.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="nc:AssociationType">
+				<xs:sequence>
+					<xs:element ref="noc:EmployeeOccupationText" minOccurs="1" maxOccurs="unbounded"
+					/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="EmployeeOccupationTextAssociation"
+		type="noc:EmployeeOccupationTextAssociationType"
+		substitutionGroup="noc:EmployeeOccupationTextAbstract"/>
+	<xs:complexType name="EmployeeOccupationCategoryOccupationTextsType">
+		<xs:annotation>
+			<xs:documentation>A container for a list of occupational titles for a general kind of
+				job of an employee.</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element ref="noc:EmployeeOccupationText" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element ref="noc:EmployeeOccupationTextAssociation" minOccurs="1"
+				maxOccurs="unbounded"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:element name="EmployeeOccupationCategoryOccupationTexts"
+		type="noc:EmployeeOccupationCategoryOccupationTextsType"/>
+	<xs:complexType name="EmployeeOccupationCategoryLeadStatementTextType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Lead Statement</xs:documentation>
+			<xs:documentation xml:lang="en">The lead statement provides a general description of the
+				occupation and the boundaries of the unit group. It also indicates the kinds of
+				industries, workplaces or establishments where the occupation is
+				found.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="nc:TextType">
+				<xs:attributeGroup ref="noc:PublishAttributeGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="EmployeeOccupationCategoryLeadStatementText"
+		type="noc:EmployeeOccupationCategoryLeadStatementTextType"/>
+	<xs:complexType name="EmployeeOccupationCategoryLeadStatementType">
+		<xs:annotation>
+			<xs:documentation>A container for the lead statement for a general kind of job of an
+				employee.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="noc:EmployeeOccupationCategoryLeadStatementText" minOccurs="1"
+				maxOccurs="2"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="EmployeeOccupationCategoryLeadStatement"
+		type="noc:EmployeeOccupationCategoryLeadStatementType"/>
+	<xs:complexType name="EmployeeOccupationCategoryMainDutiesTextType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Main Duties</xs:documentation>
+			<xs:documentation xml:lang="en">The main duties section describes the most significant
+				duties of the occupations in the group. It may include:</xs:documentation>
+			<xs:documentation xml:lang="en">• type and level of education including specific subject
+				matter if relevant, starting with the lowest possible requirement for entry into the
+				occupation;</xs:documentation>
+			<xs:documentation xml:lang="en">• two or more sub-sets of occupations with statements
+				that apply to each sub-set or component; and/or</xs:documentation>
+			<xs:documentation xml:lang="en">• a series of brief statements that are linked to
+				specific occupations, that, while similar enough to be in the same group, can be
+				described separately.</xs:documentation>
+			<xs:documentation xml:lang="en">Statements in Italics, at the end of this section,
+				identify a specialization that may exist within the occupation.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="nc:TextType">
+				<xs:attribute ref="noc:sequenceNumeric" use="optional"/>
+				<xs:attribute ref="noc:header" use="optional"/>
+				<xs:attribute ref="noc:subheader" use="optional"/>
+				<xs:attribute ref="noc:specialization" use="optional"/>
+				<xs:attributeGroup ref="noc:PublishAttributeGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="EmployeeOccupationCategoryMainDutiesText"
+		type="noc:EmployeeOccupationCategoryMainDutiesTextType"/>
+	<xs:element name="EmployeeOccupationCategoryMainDutiesSpecializationText"
+		type="noc:EmployeeOccupationCategoryMainDutiesTextType"/>
+	<xs:complexType name="EmployeeOccupationCategoryMainDutiesType">
+		<xs:annotation>
+			<xs:documentation>A container for a list of main duties text of a general kind of job of
+				an employee.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="noc:EmployeeOccupationCategoryMainDutiesText" minOccurs="0"
+				maxOccurs="unbounded"/>
+			<xs:element ref="noc:EmployeeOccupationCategoryMainDutiesSpecializationText"
+				minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="EmployeeOccupationCategoryMainDuties"
+		type="noc:EmployeeOccupationCategoryMainDutiesType"/>
+	<xs:complexType name="EmployeeOccupationCategoryAdditionalInformationTextType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Additional Information</xs:documentation>
+			<xs:documentation xml:lang="en">Some descriptions include additional information to give
+				details on:</xs:documentation>
+			<xs:documentation xml:lang="en">• mobility patterns;</xs:documentation>
+			<xs:documentation xml:lang="en">• progression to supervisory positions, specializations
+				or to other occupations such as management;</xs:documentation>
+			<xs:documentation xml:lang="en">• other information that may clarify the occupational
+				description.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="nc:TextType">
+				<xs:attribute ref="noc:sequenceNumeric" use="optional"/>
+				<xs:attributeGroup ref="noc:PublishAttributeGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="EmployeeOccupationCategoryAdditionalInformationText"
+		type="noc:EmployeeOccupationCategoryAdditionalInformationTextType"/>
+	<xs:complexType name="EmployeeOccupationCategoryAdditionalInformationType">
+		<xs:annotation>
+			<xs:documentation>A container for a list of additional information for a general kind of
+				job of an employee.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="noc:EmployeeOccupationCategoryAdditionalInformationText" minOccurs="1"
+				maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="EmployeeOccupationCategoryAdditionalInformation"
+		type="noc:EmployeeOccupationCategoryAdditionalInformationType"/>
+	<xs:complexType name="EmployeeOccupationCategoryEmploymentRequirementsTextType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Employment Requirements</xs:documentation>
+			<xs:documentation xml:lang="en">Employment requirements are prerequisites generally
+				needed to enter the occupation. Several types of requirements are
+				listed:</xs:documentation>
+			<xs:documentation xml:lang="en">• type and level of education including specific subject
+				matter if relevant, starting with the lowest possible requirement for entry into the
+				occupation;</xs:documentation>
+			<xs:documentation xml:lang="en">• specific training required, including apprenticeship,
+				on-the-job or internal training;</xs:documentation>
+			<xs:documentation xml:lang="en">• experience in a related occupation, especially for
+				supervisory or managerial occupations;</xs:documentation>
+			<xs:documentation xml:lang="en">• licences, certificates or affiliations;
+				and/or</xs:documentation>
+			<xs:documentation xml:lang="en">• other requirements not dependent on formal education,
+				such as athletic abilities, artistic talent or presentation of a
+				portfolio.</xs:documentation>
+			<xs:documentation xml:lang="en">While some occupations have very specific employment
+				requirements, others have a wide range of acceptable requirements. The following
+				terminology is used to indicate the level of the requirement:</xs:documentation>
+			<xs:documentation xml:lang="en">• "Is required" indicates a definite
+				requirement.</xs:documentation>
+			<xs:documentation xml:lang="en">• "Is usually required" means that the qualification is
+				generally expressed as required by a majority of employers, but not always
+				mandatory.</xs:documentation>
+			<xs:documentation xml:lang="en">• "May be required" describes requirements that some
+				employers may impose, but are not universal.</xs:documentation>
+			<xs:documentation xml:lang="en">Qualities related to personal suitability that may have
+				an impact on employability are not described in the classification. These factors
+				are subjective and determined by employers and assessed during the hiring
+				process.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="nc:TextType">
+				<xs:attribute ref="noc:sequenceNumeric" use="optional"/>
+				<xs:attribute ref="noc:header" use="optional"/>
+				<xs:attributeGroup ref="noc:PublishAttributeGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="EmployeeOccupationCategoryEmploymentRequirementsText"
+		type="noc:EmployeeOccupationCategoryEmploymentRequirementsTextType"/>
+	<xs:complexType name="EmployeeOccupationCategoryEmploymentRequirementsType">
+		<xs:annotation>
+			<xs:documentation>A container for a list of employment requirements of a general kind of
+				job of an employee.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="noc:EmployeeOccupationCategoryEmploymentRequirementsText" minOccurs="1"
+				maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="EmployeeOccupationCategoryEmploymentRequirements"
+		type="noc:EmployeeOccupationCategoryEmploymentRequirementsType"/>
+	<xs:complexType name="EmployeeOccupationCategoryExclusionTextType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Exclusion</xs:documentation>
+			<xs:documentation xml:lang="en">The Exclusion section helps to clarify the boundaries of
+				the unit group by identifying similar groups or related occupations, such as
+				supervisory groups, that are separately classified.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="nc:TextType">
+				<xs:attribute ref="noc:sequenceNumeric" use="optional"/>
+				<xs:attribute ref="noc:header" use="optional"/>
+				<xs:attributeGroup ref="noc:PublishAttributeGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="EmployeeOccupationCategoryExclusionText"
+		type="noc:EmployeeOccupationCategoryExclusionTextType" nillable="true"/>
+	<xs:complexType name="EmployeeOccupationCategoryExclusionType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Exclusion</xs:documentation>
+			<xs:documentation xml:lang="en">The Exclusion section helps to clarify the boundaries of
+				the unit group by identifying similar groups or related occupations, such as
+				supervisory groups, that are separately classified.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="noc:EmployeeOccupationCategoryExclusionText" minOccurs="1"
+				maxOccurs="2"/>
+			<xs:choice>
+				<xs:element ref="noc:MajorGroup" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="noc:MinorGroup" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="noc:UnitGroup" minOccurs="0" maxOccurs="1"/>
+			</xs:choice>
+		</xs:sequence>
+		<xs:attributeGroup ref="noc:PublishAttributeGroup"/>
+	</xs:complexType>
+	<xs:element name="EmployeeOccupationCategoryExclusion"
+		type="noc:EmployeeOccupationCategoryExclusionType"/>
+	<xs:complexType name="EmployeeOccupationCategoryExclusionsType">
+		<xs:annotation>
+			<xs:documentation>A container for a list of excluded unit groups for a general kind of
+				job of an employee.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="noc:EmployeeOccupationCategoryExclusion" minOccurs="1"
+				maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="EmployeeOccupationCategoryExclusions"
+		type="noc:EmployeeOccupationCategoryExclusionsType"/>
+	<xs:complexType name="EmployeeOccupationCategoryCapabilityType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Capability</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="nc:CapabilityType">
+				<xs:sequence>
+					<xs:element name="CapabilityCategoryCode" type="nc:TextType" minOccurs="0"
+						maxOccurs="unbounded"/>
+					<xs:element name="CapabilityCategoryDescriptionText" type="nc:TextType"
+						minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="CapabilityCode" type="nc:CodeType" minOccurs="0"
+						maxOccurs="unbounded"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="noc:PublishAttributeGroup"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="EmployeeOccupationCategoryCapabilityRegardingInterests"
+		type="noc:EmployeeOccupationCategoryCapabilityInterestsType"/>
+	<xs:element name="EmployeeOccupationCategoryCapabilityRegardingDataPeopleThings"
+		type="noc:EmployeeOccupationCategoryCapabilityType"/>
+	<xs:element name="EmployeeOccupationCategoryCapabilityRegardingPhysicalActivities"
+		type="noc:EmployeeOccupationCategoryCapabilityType"/>
+	<xs:complexType name="LevelOfAptitudeType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Level of Aptitude</xs:documentation>
+			<xs:documentation xml:lang="en">The Descriptor Profile highlights the aptitudes most
+				relevant in the performance of the work. They are based on the same theoretical
+				principles and level configuration as that of the predecessor of the NOC, the
+				Canadian Classification and Dictionary of Occupations (CCDO), Volume 2. Aptitude
+				ratings are further discussed in the Descriptor Definitions and Rating Methodology
+				sections.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="LevelOfAptitudeCode" type="nc:CodeType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="LevelOfAptitudeDescriptionText" type="nc:TextType" minOccurs="1"
+				maxOccurs="2"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="EmployeeOccupationCategoryAptitudeType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Occupation Aptitude</xs:documentation>
+			<xs:documentation xml:lang="en">The Descriptor Profile highlights the aptitudes most
+				relevant in the performance of the work. They are based on the same theoretical
+				principles and level configuration as that of the predecessor of the NOC, the
+				Canadian Classification and Dictionary of Occupations (CCDO), Volume 2. Aptitude
+				ratings are further discussed in the Descriptor Definitions and Rating Methodology
+				sections.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="noc:EmployeeOccupationCategoryCapabilityType">
+				<xs:sequence>
+					<xs:element name="LevelOfAptitude" type="noc:LevelOfAptitudeType" minOccurs="1"
+						maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="EmployeeOccupationCategoryAptitude"
+		type="noc:EmployeeOccupationCategoryAptitudeType" nillable="true"/>
+	<xs:complexType name="EmployeeOccupationCategoryCapabilityInterestsType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Occupation Interests</xs:documentation>
+			<xs:documentation xml:lang="en">The interests for the occupation are assigned in order
+				of predominance. Interests are based on the Canadian Work Preference Inventory
+				(CWPI). They are highlighted, along with worker functions (Data/People/Things - DPT)
+				as further qualifiers, to describe the involvement that a worker in the occupation
+				will have with data/information, people and things. DPT is adopted from the scales
+				used in the CCDO.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="noc:EmployeeOccupationCategoryCapabilityType">
+				<xs:attribute ref="noc:weaker" use="optional"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="EmployeeOccupationConditionType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Environmental Conditions</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="mo:ConditionType">
+				<xs:sequence>
+					<xs:element name="EmployeeOccupationConditionCode" type="nc:TextType"
+						minOccurs="1" maxOccurs="2"/>
+					<xs:element name="EmployeeOccupationConditionText" type="nc:TextType"
+						minOccurs="1" maxOccurs="2"/>
+				</xs:sequence>
+				<xs:attribute ref="noc:remarks" use="optional"/>
+				<xs:attributeGroup ref="noc:PublishAttributeGroup"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="EmployeeOccupationConditionCategoryType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Environmental Conditions</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="noc:EmployeeOccupationConditionType">
+				<xs:sequence>
+					<xs:element name="EmployeeOccupationCondition"
+						type="noc:EmployeeOccupationConditionType" minOccurs="1"
+						maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="EmployeeOccupationConditionCategory"
+		type="noc:EmployeeOccupationConditionCategoryType"/>
+	<xs:complexType name="EmployeeOccupationCategoryEnvironmentalConditionsType">
+		<xs:annotation>
+			<xs:documentation>A container for a list of employment environmental conditions of a
+				general kind of job of an employee.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="noc:EmployeeOccupationConditionCategory" minOccurs="1"
+				maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="EmployeeOccupationCategoryEnvironmentalConditions"
+		type="noc:EmployeeOccupationCategoryEnvironmentalConditionsType"/>
+	<xs:element name="EducationLevelCode" type="nc:CodeType"/>
+	<xs:complexType name="EmployeeOccupationEducationLevelType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Employment Requirements</xs:documentation>
+			<xs:documentation xml:lang="en">Employment requirements are prerequisites generally
+				needed to enter the occupation. Several types of requirements are
+				listed:</xs:documentation>
+			<xs:documentation xml:lang="en">• type and level of education including specific subject
+				matter if relevant, starting with the lowest possible requirement for entry into the
+				occupation;</xs:documentation>
+			<xs:documentation xml:lang="en">• specific training required, including apprenticeship,
+				on-the-job or internal training;</xs:documentation>
+			<xs:documentation xml:lang="en">• experience in a related occupation, especially for
+				supervisory or managerial occupations;</xs:documentation>
+			<xs:documentation xml:lang="en">• licences, certificates or affiliations;
+				and/or</xs:documentation>
+			<xs:documentation xml:lang="en">• other requirements not dependent on formal education,
+				such as athletic abilities, artistic talent or presentation of a
+				portfolio.</xs:documentation>
+			<xs:documentation xml:lang="en">While some occupations have very specific employment
+				requirements, others have a wide range of acceptable requirements. The following
+				terminology is used to indicate the level of the requirement:</xs:documentation>
+			<xs:documentation xml:lang="en">• "Is required" indicates a definite
+				requirement.</xs:documentation>
+			<xs:documentation xml:lang="en">• "Is usually required" means that the qualification is
+				generally expressed as required by a majority of employers, but not always
+				mandatory.</xs:documentation>
+			<xs:documentation xml:lang="en">• "May be required" describes requirements that some
+				employers may impose, but are not universal.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="noc:PublishedObjectType">
+				<xs:sequence>
+					<xs:element ref="noc:EducationLevelCode" minOccurs="1" maxOccurs="1"/>
+					<xs:element ref="im:EducationLevelText" minOccurs="1" maxOccurs="2"/>
+					<xs:element ref="im:EducationLevelCommentText" minOccurs="1" maxOccurs="2"/>
+				</xs:sequence>
+				<xs:attribute ref="noc:additionalRequirements" use="optional"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="EmployeeOccupationEducationLevel"
+		type="noc:EmployeeOccupationEducationLevelType"/>
+	<xs:complexType name="EmployeeOccupationOptionTextType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Occupational Options</xs:documentation>
+			<xs:documentation xml:lang="en">For most occupations there is some form of mobility such
+				as transferability, lateral mobility, upward progression and specialization.
+				Although these patterns of mobility are different, their presence indicates that
+				there are skills or competencies that can be adapted from one occupation and applied
+				to another. This section identifies the possibility for worker mobility within the
+				group or the potential to move to other occupations.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="nc:TextType">
+				<xs:attributeGroup ref="noc:PublishAttributeGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="EmployeeOccupationOptionText" type="noc:EmployeeOccupationOptionTextType"/>
+	<xs:complexType name="EmployeeOccupationOptionsType">
+		<xs:annotation>
+			<xs:documentation>A container for a list of occupation option(s) for a general kind of
+				job of an employee.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="noc:EmployeeOccupationOptionText" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="EmployeeOccupationOptions" type="noc:EmployeeOccupationOptionsType"/>
+	<xs:complexType name="EmployerCategoryTextType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Occupational Options</xs:documentation>
+			<xs:documentation xml:lang="en">For most occupations there is some form of mobility such
+				as transferability, lateral mobility, upward progression and specialization.
+				Although these patterns of mobility are different, their presence indicates that
+				there are skills or competencies that can be adapted from one occupation and applied
+				to another. This section identifies the possibility for worker mobility within the
+				group or the potential to move to other occupations.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="nc:TextType">
+				<xs:attributeGroup ref="noc:PublishAttributeGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="EmployerCategoryText" type="noc:EmployerCategoryTextType"/>
+	<xs:complexType name="EmployerCategoriesType">
+		<xs:annotation>
+			<xs:documentation>A container for a list of employer categories for a general kind of
+				job of an employee.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="noc:EmployerCategoryText" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="EmployerCategories" type="noc:EmployerCategoriesType"/>
+	<xs:complexType name="CommentType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Trimmed down nc:CommentType</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="nc:CommentType">
+				<xs:sequence>
+					<xs:element ref="nc:CommentText" minOccurs="1" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="EmployeeOccupationCommentType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Remarks</xs:documentation>
+			<xs:documentation xml:lang="en">The Remarks section provides free-standing comments as
+				well as statements for Physical Activities and Environmental Conditions ratings that
+				appear with an asterisk (*). Free-standing comments, which precede statements about
+				ratings, usually provide information related to specializations for an
+				occupation.</xs:documentation>
+			<xs:documentation xml:lang="en">An asterisk for a Physical Activity rating will appear
+				after that rating. There are no asterisks under Physical Activities in the sample
+				group – 2212.1 Geological and Mineral Technologists. However, if an asterisk
+				appeared beside Strength 2 Light, it would affect the meaning of the rating.
+				Strength 2 Light – indicates that Strength for the occupational group as a whole is
+				2, which has the label Light. The presence of an asterisk would indicate that some
+				jobs within the group have a rating of 3, which is labelled Medium. In general, an
+				asterisk for Physical Activities indicates a level up for the
+				rating.</xs:documentation>
+			<xs:documentation xml:lang="en">For Environmental Conditions, an asterisk indicates that
+				the potential condition in a group is limited to some jobs, not the occupation as a
+				whole. For example, in 2212.1 Geological and Mineral Technologists, the asterisk for
+				Hazards H8* Dangerous locations – indicates that this is a potential hazard for some
+				but not all jobs within the group.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="noc:CommentType">
+				<xs:attributeGroup ref="noc:PublishAttributeGroup"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="EmployeeOccupationComment" type="noc:EmployeeOccupationCommentType"/>
+</xs:schema>

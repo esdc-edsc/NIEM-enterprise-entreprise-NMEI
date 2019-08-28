@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<xs:schema targetNamespace="http://release.niem.gov/niem/domains/screening/4.1/" version="1" xsi:schemaLocation="http://release.niem.gov/niem/appinfo/4.0/ ../../../utility/appinfo/4.0/appinfo.xsd http://release.niem.gov/niem/conformanceTargets/3.0/ ../../../utility/conformanceTargets/3.0/conformanceTargets.xsd" ct:conformanceTargets="http://reference.niem.gov/niem/specification/naming-and-design-rules/4.0/#ReferenceSchemaDocument" xmlns:appinfo="http://release.niem.gov/niem/appinfo/4.0/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:nc="http://release.niem.gov/niem/niem-core/4.0/" xmlns:scr="http://release.niem.gov/niem/domains/screening/4.1/" xmlns:ct="http://release.niem.gov/niem/conformanceTargets/3.0/" xmlns:niem-xs="http://release.niem.gov/niem/proxy/xsd/4.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:structures="http://release.niem.gov/niem/structures/4.0/">
+  <xs:annotation>
+    <xs:documentation>The People Screening domain provides harmonized information sharing content within the Screening Portfolio of DHS.  The Screening namespace is initially being populated with person screening information for immigrant and non-immigrant person types who have been encountered and identified by the Screening Portfolio Components.  Screening expands on encounter-related NIEM elements currently included in the Immigration and Intelligence domains.</xs:documentation>
+  </xs:annotation>
+  <xs:import schemaLocation="../../../niem-core/4.0/niem-core.xsd" namespace="http://release.niem.gov/niem/niem-core/4.0/"/>
+  <xs:import schemaLocation="../../../proxy/xsd/4.0/xs.xsd" namespace="http://release.niem.gov/niem/proxy/xsd/4.0/"/>
+  <xs:import schemaLocation="../../../utility/structures/4.0/structures.xsd" namespace="http://release.niem.gov/niem/structures/4.0/"/>
+  <xs:simpleType name="CountrySubdivisionCategoryCodeSimpleType">
+    <xs:annotation>
+      <xs:documentation>A data type for a COUNTRY SUBDIVISION TYPE.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="Department">
+        <xs:annotation>
+          <xs:documentation>Department</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Province">
+        <xs:annotation>
+          <xs:documentation>Province</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Region">
+        <xs:annotation>
+          <xs:documentation>Region</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="State">
+        <xs:annotation>
+          <xs:documentation>State</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Territory">
+        <xs:annotation>
+          <xs:documentation>Territory</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="CountrySubdivisionCategoryCodeType">
+    <xs:annotation>
+      <xs:documentation>A data type for a COUNTRY SUBDIVISION TYPE.</xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="scr:CountrySubdivisionCategoryCodeSimpleType">
+        <xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="OrganizationAugmentationType">
+    <xs:annotation>
+      <xs:documentation>A data type for additional information about an organization.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="structures:AugmentationType">
+        <xs:sequence>
+          <xs:element ref="scr:CriminalAffiliationIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="scr:FraudulentIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="scr:GrossAnnualIncomeAmount" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="scr:OrganizationSizeQuantity" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="scr:SuspiciousIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="scr:OrganizationNameEffectiveDate" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="scr:OrganizationNameIdentification" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="scr:OrganizationNameTerminationDate" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="scr:OrganizationClassificationCategoryAbstract" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="scr:OrganizationStatusClassificationCategoryAbstract" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="OrganizationCategoryCodeSimpleType">
+    <xs:annotation>
+      <xs:documentation>A data type describing the kinds of organizations involved in screening activities</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="Business">
+        <xs:annotation>
+          <xs:documentation>BUSINESS</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Community Group">
+        <xs:annotation>
+          <xs:documentation>COMMUNITY GROUP</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Federal Agency">
+        <xs:annotation>
+          <xs:documentation>FEDERAL AGENCY</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Gang">
+        <xs:annotation>
+          <xs:documentation>GANG</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Local Agency">
+        <xs:annotation>
+          <xs:documentation>LOCAL AGENCY</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Political Group">
+        <xs:annotation>
+          <xs:documentation>POLITICAL GROUP</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Religious Group">
+        <xs:annotation>
+          <xs:documentation>RELIGIOUS GROUP</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="School">
+        <xs:annotation>
+          <xs:documentation>SCHOOL</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="State Agency">
+        <xs:annotation>
+          <xs:documentation>STATE AGENCY</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Surety Company">
+        <xs:annotation>
+          <xs:documentation>SURETY COMPANY</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="OrganizationCategoryCodeType">
+    <xs:annotation>
+      <xs:documentation>A data type describing the kinds of organizations involved in screening activities</xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="scr:OrganizationCategoryCodeSimpleType">
+        <xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="OrganizationStatusCategoryCodeSimpleType">
+    <xs:annotation>
+      <xs:documentation>A data type describing the kinds of status values associated with an organization</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="Bankruptcy">
+        <xs:annotation>
+          <xs:documentation>Bankruptcy</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Foreclosure">
+        <xs:annotation>
+          <xs:documentation>Foreclosure</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="IPO">
+        <xs:annotation>
+          <xs:documentation>IPO</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Suspended">
+        <xs:annotation>
+          <xs:documentation>Suspended</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="OrganizationStatusCategoryCodeType">
+    <xs:annotation>
+      <xs:documentation>A data type describing the kinds of status values associated with an organization</xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="scr:OrganizationStatusCategoryCodeSimpleType">
+        <xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="PersonEmploymentAssociationAugmentationType">
+    <xs:annotation>
+      <xs:documentation>A data type for additional information about a person employment association.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="structures:AugmentationType">
+        <xs:sequence>
+          <xs:element ref="nc:Person" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="nc:Organization" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="scr:PayRateAmount" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="scr:BeginSalaryAmount" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="scr:EndSalaryAmount" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="scr:EmployeeStarNumberID" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="scr:EmployeeBadgeNumberID" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="scr:EmployeeCallNumberID" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BeginSalaryAmount" type="nc:AmountType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A remuneration amount for Person's starting salary.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="CriminalAffiliationIndicator" type="niem-xs:boolean" nillable="true">
+    <xs:annotation>
+      <xs:documentation>True if an ORGANIZATION is suspected of illegal activities; false otherwise.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="EmployeeBadgeNumberID" type="niem-xs:string" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An identifier number for the the badge of the EMPLOYEE</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="EmployeeCallNumberID" type="niem-xs:string" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An identifier for the call number of the EMPLOYEE</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="EmployeeStarNumberID" type="niem-xs:string" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An identifier for a number representing the call number of an EMPLOYEE.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="EndSalaryAmount" type="nc:AmountType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A date when the remuneration for PERSON EMPLOYMENT ended.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="FinalAdoptionDecreeIndicator" type="niem-xs:boolean" nillable="true">
+    <xs:annotation>
+      <xs:documentation>True if a copy of the final adoption decree for the ADOPTED CHILD was received by USCIS; false otherwise.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="FraudulentIndicator" type="niem-xs:boolean" nillable="true">
+    <xs:annotation>
+      <xs:documentation>True if the ORGANIZATION is determined to be fraudulent; false otherwise.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="GrossAnnualIncomeAmount" type="nc:AmountType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An amount of money (dollars) earned by the ORGANIZATION each year.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="OrganizationAugmentation" type="scr:OrganizationAugmentationType" substitutionGroup="nc:OrganizationAugmentationPoint">
+    <xs:annotation>
+      <xs:documentation>Additional information about an organization.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="OrganizationClassificationCategoryAbstract" abstract="true">
+    <xs:annotation>
+      <xs:documentation>A data concept for a kind of organization.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="OrganizationClassificationCategoryCode" type="scr:OrganizationCategoryCodeType" substitutionGroup="scr:OrganizationClassificationCategoryAbstract">
+    <xs:annotation>
+      <xs:documentation>A kind of organization.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="OrganizationNameEffectiveDate" type="nc:DateType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A date the ORGANIZATION NAME became  effective.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="OrganizationNameIdentification" type="nc:IdentificationType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An identification value of the name of the ORGANIZATION.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="OrganizationNameTerminationDate" type="nc:DateType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A date the ORGANIZATION NAME became invalid.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="OrganizationSizeQuantity" type="nc:QuantityType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A number of people belonging to the ORGANIZATION.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="OrganizationStatusClassificationCategoryAbstract" abstract="true">
+    <xs:annotation>
+      <xs:documentation>A data concept for a kind of organization status.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="OrganizationStatusClassificationCategoryCode" type="scr:OrganizationStatusCategoryCodeType" substitutionGroup="scr:OrganizationStatusClassificationCategoryAbstract">
+    <xs:annotation>
+      <xs:documentation>A kind of organization status.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PayRateAmount" type="nc:AmountType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An amount of remuneration resulting from PERSON EMPLOYMENT.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonEmploymentAssociationAugmentation" type="scr:PersonEmploymentAssociationAugmentationType" substitutionGroup="nc:PersonEmploymentAssociationAugmentationPoint" nillable="true">
+    <xs:annotation>
+      <xs:documentation>Additional information about a person employment.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="SuspiciousIndicator" type="niem-xs:boolean" nillable="true">
+    <xs:annotation>
+      <xs:documentation>True if the ORGANIZATION is determined to be questionable or under suspicion; false otherwise.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+</xs:schema>

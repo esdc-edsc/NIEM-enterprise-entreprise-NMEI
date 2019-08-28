@@ -1,0 +1,21 @@
+<xs:schema elementFormDefault="qualified"
+	targetNamespace="http://interoperability.gc.ca/finance/Taxation/2.0/"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tax="http://interoperability.gc.ca/finance/Taxation/2.0/"
+	xmlns:niem-xs="http://release.niem.gov/niem/proxy/xsd/4.0/"
+	xmlns:nc="http://release.niem.gov/niem/niem-core/4.0/">
+	
+	<xs:annotation>
+		<xs:documentation>Taxation is the primary data element for creating taxable or tax related amounts, tax identifiers etc.</xs:documentation>
+	</xs:annotation>
+
+	<xs:import schemaLocation="../../../niem/niem-core/4.0/niem-core.xsd"
+		namespace="http://release.niem.gov/niem/niem-core/4.0/"/>
+	<xs:import schemaLocation="../../../niem/proxy/xsd/4.0/xs.xsd"
+		namespace="http://release.niem.gov/niem/proxy/xsd/4.0/"/>
+
+
+	<xs:element name="Taxable" type="niem-xs:boolean" substitutionGroup="nc:AmountAugmentationPoint"/>
+
+</xs:schema>
+	

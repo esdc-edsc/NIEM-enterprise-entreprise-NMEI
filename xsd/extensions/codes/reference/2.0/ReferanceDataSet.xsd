@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://interoperability.gc.ca/ReferenceDataSet/2.0"
+    xmlns:rds="http://interoperability.gc.ca/ReferenceDataSet/2.0"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:niem-xs="http://release.niem.gov/niem/proxy/xsd/4.0/"
+    xmlns:structures="http://release.niem.gov/niem/structures/4.0/"
+    xmlns:nc="http://release.niem.gov/niem/niem-core/4.0/"
+    xmlns:sort="urn:us:gov:ic:ism" elementFormDefault="qualified">
+    <xs:import schemaLocation="../../../../niem/proxy/xsd/4.0/xs.xsd"
+        namespace="http://release.niem.gov/niem/proxy/xsd/4.0/"/>
+    <xs:import schemaLocation="../../../../niem/utility/structures/4.0/structures.xsd"
+        namespace="http://release.niem.gov/niem/structures/4.0/"/>
+    <xs:import schemaLocation="../../../../niem/niem-core/4.0/niem-core.xsd"
+        namespace="http://release.niem.gov/niem/niem-core/4.0/"/>
+    <xs:import namespace="urn:us:gov:ic:ism" schemaLocation="../../../technical/2.0/sort.xsd"/>
+
+    <xs:element name="ReferenceDataSet" type="rds:ReferenceDataSetType"/>
+    <xs:element name="ReferenceDataMappingSet" type="rds:ReferenceDataMappingSetType"/>
+
+    <xs:element name="ReferenceDataSetURI" type="niem-xs:anyURI"/>
+    <xs:element name="ReferenceDataSetVersionURI" type="niem-xs:anyURI"/>
+    <xs:element name="ReferenceData" type="rds:ReferenceDataType"/>
+    <xs:element name="ReferenceDataID" type="niem-xs:token"/>
+    <xs:element name="ReferenceDataMappingSetName" type="nc:ProperNameTextType"/>
+    <xs:element name="ReferenceDataSetName" type="nc:ProperNameTextType"/>
+    <xs:element name="ReferenceDataName" type="nc:ProperNameTextType"/>
+    <xs:element name="ReferenceDataAbbreviatedName" type="nc:ProperNameTextType"/>
+    <xs:element name="Mapping" type="rds:MappingType"/>
+    <xs:element name="SourceReferenceDataID" substitutionGroup="rds:ReferenceDataID"/>
+    <xs:element name="TargetReferenceDataID" substitutionGroup="rds:ReferenceDataID"/>
+    <xs:element name="SourceReferenceDataSetVersionURI" substitutionGroup="rds:ReferenceDataSetVersionURI"/>
+    <xs:element name="TargetReferenceDataSetVersionURI" substitutionGroup="rds:ReferenceDataSetVersionURI"/>
+
+    <xs:complexType name="MappingType">
+        <xs:complexContent>
+            <xs:extension base="structures:ObjectType">
+                <xs:sequence>
+                    <xs:element ref="rds:SourceReferenceDataID"/>
+                    <xs:element ref="rds:TargetReferenceDataID"/>
+                    <xs:element ref="nc:DateRange" minOccurs="0"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="ReferenceDataMappingSetType">
+        <xs:complexContent>
+            <xs:extension base="structures:ObjectType">
+                <xs:sequence>
+                    <xs:element ref="rds:SourceReferenceDataSetVersionURI"/>
+                    <xs:element ref="rds:TargetReferenceDataSetVersionURI"/>
+                    <xs:element ref="rds:ReferenceDataMappingSetName"/>
+                    <xs:element ref="nc:DescriptionText" minOccurs="0"/>
+                    <xs:element ref="nc:DocumentLocationURI" minOccurs="0"/>
+                    <xs:element ref="rds:Mapping" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="ReferenceDataType">
+        <xs:annotation>
+            <xs:documentation>ReferenceDatas in the code list</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="structures:ObjectType">
+                <xs:sequence>
+                    <xs:element ref="rds:ReferenceDataID"/>
+                    <xs:element ref="rds:ReferenceDataName" maxOccurs="unbounded"/>
+                    <xs:element ref="rds:ReferenceDataAbbreviatedName" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="nc:DateRange" minOccurs="0"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="ReferenceDataSetType">
+        <xs:complexContent>
+            <xs:extension base="structures:ObjectType">
+                <xs:sequence>
+                    <xs:element ref="rds:ReferenceDataSetURI"/>
+                    <xs:element ref="rds:ReferenceDataSetVersionURI"/>
+                    <xs:element ref="rds:ReferenceDataSetName"/>
+                    <xs:element ref="nc:DescriptionText" minOccurs="0"/>
+                    <xs:element ref="nc:DocumentLocationURI" minOccurs="0"/>
+                    <xs:element ref="rds:ReferenceData" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+</xs:schema>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://interoperability.gc.ca/area/Area/2.0/" version="1"
+	xsi:schemaLocation="http://release.niem.gov/niem/appinfo/4.0/ ../../utility/appinfo/4.0/appinfo.xsd http://release.niem.gov/niem/conformanceTargets/3.0/ ../../utility/conformanceTargets/3.0/conformanceTargets.xsd http://reference.niem.gov/niem/specification/code-lists/4.0/code-lists-instance/ ../../utility/code-lists-spec/4.0/code-lists-instance.xsd"
+	ct:conformanceTargets="http://reference.niem.gov/niem/specification/naming-and-design-rules/4.0/#ReferenceSchemaDocument" xmlns:area="http://interoperability.gc.ca/area/Area/2.0/"
+	xmlns:niem-xs="http://release.niem.gov/niem/proxy/xsd/4.0/" xmlns:structures="http://release.niem.gov/niem/structures/4.0/" xmlns:iso_3166="http://release.niem.gov/niem/codes/iso_3166-1/4.0/"
+	xmlns:iso_639-3="http://release.niem.gov/niem/codes/iso_639-3/4.0/" xmlns:nga="http://release.niem.gov/niem/codes/nga_datum/4.0/" xmlns:nc="http://release.niem.gov/niem/niem-core/4.0/"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:usps="http://release.niem.gov/niem/codes/usps_states/4.0/" xmlns:unece="http://release.niem.gov/niem/codes/unece_rec20/4.0/"
+	xmlns:iso_4217="http://release.niem.gov/niem/codes/iso_4217/4.0/" xmlns:ct="http://release.niem.gov/niem/conformanceTargets/3.0/" xmlns:xml="http://www.w3.org/XML/1998/namespace"
+	xmlns:xCard="http://release.niem.gov/niem/codes/xCard/4.0/" xmlns:cli="http://reference.niem.gov/niem/specification/code-lists/4.0/code-lists-instance/"
+	xmlns:dol="http://release.niem.gov/niem/codes/dol_soc/4.0/" xmlns:appinfo="http://release.niem.gov/niem/appinfo/4.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<xs:annotation>
+		<xs:documentation>NIEM Core extension.</xs:documentation>
+	</xs:annotation>
+	<xs:annotation>
+		<xs:documentation>Miscellaneous unit of measure codes.
+			Source: UN Economic Commission for Europe (UNECE); 
+			Publication: UNECE Recommendation No. 20 Revision 8; 
+			Version: Revision 8; 
+			Date: 2012; 
+			http://www.unece.org/tradewelcome/areas-of-work/un-centre-for-trade-facilitation-and-e-business-uncefact/outputs/cefactrecommendationsrec-index/list-of-trade-facilitation-recommendations-n-16-to-20.html</xs:documentation>
+	</xs:annotation>
+	
+	<xs:import schemaLocation="../../../niem/niem-core/4.0/niem-core.xsd" namespace="http://release.niem.gov/niem/niem-core/4.0/"/>
+	<xs:import schemaLocation="../../../niem/utility/structures/4.0/structures.xsd" namespace="http://release.niem.gov/niem/structures/4.0/"/>
+	<xs:import schemaLocation="../../../niem/codes/unece_rec20/4.0/unece_rec20-misc.xsd" namespace="http://release.niem.gov/niem/codes/unece_rec20/4.0/"/>
+	
+	<xs:element name="AreaMeasure" type="area:AreaMeasureType" nillable="true"/>
+	<xs:element name="AreaUnitAbstract" abstract="true" nillable="true"/>
+	<xs:element name="AreaUnitCode" type="area:AreaUnitCodeType" substitutionGroup="area:AreaUnitAbstract">
+		<xs:annotation>
+			<xs:documentation>A unit of measure of a length value.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="AreaMeasureAugmentationPoint" abstract="true" nillable="true"/>
+	<xs:complexType name="AreaMeasureType">
+		<xs:annotation>
+			<xs:documentation>A data type for a measure of an amount of area.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="nc:MeasureType">
+				<xs:sequence>
+					<xs:element ref="area:AreaUnitAbstract" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="area:AreaMeasureAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	  <xs:simpleType name="AreaUnitCodeSimpleType">
+    <xs:annotation>
+      <xs:documentation>A data type for area unit of measurement codes.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+    	<xs:enumeration value="km²">
+        <xs:annotation>
+          <xs:documentation>square kilometre</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ha">
+        <xs:annotation>
+          <xs:documentation>hectare</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    	<xs:enumeration value="m²">
+        <xs:annotation>
+          <xs:documentation>square metre</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="square">
+        <xs:annotation>
+          <xs:documentation>100 square feet</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    	<xs:enumeration value="ft²">
+        <xs:annotation>
+          <xs:documentation>barrel (US)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="acre">
+        <xs:annotation>
+          <xs:documentation>acre</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    	<xs:enumeration value="in²">
+        <xs:annotation>
+          <xs:documentation>square inch</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="AreaUnitCodeType">
+    <xs:annotation>
+      <xs:documentation>A data type for volume unit of measurement codes.</xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="area:AreaUnitCodeSimpleType">
+        <xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+</xs:schema>

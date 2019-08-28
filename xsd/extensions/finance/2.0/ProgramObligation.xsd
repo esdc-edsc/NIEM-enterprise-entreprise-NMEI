@@ -1,0 +1,390 @@
+<xs:schema elementFormDefault="qualified"
+    targetNamespace="http://interoperability.gc.ca/finance/ProgramObligation/2.0/"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:po="http://interoperability.gc.ca/finance/ProgramObligation/2.0/"
+    xmlns:tax="http://interoperability.gc.ca/finance/Taxation/2.0/"
+    xmlns:niem-xs="http://release.niem.gov/niem/proxy/xsd/4.0/"
+    xmlns:structures="http://release.niem.gov/niem/structures/4.0/"
+    xmlns:nc="http://release.niem.gov/niem/niem-core/4.0/"
+    xmlns:hs="http://release.niem.gov/niem/domains/humanServices/4.1/"
+    xmlns:iso_639-3="http://release.niem.gov/niem/codes/iso_639-3/4.0/"
+    xmlns:tran="http://interoperability.gc.ca/technical/transaction/2.0/">
+
+    <xs:annotation>
+        <xs:documentation>ProgramObligation is the primary data element for creating and updating Accounts Receivavble.</xs:documentation>
+    </xs:annotation>
+
+    <xs:import schemaLocation="../../../niem/utility/structures/4.0/structures.xsd"
+        namespace="http://release.niem.gov/niem/structures/4.0/"/>
+    <xs:import schemaLocation="../../../niem/codes/iso_639-3/4.0/iso_639-3.xsd"
+        namespace="http://release.niem.gov/niem/codes/iso_639-3/4.0/"/>
+    <xs:import schemaLocation="../../../niem/niem-core/4.0/niem-core.xsd"
+        namespace="http://release.niem.gov/niem/niem-core/4.0/"/>
+    <xs:import schemaLocation="../../../niem/proxy/xsd/4.0/xs.xsd"
+        namespace="http://release.niem.gov/niem/proxy/xsd/4.0/"/>
+	<xs:import schemaLocation="Taxation.xsd"
+		namespace="http://interoperability.gc.ca/finance/Taxation/2.0/"/>
+	
+    <xs:import schemaLocation="../../../niem/domains/humanServices/4.1/hs.xsd"
+        namespace="http://release.niem.gov/niem/domains/humanServices/4.1/"/>
+    <xs:import schemaLocation="../../technical/2.0/transaction.xsd"
+        namespace="http://interoperability.gc.ca/technical/transaction/2.0/"/>
+    <xs:import schemaLocation="../../person/2.0/Person.xsd"
+        namespace="http://interoperability.gc.ca/person/Person/2.0/"/>
+
+    <xs:element name="OriginalCase" substitutionGroup="nc:Case"/>
+    <xs:element name="OriginalActivityCategoryText" substitutionGroup="nc:ActivityCategoryText"/>
+    <xs:element name="OriginalConditionViolationText" substitutionGroup="nc:ConditionViolationText"/>
+    <xs:element name="ProgramObligationLot" type="po:ProgramObligationLotType"/>
+    <xs:complexType name="ProgramObligationLotType">
+        <xs:annotation>
+            <xs:documentation>A data type for one or more an program obligations.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="structures:ObjectType">
+                <xs:sequence>
+                    <xs:element ref="po:ProgramObligation" minOccurs="1" maxOccurs="unbounded"/>
+                    <xs:element ref="po:ProgramObligationLotAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="tran:Transaction" minOccurs="0"
+                        maxOccurs="1"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="ProgramObligationLotAugmentationPoint" abstract="true"/>
+    <xs:element name="ProgramObligation" type="po:ProgramObligationType"/>
+    <xs:complexType name="ProgramObligationType">
+        <xs:annotation>
+            <xs:documentation>A data type for an obligation arising from a person or organization
+                who received program benefits that should be recovered.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="nc:ObligationType">
+                <xs:sequence>
+                    <xs:element ref="po:ObligationEntityInsolvency" minOccurs="0"
+                        maxOccurs="unbounded"/>
+                    <xs:element ref="po:ObligationEntityLocationAssociation" minOccurs="0"
+                        maxOccurs="unbounded"/>
+                    <xs:element ref="nc:PersonEmploymentAssociation" minOccurs="0"
+                        maxOccurs="unbounded"/>
+                    <xs:element ref="po:PriorObligationRecipient" minOccurs="0"
+                        maxOccurs="unbounded"/>
+                    <xs:element ref="po:PriorObligationRecipientPaidAbstract" minOccurs="0"
+                        maxOccurs="unbounded"/>
+                    <xs:element ref="nc:Program" minOccurs="1" maxOccurs="unbounded"/>
+                    <xs:element ref="nc:Case" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="hs:SchoolStudentAssociation" minOccurs="0"
+                        maxOccurs="unbounded"/>
+                    <xs:element ref="po:NextOfKin" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="po:ProgramObligationAugmentationPoint" minOccurs="0"
+                        maxOccurs="unbounded"/>
+                    <xs:element ref="tran:Transaction" minOccurs="0"
+                        maxOccurs="1"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="ProgramObligationAugmentationPoint" abstract="true">
+        <xs:annotation>
+            <xs:documentation>An augmentation point for ProgramObligationType.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="PriorObligationRecipient" type="nc:EntityType" nillable="true">
+        <xs:annotation>
+            <xs:documentation>An entity to whom an obligation was originally to be
+                fulfilled.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="PriorObligationRecipientPaidAbstract" abstract="true">
+        <xs:annotation>
+            <xs:documentation>A data concept for an amount of money or quantity of time that has
+                been spent towards fulfilling an obligation to the prior
+                recipient.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="PriorObligationRecipientPaidAmount" type="nc:AmountType"
+        substitutionGroup="po:PriorObligationRecipientPaidAbstract">
+        <xs:annotation>
+            <xs:documentation>An amount of a payment that has been made to the prior obligation
+                recipient.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="PriorObligationRecipientPrincipalPaidAmount"
+        substitutionGroup="po:PriorObligationRecipientPaidAmount">
+        <xs:annotation>
+            <xs:documentation>An amount of a principal payment that has been made to the prior
+                obligation recipient.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="PriorObligationRecipientInterestPaidAmount"
+        substitutionGroup="po:PriorObligationRecipientPaidAmount">
+        <xs:annotation>
+            <xs:documentation>An amount of an interest payment that has been made to the prior
+                obligation recipient.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="ProgramBenefitPaymentAddress" type="nc:AddressType"/>
+    <xs:element name="ProgramBenefitPaymentFinancialAccount" type="nc:FinancialAccountType"/>
+    <xs:element name="Trustee" type="po:TrusteeType" nillable="true">
+        <xs:annotation>
+            <xs:documentation>A person, group of persons or organization appointed to administer the
+                affairs of another person, group of persons or organization
+                (beneficiary).</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="TrusteeType">
+        <xs:annotation>
+            <xs:documentation>A data type for information about a person, group of persons or
+                organization appointed to administer the affairs of another person, group of persons
+                or organization (beneficiary).</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="structures:ObjectType">
+                <xs:sequence>
+                    <xs:element ref="nc:RoleOfAbstract" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="po:TrusteeAugmentationPoint" minOccurs="0"
+                        maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="TrusteeAugmentationPoint" abstract="true">
+        <xs:annotation>
+            <xs:documentation>An augmentation point for TrusteeType.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="ObligationEntityInsolvency" type="po:InsolvencyType" nillable="true">
+        <xs:annotation>
+            <xs:documentation>A person or organization who is receiving some benefit from another
+                person, group of persons or organization (Trustee, public service organization,
+                etc.) at a certain point in time.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="InsolvencyAugmentationPoint" abstract="true" nillable="true"/>
+    <xs:complexType name="InsolvencyType">
+        <xs:annotation>
+            <xs:documentation>A data type for information about a bankruptcy or
+                insolvency.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="structures:ObjectType">
+                <xs:sequence>
+                    <xs:element ref="po:InsolvencyDate" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="po:InsolvencyTypeCode" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="po:InsolvencyIdentification" minOccurs="0"
+                        maxOccurs="unbounded"/>
+                    <xs:element ref="po:Trustee" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="po:InsolvencyAugmentationPoint" minOccurs="0"
+                        maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="InsolvencyDate" type="nc:DateType"/>
+    <xs:element name="InsolvencyTypeCode" type="po:InsolvencyTypeCodeType"/>
+    <xs:simpleType name="InsolvencyTypeCodeSimpleType">
+        <xs:annotation>
+            <xs:documentation>A data type for a specific type of insolvency.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="B">
+                <xs:annotation>
+                    <xs:documentation>Bankrupty</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="R">
+                <xs:annotation>
+                    <xs:documentation>Receivership</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="InsolvencyTypeCodeType">
+        <xs:annotation>
+            <xs:documentation>A data type for a specific type of insolvency.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:extension base="po:InsolvencyTypeCodeSimpleType">
+                <xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:element name="InsolvencyIdentification" type="nc:IdentificationType"/>
+
+
+    <xs:element name="ObligationInterestRate" type="po:InterestRateType"
+        substitutionGroup="nc:ObligationAugmentationPoint"/>
+    <xs:complexType name="InterestRateType">
+        <xs:annotation>
+            <xs:documentation>A data type for rate of interest.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="structures:ObjectType">
+                <xs:choice>
+                    <xs:element ref="po:InterestRate" minOccurs="1" maxOccurs="1"/>
+                    <xs:element ref="po:PrimePlusInterestRate" minOccurs="1" maxOccurs="1"/>
+                </xs:choice>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="InterestRate" substitutionGroup="nc:Percent"/>
+    <xs:element name="PrimePlusInterestRate" substitutionGroup="nc:Percent"/>
+    <xs:element name="Pourcentage" substitutionGroup="nc:Percent"/>
+    <xs:element name="ObligationIdentification" type="nc:IdentificationType"
+        substitutionGroup="nc:ObligationAugmentationPoint"/>
+    <xs:element name="ObligationDate" type="nc:DateType"
+        substitutionGroup="nc:ObligationAugmentationPoint"/>
+    <xs:element name="ObligationInterestAccrualDate" type="nc:DateType"
+        substitutionGroup="nc:ObligationAugmentationPoint"/>
+    <xs:element name="ObligationEntityLocationAssociation" type="po:EntityLocationAssociationType"/>
+    <xs:complexType name="EntityLocationAssociationType">
+        <xs:annotation>
+            <xs:documentation>A data type for an association between an entity and a
+                location..</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="structures:ObjectType">
+                <xs:choice>
+                    <xs:element ref="nc:LocationOrganizationAssociation" minOccurs="1" maxOccurs="1"/>
+                    <xs:element ref="nc:PersonLocationAssociation" minOccurs="1" maxOccurs="1"/>
+                </xs:choice>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="ObligationReductionIndicator" type="niem-xs:boolean"
+        substitutionGroup="nc:ObligationExemptionIndicator" nillable="true">
+        <xs:annotation>
+            <xs:documentation>True if an obligation has been waived or dismissed; false
+                otherwise.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="AmountDate" type="nc:DateType" substitutionGroup="nc:AmountAugmentationPoint"/>
+	<xs:element name="ObligationPeriod" type="niem-xs:duration" substitutionGroup="nc:ObligationRecurrenceAugmentationPoint"/>
+    <xs:element name="ObligationDueInterestAmount" type="nc:AmountType"
+        substitutionGroup="nc:ObligationDueAbstract" nillable="true">
+        <xs:annotation>
+            <xs:documentation>An amount of a payment obligation that has not been
+                made.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="ObligationDueRecoverableAmount" type="nc:AmountType"
+        substitutionGroup="nc:ObligationDueAbstract" nillable="true">
+        <xs:annotation>
+            <xs:documentation>An amount of a payment obligation that has not been made, that is
+                deemed recoverable at this point in time.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="ObligationDueGraceAmount" type="nc:AmountType"
+        substitutionGroup="nc:ObligationDueAbstract" nillable="true">
+        <xs:annotation>
+            <xs:documentation>An amount of a payment obligation that has not been made, that is
+                deemed not due at this point in time.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="ObligationDueRegularAmount" type="nc:AmountType"
+        substitutionGroup="nc:ObligationDueAbstract" nillable="true">
+        <xs:annotation>
+            <xs:documentation>An amount of a payment obligation that has not been made, that is not
+                special, or not a fine, or not a penalty.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="ObligationDueSpecialAmount" type="nc:AmountType"
+        substitutionGroup="nc:ObligationDueAbstract" nillable="true">
+        <xs:annotation>
+            <xs:documentation>An amount of a payment obligation that has not been made, that is
+                special.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="ObligationDueEmployerBankruptcyAmount" type="nc:AmountType"
+        substitutionGroup="nc:ObligationDueAbstract" nillable="true">
+        <xs:annotation>
+            <xs:documentation>An amount of a payment obligation that has not been made, that is
+                related to an employer's bankruptcy.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="ObligationDueFineAmount" type="nc:AmountType"
+        substitutionGroup="nc:ObligationDueAbstract" nillable="true">
+        <xs:annotation>
+            <xs:documentation>An amount of a payment obligation that has not been made, that is a
+                fine.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="ObligationDueTrainingAmount" type="nc:AmountType"
+        substitutionGroup="nc:ObligationDueAbstract" nillable="true">
+        <xs:annotation>
+            <xs:documentation>An amount of a payment obligation that has not been made, that is
+                related to training.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="ObligationDuePenaltyAmount" type="nc:AmountType"
+        substitutionGroup="nc:ObligationDueAbstract" nillable="true">
+        <xs:annotation>
+            <xs:documentation>An amount of a payment obligation that has not been made, that is a
+                penalty.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="YearCode" type="po:YearCodeType" substitutionGroup="nc:DateAugmentationPoint">
+        <xs:annotation>
+            <xs:documentation>A code indicating whether the date is in the 'C'urrent year, a
+                'P'revious year or 'M'(???).</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:simpleType name="YearCodeSimpleType">
+        <xs:annotation>
+            <xs:documentation>A data type for a specific classification of a
+                year.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="C">
+                <xs:annotation>
+                    <xs:documentation>Current</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="P">
+                <xs:annotation>
+                    <xs:documentation>Previous</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="M">
+                <xs:annotation>
+                    <xs:documentation>M</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="YearCodeType">
+        <xs:annotation>
+            <xs:documentation>A data type for a specific classication of a year.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:extension base="po:YearCodeSimpleType">
+                <xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:element name="PeriodText" type="nc:TextType" substitutionGroup="nc:DateAugmentationPoint">
+        <xs:annotation>
+            <xs:documentation>A code indicating commencement of the benefit claim that caused the
+                violation/overpayment.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="PersonLanguagePreference" type="iso_639-3:LanguageCodeType"
+        substitutionGroup="nc:PersonAugmentationPoint"/>
+    <xs:element name="NextOfKin" type="po:NextOfKinType"/>
+    <xs:complexType name="NextOfKinType">
+        <xs:annotation>
+            <xs:documentation>A data type for a role of a person who is the closest relative or
+                friend.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="structures:ObjectType">
+                <xs:sequence>
+                    <xs:element ref="nc:RoleOfPerson" minOccurs="1" maxOccurs="1"/>
+                    <xs:element ref="nc:PersonLocationAssociation" minOccurs="1"
+                        maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="FinancialAccount" type="nc:FinancialAccountType" substitutionGroup="nc:ProgramAugmentationPoint"/>
+</xs:schema>

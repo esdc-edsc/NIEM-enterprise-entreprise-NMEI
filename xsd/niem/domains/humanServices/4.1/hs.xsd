@@ -1,0 +1,1240 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<xs:schema targetNamespace="http://release.niem.gov/niem/domains/humanServices/4.1/" version="1" xsi:schemaLocation="http://release.niem.gov/niem/appinfo/4.0/ ../../../utility/appinfo/4.0/appinfo.xsd http://release.niem.gov/niem/conformanceTargets/3.0/ ../../../utility/conformanceTargets/3.0/conformanceTargets.xsd" ct:conformanceTargets="http://reference.niem.gov/niem/specification/naming-and-design-rules/4.0/#ReferenceSchemaDocument" xmlns:structures="http://release.niem.gov/niem/structures/4.0/" xmlns:appinfo="http://release.niem.gov/niem/appinfo/4.0/" xmlns:ct="http://release.niem.gov/niem/conformanceTargets/3.0/" xmlns:nc="http://release.niem.gov/niem/niem-core/4.0/" xmlns:im="http://release.niem.gov/niem/domains/immigration/4.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hs="http://release.niem.gov/niem/domains/humanServices/4.1/" xmlns:scr="http://release.niem.gov/niem/domains/screening/4.1/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:niem-xs="http://release.niem.gov/niem/proxy/xsd/4.0/">
+  <xs:annotation>
+    <xs:documentation>Human Services</xs:documentation>
+  </xs:annotation>
+  <xs:import schemaLocation="../../immigration/4.1/immigration.xsd" namespace="http://release.niem.gov/niem/domains/immigration/4.1/"/>
+  <xs:import schemaLocation="../../screening/4.1/screening.xsd" namespace="http://release.niem.gov/niem/domains/screening/4.1/"/>
+  <xs:import schemaLocation="../../../niem-core/4.0/niem-core.xsd" namespace="http://release.niem.gov/niem/niem-core/4.0/"/>
+  <xs:import schemaLocation="../../../proxy/xsd/4.0/xs.xsd" namespace="http://release.niem.gov/niem/proxy/xsd/4.0/"/>
+  <xs:import schemaLocation="../../../utility/structures/4.0/structures.xsd" namespace="http://release.niem.gov/niem/structures/4.0/"/>
+  <xs:complexType name="AdoptiveParentChildAssociationType">
+    <xs:annotation>
+      <xs:documentation>A data type for an association between a child and a parent who adopted the child.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="hs:ParentChildAssociationType">
+        <xs:sequence>
+          <xs:element ref="hs:AdoptionDecreeIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="im:Orphan" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:AdoptionLocation" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="scr:FinalAdoptionDecreeIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:AdoptiveParentChildAssociationAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AssociatedPersonChildAssociationType">
+    <xs:annotation>
+      <xs:documentation>A data type for a relationship between a person and the child.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="nc:AssociationType">
+        <xs:sequence>
+          <xs:element ref="hs:Child" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:PersonAssociationCategoryAbstract" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:AssociatedPersonChildAssociationAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="BiologicalParentChildAssociationType">
+    <xs:annotation>
+      <xs:documentation>A data type for an association between a child and one of the child's biological parents.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="hs:ParentChildAssociationType">
+        <xs:sequence>
+          <xs:element ref="hs:PersonUnionAtBirthIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:PersonUnionAtConceptionIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:BiologicalParentChildAssociationAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="BiologicalParentDeterminationMethodCodeSimpleType">
+    <xs:annotation>
+      <xs:documentation>A data type for a list of methods by which a biological relationship between a parent and child is legally determined.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="Acknowledgement">
+        <xs:annotation>
+          <xs:documentation>Paternity was legally established through the alleged fathers voluntary acknowledgement that he is the childs father.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Admin">
+        <xs:annotation>
+          <xs:documentation>Paternity was legally established through an administrative process.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Default">
+        <xs:annotation>
+          <xs:documentation>Paternity was legally established because the alleged father failed to appear in a state court proceeding and the court entered a default order.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Order">
+        <xs:annotation>
+          <xs:documentation>Paternity was legally established at the conclusion of a state court proceeding in which the court found the alleged father to be the childs parent and entered an order.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Other">
+        <xs:annotation>
+          <xs:documentation>Paternity has been legally established through an unenumerated method.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="StipTest">
+        <xs:annotation>
+          <xs:documentation>Paternity was legally established because, following publication of the results of a paternity test, the alleged father stipulated that he is the childs parent.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Stipulation">
+        <xs:annotation>
+          <xs:documentation>Paternity was legally established because the alleged father stipulated that he is the childs parent.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="TribalCeremony">
+        <xs:annotation>
+          <xs:documentation>Paternity was legally established through a tribes ceremonial proceeding.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="TribalOrder">
+        <xs:annotation>
+          <xs:documentation>Paternity was legally established through a tribal courts process.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="BiologicalParentDeterminationMethodCodeType">
+    <xs:annotation>
+      <xs:documentation>A data type describing the methods by which a biological relationship between a parent and child is legally determined.</xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="hs:BiologicalParentDeterminationMethodCodeSimpleType">
+        <xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="BiologicalParentDeterminationStatusCodeSimpleType">
+    <xs:annotation>
+      <xs:documentation>A data type for describing the status of the determination of a biological relationship between a putative parent and a child.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="Biological relationship established">
+        <xs:annotation>
+          <xs:documentation>Biological relationship established</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="No biological relationship found">
+        <xs:annotation>
+          <xs:documentation>No biological relationship found</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Pending">
+        <xs:annotation>
+          <xs:documentation>Pending</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Unknown">
+        <xs:annotation>
+          <xs:documentation>Unknown</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="BiologicalParentDeterminationStatusCodeType">
+    <xs:annotation>
+      <xs:documentation>A data type for describing the status of the determination of a biological relationship between a putative parent and a child.</xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="hs:BiologicalParentDeterminationStatusCodeSimpleType">
+        <xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ChildSupportEnforcementOrganizationType">
+    <xs:annotation>
+      <xs:documentation>A data type for an applied augmentation for type nc:OrganizationType</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="nc:OrganizationType">
+        <xs:sequence>
+          <xs:element ref="hs:ChildSupportEnforcementServiceID" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:ChildSupportEnforcementOrganizationAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ChildType">
+    <xs:annotation>
+      <xs:documentation>A data type for information about a person who has not yet reached the age of legal majority (i.e., adulthood).</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="structures:ObjectType">
+        <xs:sequence>
+          <xs:element ref="nc:RoleOfPerson" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:ChildRemovalDate" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:CountyOfCustodyText" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:ChildAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="FosterParentChildAssociationType">
+    <xs:annotation>
+      <xs:documentation>A data type for an association between a child and a foster parent.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="hs:ParentChildAssociationType">
+        <xs:sequence>
+          <xs:element ref="hs:FosterCareCurrentPlacementDescriptionText" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:FosterCareDischargeReasonDescriptionText" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:FosterCareFirstRemovalDate" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:FosterCareFundingSourceAbstract" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:FosterCareLastRemovalDate" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:FosterCareMonthlyPaymentAmount" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:FosterCarePreviousPlacementSettingsQuantity" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:FosterCarePriorDischargeDate" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:FosterCareRemovalReasonAbstract" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:FosterCareTotalRemovalQuantity" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:MostRecentFosterCareReviewDate" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:OutOfStatePlacementIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:RemovalMannerDescriptionText" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:RemovalTransactionDate" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:ServicePlanGoal" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:FosterParentChildAssociationAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="GoalObjectiveType">
+    <xs:annotation>
+      <xs:documentation>A data type for describing a subset of a service plan goal.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="nc:ActivityType">
+        <xs:sequence>
+          <xs:element ref="nc:Task" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:GoalObjectiveAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ParentChildAssociationType">
+    <xs:annotation>
+      <xs:documentation>A data type for an association between a child and a person who is in a parent role toward that child.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="nc:AssociationType">
+        <xs:sequence>
+          <xs:element ref="hs:Child" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:Parent" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:HouseholdMemberIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:ParentChildKinshipCategoryAbstract" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:BiologicalParentDeterminationDescriptionText" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:BiologicalParentDeterminationMethodCode" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:TerminationParentalRightsDate" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:TerminationParentalRightsIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:ChildBirthOrderNumeric" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:ParentChildAssociationAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="ParentChildKinshipCategoryCodeSimpleType">
+    <xs:annotation>
+      <xs:documentation>A data type for describing the nature of the relationship from a parent to a child</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="Adoption">
+        <xs:annotation>
+          <xs:documentation>Adoption</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Biological">
+        <xs:annotation>
+          <xs:documentation>Biological</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Foster">
+        <xs:annotation>
+          <xs:documentation>Foster</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Guardianship">
+        <xs:annotation>
+          <xs:documentation>Guardianship</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Marriage">
+        <xs:annotation>
+          <xs:documentation>Marriage</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Putative">
+        <xs:annotation>
+          <xs:documentation>Putative</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Surrogate">
+        <xs:annotation>
+          <xs:documentation>Surrogate</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ParentChildKinshipCategoryCodeType">
+    <xs:annotation>
+      <xs:documentation>A data type for describing the nature of the relationship from a parent to a child</xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="hs:ParentChildKinshipCategoryCodeSimpleType">
+        <xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="PersonOtherKinAssociationCodeSimpleType">
+    <xs:annotation>
+      <xs:documentation>A data type for describing the nature of the kinship or other close personal relationship from a source person to a target person</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="Authority Figure">
+        <xs:annotation>
+          <xs:documentation>Authority Figure</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Babysitter">
+        <xs:annotation>
+          <xs:documentation>Babysitter</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Brother">
+        <xs:annotation>
+          <xs:documentation>Brother</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Brother-In-Law">
+        <xs:annotation>
+          <xs:documentation>Brother-In-Law</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Clergy">
+        <xs:annotation>
+          <xs:documentation>Clergy</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Coach">
+        <xs:annotation>
+          <xs:documentation>Coach</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Domestic Partner">
+        <xs:annotation>
+          <xs:documentation>Domestic Partner</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Father-in-Law">
+        <xs:annotation>
+          <xs:documentation>Father-in-Law</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Fiance">
+        <xs:annotation>
+          <xs:documentation>Fiance</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Fiancee">
+        <xs:annotation>
+          <xs:documentation>Fiancee</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Fictive Kin">
+        <xs:annotation>
+          <xs:documentation>Fictive Kin</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Godfather">
+        <xs:annotation>
+          <xs:documentation>Godfather</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Godmother">
+        <xs:annotation>
+          <xs:documentation>Godmother</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Granddaughter">
+        <xs:annotation>
+          <xs:documentation>Granddaughter</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Grandson">
+        <xs:annotation>
+          <xs:documentation>Grandson</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Great-Granddaughter">
+        <xs:annotation>
+          <xs:documentation>Great-Granddaughter</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Great-Grandson">
+        <xs:annotation>
+          <xs:documentation>Great-Grandson</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Maternal Aunt">
+        <xs:annotation>
+          <xs:documentation>Maternal Aunt</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Maternal Female Cousin">
+        <xs:annotation>
+          <xs:documentation>Maternal Female Cousin</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Maternal Grandfather">
+        <xs:annotation>
+          <xs:documentation>Maternal Grandfather</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Maternal Grandmother">
+        <xs:annotation>
+          <xs:documentation>Maternal Grandmother</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Maternal Great Grandfather">
+        <xs:annotation>
+          <xs:documentation>Maternal Great Grandfather</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Maternal Great Grandmother">
+        <xs:annotation>
+          <xs:documentation>Maternal Great Grandmother</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Maternal Male Cousin">
+        <xs:annotation>
+          <xs:documentation>Maternal Male Cousin</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Maternal Uncle">
+        <xs:annotation>
+          <xs:documentation>Maternal Uncle</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Mother-in-Law">
+        <xs:annotation>
+          <xs:documentation>Mother-in-Law</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Neighbor">
+        <xs:annotation>
+          <xs:documentation>Neighbor</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Nephew">
+        <xs:annotation>
+          <xs:documentation>Nephew</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Niece">
+        <xs:annotation>
+          <xs:documentation>Niece</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Paternal Aunt">
+        <xs:annotation>
+          <xs:documentation>Paternal Aunt</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Paternal Female Cousin">
+        <xs:annotation>
+          <xs:documentation>Paternal Female Cousin</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Paternal Grandfather">
+        <xs:annotation>
+          <xs:documentation>Paternal Grandfather</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Paternal Grandmother">
+        <xs:annotation>
+          <xs:documentation>Paternal Grandmother</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Paternal Great Grandfather">
+        <xs:annotation>
+          <xs:documentation>Paternal Great Grandfather</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Paternal Great Grandmother">
+        <xs:annotation>
+          <xs:documentation>Paternal Great Grandmother</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Paternal Male Cousin">
+        <xs:annotation>
+          <xs:documentation>Paternal Male Cousin</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Paternal Uncle">
+        <xs:annotation>
+          <xs:documentation>Paternal Uncle</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Roommate">
+        <xs:annotation>
+          <xs:documentation>Roommate</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Significant Other">
+        <xs:annotation>
+          <xs:documentation>Significant Other</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Sister">
+        <xs:annotation>
+          <xs:documentation>Sister</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Sister-In-Law">
+        <xs:annotation>
+          <xs:documentation>Sister-In-Law</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Teacher">
+        <xs:annotation>
+          <xs:documentation>Teacher</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Unrelated Friend">
+        <xs:annotation>
+          <xs:documentation>Unrelated Friend</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="PersonOtherKinAssociationCodeType">
+    <xs:annotation>
+      <xs:documentation>A data type for describing the nature of the kinship or other close personal relationship from a source person to a target person</xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="hs:PersonOtherKinAssociationCodeSimpleType">
+        <xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="PersonOtherKinAssociationType">
+    <xs:annotation>
+      <xs:documentation>A data type for a relationship that is a kinship or other close personal association between the source object and the target object. The relationship between a parent and a child should be captured using the ParentChildAssociation</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="nc:AssociationType">
+        <xs:sequence>
+          <xs:element ref="hs:SourcePerson" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:TargetPerson" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:FamilyIdentification" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:HouseholdMemberIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:PersonOtherKinAssociationCategoryAbstract" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:PersonOtherKinAssociationAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PutativeParentChildAssociationType">
+    <xs:annotation>
+      <xs:documentation>A data type for an association between a child and a person who is alleged to be the child's biological parent.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="hs:BiologicalParentChildAssociationType">
+        <xs:sequence>
+          <xs:element ref="hs:BiologicalParentDeterminationDate" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:BiologicalParentDeterminationStatusAbstract" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:PutativeParentChildAssociationAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SchoolAttendanceIssueType">
+    <xs:annotation>
+      <xs:documentation>A data type for information about issues relating to school attendance.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="nc:ActivityType"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SchoolClassType">
+    <xs:annotation>
+      <xs:documentation>A data type for information about specific school classes.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="structures:ObjectType">
+        <xs:sequence>
+          <xs:element ref="hs:SchoolClassLetterGradeAbstract" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:SchoolClassName" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:SchoolClassTeacherFullName" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:SchoolClassTime" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:SchoolClassAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SchoolExpulsionType">
+    <xs:annotation>
+      <xs:documentation>A data type for information about an expulsion from school.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="nc:ActivityType"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SchoolScheduleType">
+    <xs:annotation>
+      <xs:documentation>A data type for information about school classes, rather than details about a single class.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="structures:ObjectType">
+        <xs:sequence>
+          <xs:element ref="hs:SchoolClass" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:SchoolTermText" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:SchoolScheduleAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SchoolStudentAssociationType">
+    <xs:annotation>
+      <xs:documentation>A data type for an association between a student and a school attended.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="nc:PersonOrganizationAssociationType">
+        <xs:sequence>
+          <xs:element ref="hs:SchoolAttendanceDescriptionText" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:SchoolAttendanceIssue" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:SchoolEnrollmentDate" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:SchoolEnrollmentWithdrawReasonText" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:SchoolExpulsion" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:SchoolExpulsionIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:SchoolGPAText" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:SchoolPerformanceText" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:SchoolSchedule" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:SchoolSpecialEducationIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:SchoolStudentID" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:SchoolStudentAssociationAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ServicePlanGoalType">
+    <xs:annotation>
+      <xs:documentation>A data type for elements that describe a service plan goal.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="nc:ActivityType">
+        <xs:sequence>
+          <xs:element ref="hs:PrimaryGoalIndicator" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:GoalObjective" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:ServicePlanGoalAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="WagesType">
+    <xs:annotation>
+      <xs:documentation>A data type for Wages Class</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="structures:ObjectType">
+        <xs:sequence>
+          <xs:element ref="hs:WagesFederalTaxableAmount" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:WagesFederalTaxWithheldAmount" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:WagesStateTaxableAmount" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:WagesStateTaxWithheldAmount" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:WagesDisbursingDate" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:WagesRetiredPayEntitlementEffectiveDate" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:WagesBasePayAmount" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:WagesGrossPayAmount" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:WagesPayrollOfficeNumberText" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:WagesBasicSalaryAmount" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:WagesPayStatusCode" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:WagesPayBasicCode" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:WagesPayPeriodEndDate" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:WagesPayStepText" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:WagesPayGradeCode" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:WagesPayPlanCode" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:WagesTotalBasePayAllDrillsAmount" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="hs:WagesAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AdoptionDecreeIndicator" type="niem-xs:boolean" nillable="true">
+    <xs:annotation>
+      <xs:documentation>True if an adoption decree exists; false otherwise.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="AdoptionLocation" type="nc:LocationType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A location where the adoptive parent's adoption petition was granted.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="AdoptionPlacementByText" type="nc:TextType">
+    <xs:annotation>
+      <xs:documentation>An entity by whom the child was placed for adoption, for example, Public Agency, Private Agency, Tribal Agency, Independent Person, Birth Parent.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="AdoptiveParentChildAssociation" type="hs:AdoptiveParentChildAssociationType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An association between a child and a parent who adopted the child.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="AdoptiveParentChildAssociationAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for AdoptiveParentChildAssociationType.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="AssociatedPersonChildAssociationAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for AssociatedPersonChildAssociationType.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="BiologicalParentChildAssociation" type="hs:BiologicalParentChildAssociationType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An association between a child and one of the child's biological parents.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="BiologicalParentChildAssociationAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for BiologicalParentChildAssociationType.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="BiologicalParentDeterminationDate" type="nc:DateType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A date when a putative parent's biological relationship to a child was legally determined.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="BiologicalParentDeterminationDescriptionText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An additional description of the details about the determination of a biological relationship between a putative parent and a child (for example, findings regarding the location and date of conception, or the results of DNA tests).</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="BiologicalParentDeterminationMethodAbstract" abstract="true">
+    <xs:annotation>
+      <xs:documentation>A data concept for describing the method by which a biological relationship between a parent and child was legally determined.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="BiologicalParentDeterminationMethodCode" type="hs:BiologicalParentDeterminationMethodCodeType" substitutionGroup="hs:BiologicalParentDeterminationMethodAbstract" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A list of methods by which a biological relationship between a parent and child is legally established.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="BiologicalParentDeterminationMethodText" type="nc:TextType" substitutionGroup="hs:BiologicalParentDeterminationMethodAbstract" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A narrative alternative to BiologicalParentDeterminationMethodCode to describe the method by which a  biological relationship between a parent and child is legally determined.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="BiologicalParentDeterminationStatusAbstract" abstract="true">
+    <xs:annotation>
+      <xs:documentation>A data concept for describing the status of the determination of a biological relationship between a putative parent and a child.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="BiologicalParentDeterminationStatusCode" type="hs:BiologicalParentDeterminationStatusCodeType" substitutionGroup="hs:BiologicalParentDeterminationStatusAbstract">
+    <xs:annotation>
+      <xs:documentation>A list that describes the status of the determination of a biological relationship between a putative parent and a child.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="BiologicalParentDeterminationStatusText" type="nc:TextType" substitutionGroup="hs:BiologicalParentDeterminationStatusAbstract">
+    <xs:annotation>
+      <xs:documentation>A narrative alternative to BiologicalParentDeterminationStatusCode to describe the status of the determination of a biological relationship between a putative parent and a child.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="Child" type="hs:ChildType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A person who was an unmarried minor at the time of his or her involvement in a judicial proceeding or non-judicial program.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ChildAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for ChildType.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ChildBirthOrderNumeric" type="niem-xs:nonNegativeInteger" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A numeric description of the order in which a child was born to a parent, in relationship to the child's biological siblings.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ChildRemovalDate" type="nc:DateType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A date the child was removed from caregiver's custody.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ChildSupportEnforcementOrganization" type="hs:ChildSupportEnforcementOrganizationType" substitutionGroup="nc:Organization" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An organization charged with enforcing child support.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ChildSupportEnforcementOrganizationAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for ChildSupportEnforcementOrganizationType.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ChildSupportEnforcementServiceID" type="niem-xs:string" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A unique alphanumeric value assigned locally to each child-support-enforcement agency (e.g., State Disbursement Unit Identifier).</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ChildWelfareOrganization" type="nc:OrganizationType" substitutionGroup="nc:Organization" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An organization charged with protecting the welfare of children.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="CountyOfCustodyText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A county in which a child resides.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="EmployerCategoryText" type="niem-xs:string" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A kind of Employer</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="FamilyIdentification" type="nc:IdentificationType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An identification assigned to a family for the purposes of discovering and connecting related records.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="FosterCareCurrentPlacementDescriptionText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A description of the setting of an out-of-home placement.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="FosterCareDischargeReasonDescriptionText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A description of the reason for discharge from out-of-home care.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="FosterCareFirstRemovalDate" type="nc:DateType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A date of first removal from a foster home.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="FosterCareFundingSourceAbstract" abstract="true">
+    <xs:annotation>
+      <xs:documentation>A data concept for describing the source of funding for foster care.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="FosterCareFundingSourceText" type="nc:TextType" substitutionGroup="hs:FosterCareFundingSourceAbstract">
+    <xs:annotation>
+      <xs:documentation>A source for foster care funding.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="FosterCareLastRemovalDate" type="nc:DateType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A date of most recent removal from a foster home.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="FosterCareMonthlyPaymentAmount" type="nc:AmountType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An amount of the most recent full month expenditures for the juvenile including any negative or positive payments.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="FosterCarePreviousPlacementSettingsQuantity" type="niem-xs:nonNegativeInteger" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A number of previous placement settings during this removal episode.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="FosterCarePriorDischargeDate" type="nc:DateType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A date a juvenile was discharged from the most recent foster care episode.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="FosterCareRemovalReasonAbstract" abstract="true">
+    <xs:annotation>
+      <xs:documentation>A data concept for expressing the reasons a child or youth was removed from a foster care placement.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="FosterCareRemovalReasonText" type="nc:TextType" substitutionGroup="hs:FosterCareRemovalReasonAbstract">
+    <xs:annotation>
+      <xs:documentation>A data type for reasons a child was removed from a foster care placement.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="FosterCareTotalRemovalQuantity" type="niem-xs:nonNegativeInteger" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A total number of removals from foster home to date.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="FosterParentChildAssociation" type="hs:ParentChildAssociationType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An association between a child and a foster parent.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="FosterParentChildAssociationAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for FosterParentChildAssociationType.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="GoalObjective" type="hs:GoalObjectiveType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A subset of a service plan goal.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="GoalObjectiveAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for GoalObjectiveType.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="HouseholdMemberIndicator" type="niem-xs:boolean" nillable="true">
+    <xs:annotation>
+      <xs:documentation>True if the associated person is a household member; false otherwise.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="MostRecentFosterCareReviewDate" type="nc:DateType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A date of the most recent foster care review.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="OutOfStatePlacementIndicator" type="niem-xs:boolean" nillable="true">
+    <xs:annotation>
+      <xs:documentation>True if the juvenile is placed out of state; false otherwise.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="Parent" type="nc:PersonType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A father or mother of a person.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ParentChildAssociation" type="hs:ParentChildAssociationType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An association between a child and a person who is in a parent role toward that child.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ParentChildAssociationAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for ParentChildAssociationType.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ParentChildKinshipCategoryAbstract" abstract="true">
+    <xs:annotation>
+      <xs:documentation>A data concept for describing the nature of the relationship from a parent to a child.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ParentChildKinshipCategoryCode" type="hs:ParentChildKinshipCategoryCodeType" substitutionGroup="hs:ParentChildKinshipCategoryAbstract" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A code list that describes the nature of the relationship from a parent to a child.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ParentChildKinshipCategoryText" type="nc:TextType" substitutionGroup="hs:ParentChildKinshipCategoryAbstract" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A kind of relationship from a parent to a child.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonAssociationCategoryAbstract" abstract="true">
+    <xs:annotation>
+      <xs:documentation>A data concept for a kind of association between persons.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonAssociationCategoryDescriptionText" type="nc:TextType" substitutionGroup="hs:PersonAssociationCategoryAbstract">
+    <xs:annotation>
+      <xs:documentation>A description of a kind of association between persons.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonOtherKinAssociation" type="hs:PersonOtherKinAssociationType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A directed association that describes the kinship or other close personal relationship between the source object and the target object. The relationship between a parent and a child should be captured using the ParentChildAssociation</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonOtherKinAssociationAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for PersonOtherKinAssociationType.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonOtherKinAssociationCategoryAbstract" abstract="true">
+    <xs:annotation>
+      <xs:documentation>A data concept for describing the kinship or other close personal relationship that exists from the source person to the target person.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonOtherKinAssociationCategoryCode" type="hs:PersonOtherKinAssociationCodeType" substitutionGroup="hs:PersonOtherKinAssociationCategoryAbstract" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A code list that describes the nature of the kinship or other close personal relationship from a source person to a target person.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonOtherKinAssociationCategoryText" type="nc:TextType" substitutionGroup="hs:PersonOtherKinAssociationCategoryAbstract">
+    <xs:annotation>
+      <xs:documentation>A kind of kinship or other close personal relationship that exists from the source person to the target person.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonUnionAtBirthIndicator" type="niem-xs:boolean" nillable="true">
+    <xs:annotation>
+      <xs:documentation>True if a child's biological parents were in a Person Union with each other at the time of the child''s birth; false otherwise.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PersonUnionAtConceptionIndicator" type="niem-xs:boolean" nillable="true">
+    <xs:annotation>
+      <xs:documentation>True if a child's biological parents were in a Person Union with each other at the time of the child''s conception; false otherwise.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PrimaryGoalIndicator" type="niem-xs:boolean" nillable="true">
+    <xs:annotation>
+      <xs:documentation>True if this is the primary goal of this service plan; false otherwise.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PutativeParentChildAssociation" type="hs:PutativeParentChildAssociationType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An association between a child and a person who is alleged to be the child's biological parent.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PutativeParentChildAssociationAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for PutativeParentChildAssociationType.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="RemovalMannerDescriptionText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A description of the manner of removal from home for current placement episode.  Examples include:  voluntary, court ordered, not yet determined.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="RemovalTransactionDate" type="nc:DateType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A date of the latest removal.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="SchoolAttendanceDescriptionText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A description of a student's attendance at a school.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="SchoolAttendanceIssue" type="hs:SchoolAttendanceIssueType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A student's attendance issue at a school.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="SchoolClass" type="hs:SchoolClassType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A particular class at a school. This is class dedicated to a subject rather than the concept of a group of students graduating together.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="SchoolClassAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for SchoolClassType.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="SchoolClassLetterGradeAbstract" abstract="true">
+    <xs:annotation>
+      <xs:documentation>A data concept for expressing a student's letter grade for an academic course.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="SchoolClassLetterGradeText" type="nc:TextType" substitutionGroup="hs:SchoolClassLetterGradeAbstract" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A letter grade received in a school class.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="SchoolClassName" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A name of a school class.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="SchoolClassTeacherFullName" type="nc:PersonNameTextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A full name of a teacher for a school class.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="SchoolClassTime" type="niem-xs:time" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A time at which a school class begins.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="SchoolEnrollmentDate" type="nc:DateType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A date on which a student enrolled in a school.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="SchoolEnrollmentWithdrawReasonText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A reason for a student's withdrawal from school.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="SchoolExpulsion" type="hs:SchoolExpulsionType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A student's expulsion from school.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="SchoolExpulsionIndicator" type="niem-xs:boolean" nillable="true">
+    <xs:annotation>
+      <xs:documentation>True if the student has been expelled; false otherwise.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="SchoolGPAText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A student's Grade Point Average (GPA) at a school.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="SchoolPerformanceText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A short description of a student's performance, such as Above Average, Average, Below Average.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="SchoolSchedule" type="hs:SchoolScheduleType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A student's schedule at the school being attended.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="SchoolScheduleAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for SchoolScheduleType.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="SchoolSpecialEducationIndicator" type="niem-xs:boolean" nillable="true">
+    <xs:annotation>
+      <xs:documentation>True if the student is receiving special education; false otherwise.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="SchoolStudentAssociation" type="hs:SchoolStudentAssociationType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An association between a school and a student attending there.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="SchoolStudentAssociationAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for SchoolStudentAssociationType.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="SchoolStudentID" type="niem-xs:string" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An identifier assigned to a student by the school being attended.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="SchoolTermText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A short description of the term being attended, e.g Fall YY, Spring YY, Summer YY.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ServicePlanGoal" type="hs:ServicePlanGoalType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A service plan goal.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ServicePlanGoalAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for ServicePlanGoalType.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="SourcePerson" type="nc:PersonType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A person that is the start point of a directed association</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="StepParentChildAssociation" type="hs:ParentChildAssociationType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An association between a child and a person who is in a Person Union with one of the child's biological parents.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="SurrogateParentChildAssociation" type="hs:ParentChildAssociationType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An association between a child and a person who participated in one or more phases of the child's conception and gestation (for example, egg donor, sperm donor, maternal surrogate).</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="TargetPerson" type="nc:PersonType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A person that represents the end point of a directed association</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="TerminationParentalRightsDate" type="nc:DateType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A date that legal rights between a parent and a child were terminated.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="TerminationParentalRightsIndicator" type="niem-xs:boolean" nillable="true">
+    <xs:annotation>
+      <xs:documentation>True if legal rights between the parent and child have been terminated; false otherwise.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="WagesAugmentationPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An augmentation point for WagesType.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="WagesBasePayAmount" type="nc:AmountType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An amount of an employee's initial rate of compensation, excluding extra lump sum compensation or increases in the rate of pay. An employee's base pay can be expressed as a base hourly rate of pay or as an annual salary.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="WagesBasicSalaryAmount" type="nc:AmountType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An amount of employee compensation quoted on an annual basis.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="WagesDisbursingDate" type="nc:DateType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A date wages were disbursed to receipient.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="WagesFederalTaxWithheldAmount" type="nc:AmountType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An amount of federal tax witheld.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="WagesFederalTaxableAmount" type="nc:AmountType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An amount of wages subject to federal tax.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="WagesGrossPayAmount" type="nc:AmountType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An amount of an employee's pay of any kind  before any deductions are made by the employer.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="WagesPayBasicCode" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A code indicating the type of wages.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="WagesPayGradeCode" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A classification of the pay grade.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="WagesPayPeriodEndDate" type="nc:DateType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A last date wages are included in a payment.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="WagesPayPlanCode" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A code indicating the pay plan.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="WagesPayStatusCode" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A code indicating the status of payment of wages.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="WagesPayStepText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A description of the wage ranges for pay grades.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="WagesPayrollOfficeNumberText" type="nc:TextType">
+    <xs:annotation>
+      <xs:documentation>A description of the office where payroll is administered.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="WagesRetiredPayEntitlementEffectiveDate" type="nc:DateType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A date retirement entitlement pay was effective.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="WagesStateTaxWithheldAmount" type="nc:AmountType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An amount of state tax witheld.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="WagesStateTaxableAmount" type="nc:AmountType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An amount of wages subject to state tax.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="WagesTotalBasePayAllDrillsAmount" type="nc:AmountType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A total amount of all military wages from all sources.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+</xs:schema>

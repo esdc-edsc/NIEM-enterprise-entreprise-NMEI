@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:prog="http://interoperability.gc.ca/program/Program/2.0/"
+    xmlns:nc="http://release.niem.gov/niem/niem-core/4.0/" xmlns:structures="http://release.niem.gov/niem/structures/4.0/"
+    targetNamespace="http://interoperability.gc.ca/program/Program/2.0/" elementFormDefault="qualified"
+    version="2.0">
+    <xs:annotation>
+        <xs:documentation>Elements for program related activities.</xs:documentation>
+    </xs:annotation>
+
+
+    <xs:import namespace="http://interoperability.gc.ca/person/Person/2.0/" schemaLocation="../../person/2.0/Person.xsd"/>
+    <xs:import namespace="http://release.niem.gov/niem/niem-core/4.0/" schemaLocation="../../../niem/niem-core/4.0/niem-core.xsd"/>
+    <xs:import namespace="http://release.niem.gov/niem/structures/4.0/" schemaLocation="../../../niem/utility/structures/4.0/structures.xsd"/>
+
+    <xs:element name="PersonProgramAssociation" type="prog:PersonProgramAssociationType"/>
+    
+    <xs:complexType name="PersonProgramAssociationType">
+        <xs:annotation>
+            <xs:documentation>A data type for the association between the Person and any program </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="structures:AssociationType">
+                <xs:sequence>
+                    <xs:element ref="nc:Person" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="prog:ProgramBenefitRequest" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="ProgramBenefitRequest" type="prog:ProgramBenefitRequestType"/>
+
+    <xs:complexType name="ProgramBenefitRequestType">
+        <xs:annotation>
+            <xs:documentation>A data type for the request of a program benefit</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="structures:ObjectType">
+                <xs:sequence>
+                    <xs:element ref="nc:Program" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="nc:Request" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+</xs:schema>

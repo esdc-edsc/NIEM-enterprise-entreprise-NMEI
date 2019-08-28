@@ -1,0 +1,257 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:structures="http://release.niem.gov/niem/structures/4.0/" xmlns:nc="http://release.niem.gov/niem/niem-core/4.0/"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:j="http://release.niem.gov/niem/domains/jxdm/6.1/" xmlns:tran="http://interoperability.gc.ca/technical/transaction/2.0/"
+	xmlns:sort="urn:us:gov:ic:ism" xmlns:dmt="http://interoperability.gc.ca/document/DocumentAndMetadata/2.0/"
+	targetNamespace="http://interoperability.gc.ca/document/DocumentAndMetadata/2.0/" elementFormDefault="qualified" version="2.0">
+	<!-- =================================================================== -->
+	<!-- ===== Imports                                                 ===== -->
+	<!-- =================================================================== -->
+	<xs:import namespace="http://release.niem.gov/niem/niem-core/4.0/" schemaLocation="../../../niem/niem-core/4.0/niem-core.xsd"/>
+	<xs:import namespace="http://release.niem.gov/niem/structures/4.0/" schemaLocation="../../../niem/utility/structures/4.0/structures.xsd"/>
+	<xs:import namespace="urn:us:gov:ic:ism" schemaLocation="../../technical/2.0/sort.xsd"/>
+	<xs:import namespace="http://interoperability.gc.ca/technical/transaction/2.0/" schemaLocation="../../technical/2.0/transaction.xsd"/>
+	<xs:import namespace="http://release.niem.gov/niem/codes/iso_639-3/4.0/" schemaLocation="../../../niem/codes/iso_639-3/4.0/iso_639-3.xsd"/>
+	<xs:import namespace="http://release.niem.gov/niem/domains/jxdm/6.1/" schemaLocation="../../../niem/domains/jxdm/6.1/jxdm.xsd"/>
+	<!-- =================================================================== -->
+	<!-- ===== Elements                                                ===== -->
+	<!-- =================================================================== -->
+	<xs:element name="DocumentAndMetadataAugmentationPoint" abstract="true"/>
+	<xs:element name="DocumentVersionText" type="nc:TextType" substitutionGroup="nc:DocumentAugmentationPoint"/>
+	<xs:element name="DocumentMetadata" type="dmt:DocumentMetadataType"/>
+	<xs:complexType name="MetadataType">
+		<xs:annotation>
+			<xs:documentation>A data type for information that further qualifies primary data; data about data.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="nc:MetadataType">
+				<xs:sequence>
+					<!--      <xs:element ref="nc:CaveatText" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:AdministrativeID" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:DistributionText" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:EffectiveDate" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:ExpirationDate" minOccurs="0" maxOccurs="unbounded"/>-->
+					<xs:element ref="nc:LastUpdatedDate" minOccurs="0" maxOccurs="unbounded"/>
+					<!--<xs:element ref="nc:LastVerifiedDate" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:ProbabilityPercent" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:QualityComment" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:ConfidencePercent" minOccurs="0" maxOccurs="unbounded"/>-->
+					<xs:element ref="nc:ReportedDate" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="nc:ReportingOrganizationText" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="nc:ReportingPersonRoleText" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="nc:ReportingPersonText" minOccurs="0" maxOccurs="unbounded"/>
+					<!--<xs:element ref="nc:SensitivityText" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:CreatorName" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:DescriptionText" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:SourceIDText" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:SourceContactPersonText" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:PublisherName" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:ReleaseDate" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:RepositoryID" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:SourceText" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:LanguageAbstract" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:Comment" minOccurs="0" maxOccurs="unbounded"/> -->
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="IdentificationType">
+		<xs:complexContent>
+			<xs:restriction base="nc:IdentificationType">
+				<xs:annotation>
+					<xs:documentation>A data type for a representation of an identity.</xs:documentation>
+				</xs:annotation>
+				<xs:sequence>
+					<xs:element ref="nc:IdentificationID" minOccurs="0" maxOccurs="unbounded"/>
+					<!--<xs:element ref="nc:IdentificationJurisdiction" minOccurs="0" maxOccurs="unbounded"/>
+                                                <xs:element ref="nc:IdentificationCategoryAbstract" minOccurs="0" maxOccurs="unbounded"/>
+                                                <xs:element ref="nc:IdentificationCategoryDescriptionText" minOccurs="0" maxOccurs="unbounded"/>
+                                                <xs:element ref="nc:IdentificationEffectiveDate" minOccurs="0" maxOccurs="unbounded"/>
+                                                <xs:element ref="nc:IdentificationExpirationDate" minOccurs="0" maxOccurs="unbounded"/>
+                                                <xs:element ref="nc:IdentificationSourceText" minOccurs="0" maxOccurs="unbounded"/>
+                                                <xs:element ref="nc:IdentificationStatus" minOccurs="0" maxOccurs="unbounded"/>-->
+					<xs:element ref="nc:IdentificationAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<!--<xs:element name="ThreatScanStatus" substitutionGroup="nc:Status"/>
+	<xs:element name="OCRScanStatus" substitutionGroup="nc:Status"/> -->
+	<xs:element name="SubjectPersonIdentification" type="dmt:IdentificationType"/>
+	<xs:element name="ModifiedByIdentification" type="dmt:IdentificationType"/>
+	<!-- <xs:element name="DocumentAcquisitionText" type="nc:TextType"/> -->
+	<xs:complexType name="DocumentMetadataType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">A data type for an electronic document and associated metadata transferred to ESDC by a citizen or a Program or an Agent. </xs:documentation>
+			<xs:documentation>Data elements expected to be used by the services are listed below. This information is supplemental to NIEM core documentation for core data elements used in the services. </xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="dmt:MetadataType">
+				<xs:sequence>
+					<!--	<xs:element ref="dmt:DocumentAcquisitionText" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>A data type for method of document upload. This is a free text received from client application.</xs:documentation>
+						</xs:annotation>
+					</xs:element>-->
+					<xs:element ref="dmt:SubjectPersonIdentification" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>A data for metadata about person who is the subject of the document.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="dmt:ModifiedByIdentification" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>A data about person or Organization that modified the document as provided by the partner system.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="j:CaseNumberText" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>A data for metadata about identification of the case associated with the document as provided by the partner system.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="nc:Program" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>A data type for identification of a Program.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="tran:ApplicationProfileName" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>A data type for identification of a Program Solution.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="nc:SystemName" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>A name of partner system that created the document.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<!--<xs:element ref="dmt:ThreatScanStatus" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>A data for tracking the security scan of a document.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="dmt:OCRScanStatus" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>A data for tracking the OCR scan of a document.</xs:documentation>
+						</xs:annotation>
+					</xs:element>-->
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="DocumentAndMetadata" type="dmt:DocumentAndMetadataType">
+		<xs:unique name="UniqueSortOrder">
+			<xs:selector xpath=".//*" /> 
+			<xs:field xpath="@sort:order" /> 
+		</xs:unique>
+	</xs:element>
+	<xs:complexType name="DocumentType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">A data type for electronic document transferred to ESDC by a citizen or an agent or a automated system of a Program. </xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="nc:DocumentType">
+				<xs:sequence>
+					<xs:element ref="nc:DocumentCategoryAbstract" minOccurs="0" maxOccurs="unbounded"/>
+					<!--      <xs:element ref="nc:DocumentSensitivityAbstract" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:CaveatText" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:DocumentAlternativeTitleText" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:DocumentSoftwareName" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:DocumentApprovedIndicator" minOccurs="0" maxOccurs="unbounded"/>-->
+					<xs:element ref="nc:DocumentBinary" minOccurs="0" maxOccurs="unbounded"/>
+					<!--<xs:element ref="nc:DocumentCategoryDescriptionText" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:DocumentContentListText" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:DocumentCopyrightIndicator" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:DocumentCountry" minOccurs="0" maxOccurs="unbounded"/>-->
+					<xs:element ref="nc:DocumentCreationDate" minOccurs="0" maxOccurs="unbounded"/>
+					<!--      <xs:element ref="nc:DocumentDescriptionText" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:DocumentDispositionAuthorityName" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:DocumentDispositionInstructionText" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:DocumentDisputedIndicator" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:DocumentDisputedReasonText" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:DocumentEffectiveDate" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:DocumentEntrySubmitter" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:DocumentExpirationDate" minOccurs="0" maxOccurs="unbounded"/>-->
+					<xs:element ref="nc:DocumentFileControlID" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="nc:DocumentFiledDate" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="nc:DocumentFileExtensionText" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="nc:DocumentFileName" minOccurs="0" maxOccurs="unbounded"/>
+					<!--      <xs:element ref="nc:DocumentFormatText" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:DocumentGroupID" minOccurs="0" maxOccurs="unbounded"/>-->
+					<xs:element ref="nc:DocumentIdentification" minOccurs="0" maxOccurs="unbounded"/>
+					<!--      <xs:element ref="nc:DocumentInformationCutOffDate" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:DocumentIntelligenceCategoryAbstract" minOccurs="0" maxOccurs="unbounded"/> 
+                                                            <xs:element ref="nc:DocumentKeywordText" minOccurs="0" maxOccurs="unbounded"/>-->
+					<xs:element ref="nc:DocumentLastModifiedDate" minOccurs="0" maxOccurs="unbounded"/>
+					<!--      <xs:element ref="nc:DocumentLocation" minOccurs="0" maxOccurs="unbounded"/>-->
+					<xs:element ref="nc:DocumentLocationURI" minOccurs="0" maxOccurs="unbounded"/>
+					<!--                  <xs:element ref="nc:DocumentManagementCyclePeriodText" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:DocumentMediaCategoryText" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:DocumentMediumText" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:DocumentOtherRecipient" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:DocumentPermanentRecordIndicator" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:DocumentPostDate" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:DocumentPrivacyActIndicator" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:DocumentPublicationDate" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:DocumentReceivedDate" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:DocumentRecipient" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:DocumentRelatedResourceText" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="nc:DocumentRightsText" minOccurs="0" maxOccurs="unbounded"/>
+					   <xs:element ref="nc:DocumentSequenceID" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:DocumentSource" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:DocumentSourceText" minOccurs="0" maxOccurs="unbounded"/>-->
+					<xs:element ref="nc:DocumentStatus" minOccurs="0" maxOccurs="unbounded"/>
+					<!--<xs:element ref="nc:DocumentSubjectAbstract" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:DocumentSummaryText" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:DocumentSupplementalMarkingText" minOccurs="0" maxOccurs="unbounded"/>-->
+					<xs:element ref="nc:DocumentTitleText" minOccurs="0" maxOccurs="unbounded"/>
+					<!--      <xs:element ref="nc:DocumentVitalIndicator" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:DocumentAuthor" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:DocumentContributor" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:DocumentCoverageAbstract" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:DocumentFormatCategoryText" minOccurs="0" maxOccurs="unbounded"/>-->
+					<xs:element ref="nc:DocumentLanguageAbstract" minOccurs="0" maxOccurs="unbounded"/>
+					<!--<xs:element ref="nc:DocumentSubmissionAmount" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:DocumentSubmitter" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:DocumentIssuanceDate" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:DocumentStatusDetails" minOccurs="0" maxOccurs="unbounded"/>
+                                                            <xs:element ref="nc:DocumentIssuanceLocation" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="nc:DocumentEUDataPrivacyIndicator" minOccurs="0" maxOccurs="unbounded"/>-->
+					<xs:element ref="nc:DocumentAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="Document" type="dmt:DocumentType"/>
+	<xs:element name="OriginalDocument" type="dmt:DocumentType"/>
+	<xs:complexType name="DocumentAndMetadataType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">A data type for electronic document transferred to ESDC by a citizen or an agent or a automated system of a Program. </xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="dmt:DocumentType">
+				<xs:sequence>
+					<xs:element ref="dmt:OriginalDocument" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>A data for original document information.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<!-- Element will be included when business is ready to implemente evidence that could support non-repudiation  
+                                                                        <xs:element ref="j:Evidence" minOccurs="0" maxOccurs="1"/> -->
+					<xs:element ref="dmt:DocumentMetadata" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tran:Transaction" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="DocumentAndMetadataList" type="dmt:DocumentAndMetadataListType"/>
+	<xs:complexType name="DocumentAndMetadataListType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">A list of electronic document transferred to ESDC by a citizen or an agent or a automated system of a Program.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="structures:ObjectType">
+				<xs:sequence>
+					<xs:element ref="dmt:DocumentAndMetadata" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tran:Transaction" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

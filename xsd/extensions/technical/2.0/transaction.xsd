@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://interoperability.gc.ca/technical/transaction/2.0/" version="2" xmlns:tran="http://interoperability.gc.ca/technical/transaction/2.0/"
+	xmlns:structures="http://release.niem.gov/niem/structures/4.0/" xmlns:nc="http://release.niem.gov/niem/niem-core/4.0/" xmlns:iso_639-3="http://release.niem.gov/niem/codes/iso_639-3/4.0/"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:niem-xs="http://release.niem.gov/niem/proxy/xsd/4.0/"
+	xmlns:fault="http://interoperability.gc.ca/fault/2.0/">
+
+	<xs:import schemaLocation="../../../niem/niem-core/4.0/niem-core.xsd" namespace="http://release.niem.gov/niem/niem-core/4.0/"/>
+	<xs:import schemaLocation="../../../niem/utility/structures/4.0/structures.xsd" namespace="http://release.niem.gov/niem/structures/4.0/"/>
+	<xs:import schemaLocation="../../../niem/proxy/xsd/4.0/xs.xsd" namespace="http://release.niem.gov/niem/proxy/xsd/4.0/"/>
+
+	<xs:import namespace="http://interoperability.gc.ca/fault/2.0/" schemaLocation="../../../../../../FAULT/2.0/Schemas/fault.xsd"/>
+
+	<xs:complexType name="TransactionApplicationProfileType">
+		<xs:annotation>
+			<xs:documentation>A data type for an application profile specification that is derived from ANSI/NIST-ITL 1-2011update 2013</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="structures:ObjectType">
+				<xs:sequence>
+					<xs:element ref="tran:ApplicationProfileOrganizationName" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tran:ApplicationProfileName" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tran:ApplicationProfileVersionIdentification" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tran:ApplicationComponentName" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tran:TransactionApplicationProfileAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:element name="TransactionSourceDocument" type="tran:TransactionDocumentType"/>
+
+	<xs:element name="TransactionSequenceNumber" type="tran:TransactionCountType"/>
+	<xs:element name="TransactionCount" type="tran:TransactionCountType"/>
+	<xs:element name="TransactionPageCount" type="tran:TransactionCountType"/>
+	<xs:element name="TransactionLimit" type="tran:TransactionCountType"/>
+
+	<xs:complexType name="TransactionCountType">
+		<xs:annotation>
+			<xs:documentation>A data type for transaction count.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="niem-xs:nonNegativeInteger"> </xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="TransactionPaging" type="tran:TransactionPagingType"/>
+	<xs:complexType name="TransactionPagingType">
+		<xs:annotation>
+			<xs:documentation>A data type for a paging of results</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="structures:ObjectType">
+				<xs:sequence>
+					<xs:element ref="tran:TransactionSequenceNumber" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tran:TransactionPageCount" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tran:TransactionLimit" minOccurs="1" maxOccurs="1"/>
+					<xs:element ref="tran:TransactionCount" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="TransactionDocumentAugmentationPoint" abstract="true"/>
+	<xs:complexType name="TransactionDocumentType">
+		<xs:annotation>
+			<xs:documentation>A data type for a biometric transaction</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="nc:DocumentType">
+				<xs:sequence>
+					<xs:element ref="tran:TransactionSequenceNumber" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tran:TransactionCount" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tran:TransactionDocumentAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="TransactionEntryUserID" substitutionGroup="nc:UserLogonID"/>
+	<xs:element name="TransactionApproverUserID" substitutionGroup="nc:UserLogonID"/>
+	<xs:element name="TransactionTokenList" type="nc:TokenListType"/>
+	<xs:complexType name="TransactionType">
+		<xs:annotation>
+			<xs:documentation>A data type for a transaction</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tran:TransactionTransitionType">
+				<xs:sequence>
+					<xs:element ref="tran:TransactionDestinationOrganization" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tran:TransactionOriginatingOrganization" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tran:TransactionPriorityValue" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tran:TransactionCategoryAbstract" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tran:TransactionSourceDocument" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="nc:UserLogonID" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tran:TransactionPaging" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tran:TransactionTokenList" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tran:TransactionTransitionLog" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="fault:Fault" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tran:TransactionAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="TransactionTransitionLog" type="tran:TransactionTransitionLogType"/>
+	<xs:element name="TransactionTransitionLogIdentification" type="nc:IdentificationType"/>
+	<xs:element name="TransactionTransitionLogAugmentationPoint" abstract="true"/>
+	<xs:attribute name="final" type="xs:boolean"/>
+	<xs:complexType name="TransactionTransitionLogType">
+		<xs:annotation>
+			<xs:documentation>A data type for a running log of monitoring when a transaction enters, exits or makes a transition within a system component</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="structures:ObjectType">
+				<xs:sequence>
+					<xs:element ref="tran:TransactionTransitionLogIdentification"/>
+					<xs:element ref="tran:TransactionTransition" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tran:TransactionTransitionLogAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+				<xs:attribute ref="tran:final" use="optional" default="false"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="TransactionTransitionAugmentationPoint" abstract="true"/>
+	<xs:complexType name="TransactionOperationNameType">
+		<xs:annotation>
+			<xs:documentation>A data type for transaction operation name.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="xs:NCName">
+				<xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="TransactionOperationName" type="tran:TransactionOperationNameType"/>
+	<xs:element name="TransactionTransition" type="tran:TransactionTransitionType"/>
+	<xs:complexType name="TransactionTransitionType">
+		<xs:annotation>
+			<xs:documentation>A data type for monitoring when a transaction enters, exits or makes a transition within a system component</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="structures:ObjectType">
+				<xs:sequence>
+					<xs:element ref="tran:TransactionDate" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tran:TransactionUTCDate" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tran:TransactionParentControlIdentification" minOccurs="0" maxOccurs="1"/>					
+					<xs:element ref="tran:TransactionControlIdentification" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tran:TransactionControlReferenceIdentification" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tran:TransactionOperationName" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tran:TransactionApplicationProfile" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tran:TransactionMajorVersionValue" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tran:TransactionMinorVersionValue" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="nc:FacilitySystemIdentification" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tran:TransactionReasonText" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tran:TransactionTransitionAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:element name="ApplicationComponentName" type="nc:TextType" nillable="true">
+		<xs:annotation>
+			<xs:documentation>A name of an application component</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ApplicationProfileName" type="nc:TextType" nillable="true">
+		<xs:annotation>
+			<xs:documentation>A name of an application profile specification</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ApplicationProfileOrganizationName" type="nc:TextType" nillable="true">
+		<xs:annotation>
+			<xs:documentation>A name of an agency or entity responsible for the specification of an application profile</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ApplicationProfileVersionIdentification" type="nc:IdentificationType" nillable="true">
+		<xs:annotation>
+			<xs:documentation>An identification of a version of an application profile specification</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="TransactionApplicationProfile" type="tran:TransactionApplicationProfileType" nillable="true">
+		<xs:annotation>
+			<xs:documentation>An application profile specificationfrom ANSI/NIST-ITL 1-2011 update 2013</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="TransactionApplicationProfileAugmentationPoint" abstract="true">
+		<xs:annotation>
+			<xs:documentation>An augmentation point for Transaction Application Profile</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="TransactionAugmentationPoint" abstract="true">
+		<xs:annotation>
+			<xs:documentation>An augmentation point for Transaction</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="TransactionCategoryAbstract" abstract="true">
+		<xs:annotation>
+			<xs:documentation>A data concept for a kind of transaction, as defined by the receiving agency</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="TransactionParentControlIdentification" type="nc:IdentificationType" nillable="true">
+		<xs:annotation>
+			<xs:documentation>An identification of a proceding related transaction where the original parent is the TransactionControlIdentification determined by the originating agency</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="TransactionControlIdentification" type="nc:IdentificationType" nillable="true">
+		<xs:annotation>
+			<xs:documentation>An identification of a transaction determined by the originating agency</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="TransactionControlReferenceIdentification" type="nc:IdentificationType" nillable="true">
+		<xs:annotation>
+			<xs:documentation>An identification of an original transaction control number (TCN) of a request, used in a transaction response</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="TransactionDate" type="nc:DateType" nillable="true">
+		<xs:annotation>
+			<xs:documentation>A date the transaction was sent by the user</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="TransactionDestinationOrganization" type="nc:OrganizationType" nillable="true">
+		<xs:annotation>
+			<xs:documentation>An organization to which the transaction is being sent</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="TransactionDomainName" type="nc:TextType" nillable="true">
+		<xs:annotation>
+			<xs:documentation>A name of the agency, entity, or implementation used for formatting the content of the transaction</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="TransactionMajorVersionValue" type="niem-xs:nonNegativeInteger" nillable="true">
+		<xs:annotation>
+			<xs:documentation>A current major version number of the ANSI/NIST-ITL standard implemented by the software or system creating the file. Always "05" for this version of the
+				standard</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="TransactionMinorVersionValue" type="niem-xs:nonNegativeInteger" nillable="true">
+		<xs:annotation>
+			<xs:documentation>A current minor version number of the ANSI/NIST-ITL standard implemented by the software or system creating the file. Always "00" for this version of the
+				standard</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="TransactionOriginatingOrganization" type="nc:OrganizationType" nillable="true">
+		<xs:annotation>
+			<xs:documentation>An organization originating the transaction</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="TransactionPriorityValue" type="niem-xs:nonNegativeInteger" nillable="true">
+		<xs:annotation>
+			<xs:documentation>An urgency with which transaction response is expected (1 is low, 9 is high)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="TransactionReasonText" type="nc:TextType" nillable="true">
+		<xs:annotation>
+			<xs:documentation>A reason for requesting the transaction</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="TransactionUTCDate" type="nc:DateType" nillable="true">
+		<xs:annotation>
+			<xs:documentation>A date and time of the transaction in universal Greenwich Mean Time (GMT) units</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Transaction" type="tran:TransactionType"/>
+</xs:schema>

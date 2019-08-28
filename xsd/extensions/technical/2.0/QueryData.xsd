@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://interoperability.gc.ca/technical/QueryData/2.0/" version="2" xmlns:tran="http://interoperability.gc.ca/technical/transaction/2.0/"
+	xmlns:query="http://interoperability.gc.ca/technical/QueryData/2.0/" xmlns:structures="http://release.niem.gov/niem/structures/4.0/" xmlns:nc="http://release.niem.gov/niem/niem-core/4.0/"
+	xmlns:iso_639-3="http://release.niem.gov/niem/codes/iso_639-3/4.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:proxy="http://interoperability.gc.ca/technical/proxy/2.0/" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" vc:minVersion="1.0">
+
+	<xs:import schemaLocation="../../../niem/niem-core/4.0/niem-core.xsd" namespace="http://release.niem.gov/niem/niem-core/4.0/"/>
+	<xs:import schemaLocation="../../../niem/codes/iso_639-3/4.0/iso_639-3.xsd" namespace="http://release.niem.gov/niem/codes/iso_639-3/4.0/"/>
+	<xs:import schemaLocation="../../../niem/utility/structures/4.0/structures.xsd" namespace="http://release.niem.gov/niem/structures/4.0/"/>
+	<xs:import schemaLocation="../../../niem/proxy/xsd/4.0/xs.xsd" namespace="http://release.niem.gov/niem/proxy/xsd/4.0/"/>
+	<xs:import schemaLocation="proxy.xsd" namespace="http://interoperability.gc.ca/technical/proxy/2.0/"/>
+	<xs:import schemaLocation="transaction.xsd" namespace="http://interoperability.gc.ca/technical/transaction/2.0/"/>
+
+	<xs:attribute name="expressionLanguage" type="xs:token" default="XPath"/>
+
+	<xs:element name="DataKey" substitutionGroup="proxy:Token"/>
+	<xs:element name="Parameter" substitutionGroup="proxy:Token"/>
+	<xs:element name="Value" substitutionGroup="proxy:Token"/>
+	<xs:element name="DataElement" substitutionGroup="proxy:Token"/>
+	<xs:element name="Date" type="nc:DateType"/>
+	<xs:element name="Language" type="iso_639-3:LanguageCodeType"/>
+
+	<xs:element name="Key" type="nc:TextType"/>
+	<xs:element name="Keys" type="query:KeysType"/>
+
+	<xs:complexType name="KeysType">
+		<xs:annotation>
+			<xs:documentation>The keys identified by any lookups</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="structures:ObjectType">
+				<xs:sequence>
+					<xs:element ref="query:Key" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:attribute name="actionCode" type="query:ActionCodeSimpleType"/>
+
+	<xs:element name="DataEntity" type="query:EntityType" nillable="false"/>
+	<xs:element name="DataLookup" type="query:ElementType" nillable="false"/>
+	<xs:element name="DataSelect" type="query:ElementType" nillable="false"/>
+
+	<xs:complexType name="EntityType">
+		<xs:annotation>
+			<xs:documentation xml:lang="eng-ca">The expressionLanguage indicates the expression language being used. The recipient must be capable of processing and interpreting the specified
+				expression language. XPath is the default, due to its ubiquity among XML processing technologies.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="structures:ObjectType">
+				<xs:sequence>
+					<xs:element ref="query:DataElement" minOccurs="1" maxOccurs="1"/>
+					<xs:element ref="query:DataKey" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="ElementType">
+		<xs:annotation>
+			<xs:documentation>The expressionLanguage indicates the expression language being used. The recipient must be capable of processing and interpreting the specified expression language. XPath
+				is the default, due to its ubiquity among XML processing technologies.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="structures:ObjectType">
+				<xs:sequence>
+					<xs:element ref="query:DataElement" minOccurs="1" maxOccurs="1"/>
+					<xs:element ref="query:Parameter" minOccurs="1" maxOccurs="1"/>
+					<xs:element ref="query:Value" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ExpressionType">
+		<xs:annotation>
+			<xs:documentation>The expressionLanguage indicates the expression language being used. The recipient must be capable of processing and interpreting the specified expression language. XPath
+				is the default, due to its ubiquity among XML processing technologies.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="structures:ObjectType">
+				<xs:sequence>
+					<xs:element ref="query:DataEntity" minOccurs="1" maxOccurs="1"/>
+					<xs:element ref="query:Keys" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="query:DataLookup" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="query:DataSelect" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+				<xs:attribute ref="query:expressionLanguage" use="optional"/>
+				<xs:attribute ref="query:actionCode" use="optional"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="Expression" type="query:ExpressionType"/>
+	<xs:element name="QueryAugmentationPoint" abstract="true"/>
+
+	<xs:complexType name="DataType">
+		<xs:sequence>
+			<xs:any namespace="##any" minOccurs="0" maxOccurs="unbounded" processContents="lax"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Data" type="query:DataType"/>
+
+	<xs:complexType name="QueryDataType">
+		<xs:complexContent>
+			<xs:annotation>
+				<xs:documentation> The QueryData type is to communicate to the query software component a request for an existing piece or pieces of information to be returned. The response to this
+					request is the same type. Data Query is designed to retrieve information by using that information's primary retrieval field, or key field. Selection Criteria: There are two types
+					of selection capabilities: 1) The first selection capability is called Key-Based or Element-Based selection. The Element-Based selection enables the requester to provide a value or
+					values, in the required fields. Then the responding component uses those values to find and return the requested information to the originating business software component. The
+					selection is enabled by supplying a Parameter (type) expression and a Key type expression when the Parameter expression is not the same as the Key expression then the query
+					software performs a lookup operation to find all the Keys that can be used to 2) The second type of selection capability is called Data Type Selection. Data Type selection enables
+					the requester to identify which Data Types within the noun are requested to be returned in the response. The Data Types are identified for retrieval by including Select (type)
+					expression(s). This Select expression will signify to the responding application that all of the data that corresponds to that Data Type is to be included in the response. The
+					response will indicate whether each Select expression could be performed (i.e. whether that data type is included in the reponse). </xs:documentation>
+			</xs:annotation>
+			<xs:extension base="structures:ObjectType">
+				<xs:sequence>
+					<xs:element ref="query:Expression" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="query:Keys" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="query:Date" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="query:Language" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="query:AdvancedCriteria" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="query:Data" minOccurs="1" maxOccurs="1"/>
+					<xs:element ref="query:QueryAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tran:Transaction" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="QueryData" type="query:QueryDataType"/>
+
+	<xs:simpleType name="ActionCodeSimpleType">
+		<xs:annotation>
+			<xs:documentation>The action values for query respnses.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:normalizedString">
+			<xs:enumeration value="Accepted"/>
+			<xs:enumeration value="Rejected"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:element name="AllTheseWordsText" type="nc:TextType" nillable="false">
+		<xs:annotation>
+			<xs:documentation>The result must contain all the words, so it is like result contains word1 AND word2 AND word3 ...</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ThisExactWordOrPhraseText" type="nc:TextType" nillable="false">
+		<xs:annotation>
+			<xs:documentation>The result must contain all the words exactly as entered.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="AnyOfTheseWordsText" type="nc:TextType" nillable="false">
+		<xs:annotation>
+			<xs:documentation>The result must contain any of the words, so it is like result contains word1 OR word2 OR word3 ...</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="NoneOfTheseWordsText" type="nc:TextType" nillable="false">
+		<xs:annotation>
+			<xs:documentation>The result must contain none of the words, so it is like result does NOT contain word1 AND does NOT contain word2 AND word3 ...</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:complexType name="AdvancedCriteriaType">
+		<xs:complexContent>
+			<xs:annotation>
+				<xs:documentation> Advanced search enables the requester to provide a value or values, in the required fields for an advanced Element-Based selection similar to the Google Advanced
+					Search. Specific </xs:documentation>
+			</xs:annotation>
+			<xs:extension base="structures:ObjectType">
+				<xs:sequence>
+					<xs:element ref="query:AllTheseWordsText" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="query:ThisExactWordOrPhraseText" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="query:AnyOfTheseWordsText" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="query:NoneOfTheseWordsText" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="AdvancedCriteria" type="query:AdvancedCriteriaType"/>
+</xs:schema>

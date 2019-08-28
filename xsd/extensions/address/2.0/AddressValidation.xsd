@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://interoperability.gc.ca/address/AddressValidation/2.0/" version="2" xmlns:add="http://interoperability.gc.ca/address/AddressValidation/2.0/"
+ xmlns:structures="http://release.niem.gov/niem/structures/4.0/"
+    xmlns:appinfo="http://release.niem.gov/niem/appinfo/4.0/" xmlns:ct="http://release.niem.gov/niem/conformanceTargets/3.0/" xmlns:nc="http://release.niem.gov/niem/niem-core/4.0/"
+    xmlns:iso_639-3="http://release.niem.gov/niem/codes/iso_639-3/4.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ncic="http://release.niem.gov/niem/codes/fbi_ncic/4.0/" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:niem-xs="http://release.niem.gov/niem/proxy/xsd/4.0/" xmlns:tran="http://interoperability.gc.ca/technical/transaction/2.0/">
+
+    <xs:import schemaLocation="../../../niem/niem-core/4.0/niem-core.xsd" namespace="http://release.niem.gov/niem/niem-core/4.0/"/>
+    <xs:import schemaLocation="../../../niem/utility/structures/4.0/structures.xsd" namespace="http://release.niem.gov/niem/structures/4.0/"/>
+    <xs:import schemaLocation="../../technical/2.0/transaction.xsd" namespace="http://interoperability.gc.ca/technical/transaction/2.0/"/>
+    <xs:import schemaLocation="../../../niem/codes/iso_639-3/4.0/iso_639-3.xsd" namespace="http://release.niem.gov/niem/codes/iso_639-3/4.0/"/>
+
+    <xs:element name="Addresses" type="add:AddressesType"/>
+    <xs:element name="AddressValidations" type="add:AddressValidationsType"/>
+    <xs:element name="AddressValidation" type="add:AddressValidationType"/>
+
+    <xs:element name="AddressValidationAugmentationPoint" abstract="true">
+        <xs:annotation>
+            <xs:documentation>An augmentation point for an Address Validation Type.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="AddressValidationsAugmentationPoint" abstract="true">
+        <xs:annotation>
+            <xs:documentation>An augmentation point for an Address Validations Type.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="ChangeText" type="nc:TextType"/>
+    <xs:element name="StatusCode" type="add:StatusCodeType"/>
+  
+    <xs:simpleType name="StatusCodeSimpleType">
+        <xs:annotation>
+            <xs:documentation>A data type for a A data type for a the status of an address validation/search.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Corrected">
+                <xs:annotation>
+                    <xs:documentation>Address was corrected</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Normal">
+                <xs:annotation>
+                    <xs:documentation>Address did not require any formatting</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="NotCorrect">
+                <xs:annotation>
+                    <xs:documentation>Address could not be corrected</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Invalid">
+                <xs:annotation>
+                    <xs:documentation>Address is invalid</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Valid">
+                <xs:annotation>
+                    <xs:documentation>Address is invalid</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="RecordsFound">
+                <xs:annotation>
+                    <xs:documentation>Address(es) found</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="ParameterError">
+                <xs:annotation>
+                    <xs:documentation>Address validation request is invalid, or too many records for search parameters</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Foreign">
+                <xs:annotation>
+                    <xs:documentation>Foreign Address</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="StatusCodeType">
+        <xs:annotation>
+            <xs:documentation>A data type for a the status of an address validation/search.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:extension base="add:StatusCodeSimpleType">
+                <xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType> 
+    
+    <xs:complexType name="AddressesType">
+        <xs:annotation>
+            <xs:documentation>A data type for one or more addresses</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="structures:ObjectType">
+                <xs:sequence>
+                    <xs:element ref="nc:Address" minOccurs="1" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="AddressValidationsType">
+        <xs:annotation>
+            <xs:documentation>A data type for one or more address validation transactions</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="structures:ObjectType">
+                <xs:sequence>
+                    <xs:element ref="add:AddressValidation" minOccurs="1" maxOccurs="unbounded"/>
+                    <xs:element ref="add:AddressValidationsAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="tran:Transaction" minOccurs="0" maxOccurs="1"></xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:complexType name="AddressValidationType">
+        <xs:annotation>
+            <xs:documentation>A data type for an address validation transaction</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="structures:ObjectType">
+                <xs:sequence>
+                    <xs:element ref="add:StatusCode" minOccurs="0" maxOccurs="1"/>
+                    <xs:element ref="add:ChangeText" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="nc:Address" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="add:AddressValidationAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="tran:Transaction" minOccurs="0" maxOccurs="1"></xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="LanguageCode" type="iso_639-3:LanguageCodeType" substitutionGroup="nc:AddressAugmentationPoint" nillable="true">
+        <xs:annotation>
+            <xs:documentation>A system of words or symbols used for communication.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+</xs:schema>

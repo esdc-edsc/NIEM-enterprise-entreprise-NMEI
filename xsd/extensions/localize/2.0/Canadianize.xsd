@@ -1,0 +1,28 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:nc="http://release.niem.gov/niem/niem-core/4.0/"
+	xmlns:add="http://interoperability.gc.ca/address/Address/2.0/"
+	xmlns:can="http://interoperability.gc.ca/localize/Canadianize/2.0/"
+	targetNamespace="http://interoperability.gc.ca/localize/Canadianize/2.0/" elementFormDefault="qualified" version="2.0">
+	<xs:annotation>
+		<xs:documentation>Elements for renaming NIEM elements with a Canadian vocabulary.</xs:documentation>
+	</xs:annotation>
+
+	<xs:import namespace="http://release.niem.gov/niem/niem-core/4.0/" schemaLocation="../../../niem/niem-core/4.0/niem-core.xsd"/>
+	<xs:import namespace="http://interoperability.gc.ca/address/Address/2.0/" schemaLocation="../../address/2.0/Address.xsd"/>
+	
+	<xs:element name="Province" substitutionGroup="add:State"/>
+	<xs:element name="ProvinceCapitalLocation" substitutionGroup="add:StateCapitalLocation"/>
+	<xs:element name="ProvinceOfficialLanguageCode" substitutionGroup="add:StateOfficialLanguageCode"/>
+	<xs:element name="ProvinceCategoryCode" substitutionGroup="add:StateCategoryCode"/>
+	<xs:element name="ProvincePopulationQuantity" substitutionGroup="add:StatePopulationQuantity"/>
+	<xs:element name="ProvinceHouseOfCommonsSeatQuantity" substitutionGroup="add:StateHouseOfRepresentativesSeatQuantity"/>
+	<xs:element name="ProvinceSenateSeatQuantity" substitutionGroup="add:StateSenateSeatQuantity"/>
+	<xs:element name="ProvinceLandAreaMeasure" substitutionGroup="add:StateLandAreaMeasure"/>
+	<xs:element name="ProvinceWaterAreaMeasure" substitutionGroup="add:StateWaterAreaMeasure"/>
+	<xs:element name="ProvinceAreaMeasure" substitutionGroup="add:StateAreaMeasure"/>
+	<xs:element name="LocationProvince" substitutionGroup="nc:LocationState"/>
+	<xs:element name="LocationProvinceName" substitutionGroup="nc:LocationStateName"/>
+	<xs:element name="LocationProvinceAbbreviatedName" substitutionGroup="add:LocationStateAbbreviatedName"/>
+	<xs:element name="ProvinceISO3166Code" substitutionGroup="nc:StateISO3166Code"/>
+	<xs:element name="ProvinceCode" substitutionGroup="nc:StateCode"/>	
+</xs:schema>

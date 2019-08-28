@@ -1,0 +1,851 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:emp="http://interoperability.gc.ca/employment/PersonEmploymentAssociation/2.0/"
+	xmlns:niem-xs="http://release.niem.gov/niem/proxy/xsd/4.0/" xmlns:structures="http://release.niem.gov/niem/structures/4.0/"
+	xmlns:nc="http://release.niem.gov/niem/niem-core/4.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:hs="http://release.niem.gov/niem/domains/humanServices/4.1/" xmlns:j="http://release.niem.gov/niem/domains/jxdm/6.1/"
+	xmlns:em="http://release.niem.gov/niem/domains/emergencyManagement/4.1/" xmlns:tran="http://interoperability.gc.ca/technical/transaction/2.0/"
+	xmlns:ip="http://release.niem.gov/niem/domains/infrastructureProtection/4.0/" xmlns:fault="http://interoperability.gc.ca/fault/2.0/"
+	targetNamespace="http://interoperability.gc.ca/employment/PersonEmploymentAssociation/2.0/"
+	xmlns:edu="http://interoperability.gc.ca/education/Education/2.0/" elementFormDefault="qualified" version="2.0">
+	<xs:annotation>
+		<xs:documentation>Elements for employment cases (inspections) for employment related programs.</xs:documentation>
+	</xs:annotation>
+
+	<xs:import namespace="http://release.niem.gov/niem/proxy/xsd/4.0/" schemaLocation="../../../niem/proxy/xsd/4.0/xs.xsd"/>
+	<xs:import namespace="http://release.niem.gov/niem/structures/4.0/" schemaLocation="../../../niem/utility/structures/4.0/structures.xsd"/>
+	<xs:import namespace="http://release.niem.gov/niem/niem-core/4.0/" schemaLocation="../../../niem/niem-core/4.0/niem-core.xsd"/>
+	<xs:import namespace="http://release.niem.gov/niem/domains/humanServices/4.1/" schemaLocation="../../../niem/domains/humanServices/4.1/hs.xsd"/>
+	<xs:import namespace="http://release.niem.gov/niem/domains/infrastructureProtection/4.0/"
+		schemaLocation="../../../niem/domains/infrastructureProtection/4.0/infrastructureProtection.xsd"/>
+	<xs:import namespace="http://release.niem.gov/niem/domains/jxdm/6.1/" schemaLocation="../../../niem/domains/jxdm/6.1/jxdm.xsd"/>
+	<xs:import namespace="http://release.niem.gov/niem/domains/emergencyManagement/4.1/"
+		schemaLocation="../../../niem/domains/emergencyManagement/4.1/emergencyManagement.xsd"/>
+	<xs:import namespace="http://interoperability.gc.ca/employment/NationalOccupationClassification/2.0/" schemaLocation="NationalOccupationClassification.xsd"/>
+	<xs:import namespace="http://interoperability.gc.ca/technical/transaction/2.0/" schemaLocation="../../technical/2.0/transaction.xsd"/>
+	<xs:import namespace="http://interoperability.gc.ca/person/Person/2.0/" schemaLocation="../../person/2.0/Person.xsd"/>
+	<xs:import namespace="http://interoperability.gc.ca/education/Education/2.0/" schemaLocation="../../education/2.0/Education.xsd"/>
+
+
+	<xs:element name="EmployeePositionDutiesText" type="nc:TextType"/>
+	<xs:element name="EmployeePositionRequiredJobSkillsText" type="nc:TextType"/>
+	<xs:element name="EmployeePositionEducationLevelRequiredCode" type="edu:StudentEducationLevelCodeType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The level of education that the subject must have attained to perform the job.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="EmployeePositionEducationRequiredText" type="nc:TextType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Any specific education required to perform the job.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="PersonEmploymentSeasonalIndicator" type="niem-xs:boolean">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">True if the subject has seasonal employment; false otherwise.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="PersonEmploymentFullTimeIndicatorReasonText" type="nc:TextType">
+		<xs:annotation>
+			<xs:documentation>A reason text when employment position is not fulltime.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:simpleType name="EmploymentPeriodCodeSimpleType">
+		<xs:annotation>
+			<xs:documentation>A data type for the period of employment.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="student">
+				<xs:annotation>
+					<xs:documentation>Student</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="casual">
+				<xs:annotation>
+					<xs:documentation>Casual</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="casualwithbenefits">
+				<xs:annotation>
+					<xs:documentation>Casual with benefits</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="term">
+				<xs:annotation>
+					<xs:documentation>As and when Required Term</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="indeterminate">
+				<xs:annotation>
+					<xs:documentation>Indeterminate</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="seasonal">
+				<xs:annotation>
+					<xs:documentation>Seasonal</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="EmploymentPeriodCodeType">
+		<xs:annotation>
+			<xs:documentation>A data type for a kind of employment period.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="emp:EmploymentPeriodCodeSimpleType">
+				<xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="EmploymentPeriodCode" type="emp:EmploymentPeriodCodeType"/>
+	<xs:complexType name="EmploymentPeriodType">
+		<xs:annotation>
+			<xs:documentation>A data type for employment period.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="structures:ObjectType">
+				<xs:sequence>
+					<xs:element ref="emp:EmploymentPeriodCode"/>
+					<xs:element ref="j:Term" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:element name="EmploymentPeriod" type="emp:EmploymentPeriodType"/>
+
+	<xs:simpleType name="LabourMarketImpactAssementExemptionCodeSimpleType">
+		<xs:annotation>
+			<xs:documentation>A data type for the type of labour market impact assessment exemption.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="T11">
+				<xs:annotation>
+					<xs:documentation>Non-Trade</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="T21">
+				<xs:annotation>
+					<xs:documentation>Trader (Free Trade Agreement (FTA))</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="T22">
+				<xs:annotation>
+					<xs:documentation>Investor (FTA)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="T23">
+				<xs:annotation>
+					<xs:documentation>Professional/Technician (FTA)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="T24">
+				<xs:annotation>
+					<xs:documentation>Intra-company Transferee (FTA)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="T25">
+				<xs:annotation>
+					<xs:documentation>Spouse (Colombia or Korea FTA)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="T33">
+				<xs:annotation>
+					<xs:documentation>GATS Professional-Gen Agreement on Trade in Serv.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="T12">
+				<xs:annotation>
+					<xs:documentation>Provincial/Territorial-International (currently not in use)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="T13">
+				<xs:annotation>
+					<xs:documentation>Canada-Provincial/Territorial</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="T43">
+				<xs:annotation>
+					<xs:documentation>CETA Independent Professional</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="T44">
+				<xs:annotation>
+					<xs:documentation>CETA Intra-corporate/company transferee</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="T46">
+				<xs:annotation>
+					<xs:documentation>CETA Investor</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="T47">
+				<xs:annotation>
+					<xs:documentation>CETA Contractual Service Supplier</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="C18">
+				<xs:annotation>
+					<xs:documentation>Atlantic Immigration Pilot Program</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="C10">
+				<xs:annotation>
+					<xs:documentation>Significant Benefit</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="C11">
+				<xs:annotation>
+					<xs:documentation>Entrepreneurs</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="C12">
+				<xs:annotation>
+					<xs:documentation>Intra-company transferees (including GATS)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="C13">
+				<xs:annotation>
+					<xs:documentation>Emergency repairs/out-of-warranty equip.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="C14">
+				<xs:annotation>
+					<xs:documentation>Film and Entertainment</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="C16">
+				<xs:annotation>
+					<xs:documentation>Francophone Mobility</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="A75">
+				<xs:annotation>
+					<xs:documentation>Significant Benefit</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="C20">
+				<xs:annotation>
+					<xs:documentation>Reciprocal employment</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="C21">
+				<xs:annotation>
+					<xs:documentation>Youth exchange programs</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="C22">
+				<xs:annotation>
+					<xs:documentation>Academic exchanges (Professors, visiting lecturers)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="C23">
+				<xs:annotation>
+					<xs:documentation>Performing arts</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="C31">
+				<xs:annotation>
+					<xs:documentation>Research</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="C32">
+				<xs:annotation>
+					<xs:documentation>Research (Educational co-op – post secondary)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="C33">
+				<xs:annotation>
+					<xs:documentation>Research (Educational co-op – secondary level)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="C44">
+				<xs:annotation>
+					<xs:documentation>Post-Doctoral Ph. D. fellows/award recipients</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="C45">
+				<xs:annotation>
+					<xs:documentation>Medical residents/fellows</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="C50">
+				<xs:annotation>
+					<xs:documentation>Charitable or Religious work</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="A70">
+				<xs:annotation>
+					<xs:documentation>live-in-caregiver class</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="LabourMarketImpactAssementExemptionCodeType">
+		<xs:annotation>
+			<xs:documentation>A data type for a kind of labour market impact assessment exemption.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="emp:LabourMarketImpactAssementExemptionCodeSimpleType">
+				<xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="LabourMarketImpactAssementExemptionCode" type="emp:LabourMarketImpactAssementExemptionCodeType"/>
+	<xs:element name="LabourMarketImpactAssementExemptionText" type="nc:TextType"/>
+	<xs:element name="LabourMarketImpactAssementExemptionReasonText" type="nc:TextType"/>
+	<xs:complexType name="LabourMarketImpactAssementExemptionType">
+		<xs:annotation>
+			<xs:documentation>A data type for scaling the base pay amount (in hours) based on the number of hours worked.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="structures:ObjectType">
+				<xs:sequence>
+					<xs:element ref="emp:LabourMarketImpactAssementExemptionCode" minOccurs="1" maxOccurs="1"/>
+					<xs:element ref="emp:LabourMarketImpactAssementExemptionText" minOccurs="1" maxOccurs="1"/>
+					<xs:element ref="emp:LabourMarketImpactAssementExemptionReasonText" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="LabourMarketImpactAssementExemption" type="emp:LabourMarketImpactAssementExemptionType"/>
+
+	<xs:element name="EmployeeHoursNumericAbstract" abstract="true">
+		<xs:annotation>
+			<xs:documentation>A number of hours spent at workplace or working in a given time period.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="EmployeeHoursPerDayNumeric" type="nc:NumericType" substitutionGroup="emp:EmployeeHoursNumericAbstract">
+		<xs:annotation>
+			<xs:documentation>A number of hours spent at workplace or working in a given day.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="EmployeeHoursPerWeekNumeric" type="nc:NumericType" substitutionGroup="emp:EmployeeHoursNumericAbstract">
+		<xs:annotation>
+			<xs:documentation>A number of hours spent at workplace or working in a given week.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="EmployeeHoursPerMonthNumeric" type="nc:NumericType" substitutionGroup="emp:EmployeeHoursNumericAbstract">
+		<xs:annotation>
+			<xs:documentation>A number of hours spent at workplace or working in a given month.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="WagesOvertimePayScaleType">
+		<xs:annotation>
+			<xs:documentation>A data type for scaling the base pay amount (in hours) based on the number of hours worked.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="structures:ObjectType">
+				<xs:sequence>
+					<xs:element ref="emp:WagesBasePayScaleFactor" minOccurs="1" maxOccurs="1"/>
+					<xs:element ref="emp:WorkedHoursQuantityAbstract" minOccurs="1" maxOccurs="1"/>
+					<xs:element ref="emp:WagesPayAmountAbstract" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="WagesOvertimePayScale" type="emp:WagesOvertimePayScaleType"/>
+
+	<xs:element name="AdditionalEmployeeCompensationAbstract" abstract="true"/>
+	<xs:simpleType name="AdditionalEmployeeCompensationCodeSimpleType">
+		<xs:annotation>
+			<xs:documentation>A data type for the type of compensation (other than wages/salary) that may be offered to an employee.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="room">
+				<xs:annotation>
+					<xs:documentation>Room</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="board">
+				<xs:annotation>
+					<xs:documentation>Board</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="meal">
+				<xs:annotation>
+					<xs:documentation>Meal allowance</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="travel">
+				<xs:annotation>
+					<xs:documentation>Travel allowance</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="vehicle">
+				<xs:annotation>
+					<xs:documentation>Use of a vehicle</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="leave">
+				<xs:annotation>
+					<xs:documentation>Paid vacation leave</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="living">
+				<xs:annotation>
+					<xs:documentation>Living allowance</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="bonus">
+				<xs:annotation>
+					<xs:documentation>Bonus pay</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="other">
+				<xs:annotation>
+					<xs:documentation>Other</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="AdditionalEmployeeCompensationCodeType">
+		<xs:annotation>
+			<xs:documentation>A data type for a kind of entity with the obligation.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="emp:AdditionalEmployeeCompensationCodeSimpleType">
+				<xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="AdditionalEmployeeCompensationCode" type="emp:AdditionalEmployeeCompensationCodeType"
+		substitutionGroup="emp:AdditionalEmployeeCompensationAbstract">
+		<xs:annotation>
+			<xs:documentation>Other non-monetaty compensation provided to the employee as part of the employment agreement.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="CompensationCodeSimpleType">
+		<xs:annotation>
+			<xs:documentation>A data type for the type of compensation (other than wages/salary) that may be offered to an employee.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="01">
+				<xs:annotation>
+					<xs:documentation>Monetary</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="02">
+				<xs:annotation>
+					<xs:documentation>Benefits</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="03">
+				<xs:annotation>
+					<xs:documentation>Leave</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="04">
+				<xs:annotation>
+					<xs:documentation>Other</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="CompensationCodeType">
+		<xs:annotation>
+			<xs:documentation>Other non-monetaty compensation provided to the employee as part of the employment agreement.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="emp:CompensationCodeSimpleType">
+				<xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="CompensationCode" type="emp:CompensationCodeType" substitutionGroup="nc:ObligationAugmentationPoint">
+		<xs:annotation>
+			<xs:documentation>Other non-monetaty compensation provided to the employee as part of the employment agreement.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="AdditionalEmployeeCompensationText" type="nc:TextType" substitutionGroup="emp:AdditionalEmployeeCompensationAbstract"/>
+	<xs:element name="CompensationText" type="nc:TextType" substitutionGroup="nc:ObligationAugmentationPoint"/>
+	<xs:element name="EmployerFundedEmployeeBenefitAbstract" abstract="true"/>
+	<xs:simpleType name="EmployerFundedEmployeeBenefitCodeSimpleType">
+		<xs:annotation>
+			<xs:documentation>A data type for the type of benefits that may be offered to an employee and may be partially/fully funded by the
+				employer.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="disability">
+				<xs:annotation>
+					<xs:documentation>Disability insurance</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="dental">
+				<xs:annotation>
+					<xs:documentation>Dental insurance</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="pension">
+				<xs:annotation>
+					<xs:documentation>Pension plan</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="medical">
+				<xs:annotation>
+					<xs:documentation>Medical insurance</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="extended medical">
+				<xs:annotation>
+					<xs:documentation>Extended medical insurance</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="EmployerFundedEmployeeBenefitCodeType">
+		<xs:annotation>
+			<xs:documentation>A data type for a kind of entity with the obligation.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="emp:EmployerFundedEmployeeBenefitCodeSimpleType">
+				<xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="EmployerFundedEmployeeBenefitCode" type="emp:EmployerFundedEmployeeBenefitCodeType"
+		substitutionGroup="emp:EmployerFundedEmployeeBenefitAbstract">
+		<xs:annotation>
+			<xs:documentation>A data type for scaling the base pay amount (in hours) based on the number of hours worked.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="EmployerFundedEmployeeBenefitText" type="nc:TextType" substitutionGroup="emp:EmployerFundedEmployeeBenefitAbstract"/>
+	<xs:element name="EmployerFundingLevelPercent" type="niem-xs:decimal"/>
+	<xs:complexType name="EmployerFundedEmployeeBenefitType">
+		<xs:annotation>
+			<xs:documentation>A data type for scaling the base pay amount (in hours) based on the number of hours worked.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="structures:ObjectType">
+				<xs:sequence>
+					<xs:element ref="emp:EmployerFundedEmployeeBenefitAbstract" minOccurs="1" maxOccurs="1"/>
+					<xs:element ref="emp:EmployerFundingLevelPercent" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="EmployerFundedEmployeeBenefit" type="emp:EmployerFundedEmployeeBenefitType"/>
+	<xs:element name="EmployeeWorkedHoursPerWeekQuantityLeaveAbstract" abstract="true"/>
+
+	<xs:element name="WorkedHoursPerDayQuantity" type="nc:QuantityType" substitutionGroup="emp:WorkedHoursQuantityAbstract">
+		<xs:annotation>
+			<xs:documentation>Concept for how many hours have been worked in a day.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="WorkedHoursPerWeekQuantity" type="nc:QuantityType" substitutionGroup="emp:WorkedHoursQuantityAbstract">
+		<xs:annotation>
+			<xs:documentation>Concept for how many hours have been worked in a week.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="EmployeeLeaveAbstract" abstract="true"/>
+	<xs:element name="EmployeeLeaveDaysPerMonthQuantity" type="nc:QuantityType" substitutionGroup="emp:EmployeeLeaveAbstract">
+		<xs:annotation>
+			<xs:documentation>Number of days per month that employee will be paid for time working.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="EmployeeLeaveDaysPerYearQuantity" type="nc:QuantityType" substitutionGroup="emp:EmployeeLeaveAbstract">
+		<xs:annotation>
+			<xs:documentation>Number of days per year that employee will be paid for time not working.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="EmployeeLeaveCompensationLevelPercent" type="niem-xs:decimal" substitutionGroup="emp:EmployeeLeaveAbstract">
+		<xs:annotation>
+			<xs:documentation>Additional percentage of wages or salary that the employee will be paid in lieu of time not working.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="WagesBasePayScaleFactor" type="nc:NonNegativeDecimalType">
+		<xs:annotation>
+			<xs:documentation>Factor to scale up the WagesBasePayAmount.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="WorkedHoursQuantityAbstract" abstract="true">
+		<xs:annotation>
+			<xs:documentation>Concept for how many hours have been worked in a period.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="WagesPayAmountAbstract" abstract="true"/>
+	<xs:element name="WagesPayAmountPerHour" type="nc:AmountType" substitutionGroup="emp:WagesPayAmountAbstract">
+		<xs:annotation>
+			<xs:documentation>An amount of an employee's rate of compensation per hour, including increases in the rate of pay due to additional hours
+				worked.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="WagesPayAmountPerDay" type="nc:AmountType" substitutionGroup="emp:WagesPayAmountAbstract">
+		<xs:annotation>
+			<xs:documentation>An amount of an employee's rate of compensation per day, including increases in the rate of pay due to additional hours
+				worked.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="WagesPayAmountPerWeek" type="nc:AmountType" substitutionGroup="emp:WagesPayAmountAbstract">
+		<xs:annotation>
+			<xs:documentation>An amount of an employee's rate of compensation per week, including increases in the rate of pay due to additional hours
+				worked.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="WagesPayAmountPerMonth" type="nc:AmountType" substitutionGroup="emp:WagesPayAmountAbstract">
+		<xs:annotation>
+			<xs:documentation>An amount of an employee's rate of compensation per month, including increases in the rate of pay due to additional hours
+				worked.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="WagesPayAmountPerYear" type="nc:AmountType" substitutionGroup="emp:WagesPayAmountAbstract">
+		<xs:annotation>
+			<xs:documentation>An amount of an employee's rate of compensation per year, including increases in the rate of pay due to additional hours
+				worked.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="EmployerSignature" type="j:SignatureType">
+		<xs:annotation>
+			<xs:documentation>Name and/or signature of the person who signed the employment offer.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="EmployeePositionFinancialAccountNumberID" substitutionGroup="nc:FinancialAccountNumberID"/>
+	<xs:element name="EmployeePositionIdentification" type="nc:IdentificationType" nillable="true"/>
+
+	<xs:element name="PersonEmploymentAssociationAugmentation" type="emp:PersonEmploymentAssociationAugmentationType"
+		substitutionGroup="nc:PersonEmploymentAssociationAugmentationPoint" nillable="true"/>
+	<xs:complexType name="PersonEmploymentAssociationAugmentationType">
+		<xs:annotation>
+			<xs:documentation>A data type for additional information about an employment.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="emp:EmployeePositionIdentification" minOccurs="0"/>
+			<xs:element ref="emp:EmployeePositionDutiesText" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="emp:EmployeePositionRequiredJobSkillsText" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="emp:EmployeePositionEducationLevelRequiredCode" minOccurs="0"/>
+			<xs:element ref="emp:EmployeePositionEducationRequiredText" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="emp:EmployeePositionFinancialAccountNumberID" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="em:RegistrationJurisdictionName" minOccurs="0"/>
+			<xs:element ref="emp:PersonEmploymentSeasonalIndicator" minOccurs="0"/>
+			<xs:element ref="emp:LabourMarketImpactAssementExemption" minOccurs="0"/>
+			<xs:element ref="emp:Wages" minOccurs="0"/>
+			<xs:element ref="emp:EmployeeHoursNumericAbstract" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="emp:WagesOvertimePayScale" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="emp:AdditionalEmployeeCompensationAbstract" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="emp:EmployerFundedEmployeeBenefit" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="emp:EmployeeLeaveAbstract" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="emp:EmployerSignature" minOccurs="0"/>
+			<xs:element ref="emp:PersonEmploymentFullTimeIndicatorReasonText" minOccurs="0"/>
+			<xs:element ref="emp:EmploymentPeriod" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="AssociationIdentification" type="nc:IdentificationType" substitutionGroup="nc:AssociationAugmentationPoint"/>
+	<xs:element name="AdditionalAssociationIdentification" type="nc:IdentificationType" substitutionGroup="nc:AssociationAugmentationPoint"/>
+	<xs:element name="WagesPayrollListText" substitutionGroup="hs:WagesPayrollOfficeNumberText" nillable="true"/>
+	<xs:element name="Wages" type="hs:WagesType"/>
+
+	<xs:element name="IncomeFederalTaxableAmount" type="nc:AmountType" nillable="true">
+		<xs:annotation>
+			<xs:documentation>An amount of income subject to federal tax.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="IncomeFederalTaxWithheldAmount" type="nc:AmountType" nillable="true">
+		<xs:annotation>
+			<xs:documentation>An amount of federal tax witheld.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="IncomeStateTaxableAmount" type="nc:AmountType" nillable="true">
+		<xs:annotation>
+			<xs:documentation>An amount of income subject to state tax.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="IncomeStateTaxWithheldAmount" type="nc:AmountType" nillable="true">
+		<xs:annotation>
+			<xs:documentation>An amount of federal tax witheld.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="IncomeDisbursingDate" type="nc:DateType" nillable="true">
+		<xs:annotation>
+			<xs:documentation>A date income was disbursed to receipient.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="IncomeGrossAmount" type="nc:AmountType" nillable="true">
+		<xs:annotation>
+			<xs:documentation>An amount of income of any kind before any deductions are made at the source.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="IncomeNetAmount" type="nc:AmountType" nillable="true">
+		<xs:annotation>
+			<xs:documentation>An amount of income of any kind after all deductions are made at the source.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="IncomeStatusCode" type="nc:TextType" nillable="true">
+		<xs:annotation>
+			<xs:documentation>A code indicating the status of receipt of income.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="IncomeDateRange" type="nc:DateRangeType">
+		<xs:annotation>
+			<xs:documentation>The data range during which the income was earned.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="IncomeCategoryText" type="nc:TextType">
+		<xs:annotation>
+			<xs:documentation>The general category of the type of income.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="IncomeDisbursementAugmentationPoint" abstract="true"/>
+
+	<xs:element name="IncomeDisbursement" type="emp:IncomeDisbursementType"/>
+	<xs:complexType name="IncomeDisbursementType">
+		<xs:annotation>
+			<xs:documentation>A data type income disbursed from any source.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="structures:ObjectType">
+				<xs:sequence>
+					<xs:element ref="emp:IncomeFederalTaxableAmount" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="emp:IncomeFederalTaxWithheldAmount" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="emp:IncomeStateTaxableAmount" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="emp:IncomeStateTaxWithheldAmount" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="emp:IncomeDisbursingDate" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="emp:IncomeGrossAmount" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="emp:IncomeNetAmount" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="emp:IncomeStatusCode" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="emp:IncomeCategoryText" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="emp:IncomeDateRange" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="emp:IncomeDisbursementAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="EmploymentWagesType">
+		<xs:annotation>
+			<xs:documentation>A data type for income received from any employment.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="hs:WagesType">
+				<xs:sequence>
+					<xs:element ref="hs:WagesRetiredPayEntitlementEffectiveDate" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="hs:WagesBasePayAmount" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="hs:WagesPayrollOfficeNumberText" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="hs:WagesBasicSalaryAmount" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="hs:WagesPayBasicCode" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="hs:WagesPayStepText" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="hs:WagesPayGradeCode" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="hs:WagesPayPlanCode" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="hs:WagesTotalBasePayAllDrillsAmount" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="hs:WagesAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:element name="EmploymentWages" type="emp:EmploymentWagesType" substitutionGroup="emp:IncomeAugmentationPoint"/>
+
+	<xs:element name="EmploymentIncome" type="emp:EmploymentIncomeType"/>
+	<xs:element name="EmploymentIncomeAugmentationPoint" abstract="true"/>
+	<xs:complexType name="EmploymentIncomeType">
+		<xs:annotation>
+			<xs:documentation>A data type for income received from any employment.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="structures:ObjectType">
+				<xs:sequence>
+					<xs:element ref="nc:Employee" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="nc:Employer" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="emp:IncomeDisbursement" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="emp:EmploymentIncomeAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:element name="IncomeRecipientAbstract" abstract="true">
+		<xs:annotation>
+			<xs:documentation>A data concept for the type of entities that can receive income.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="IncomeRecipientOrganization" type="nc:OrganizationType" substitutionGroup="emp:IncomeRecipientAbstract">
+		<xs:annotation>
+			<xs:documentation>An organization can be a recipient of income.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="IncomeRecipientPerson" type="nc:PersonType" substitutionGroup="emp:IncomeRecipientAbstract">
+		<xs:annotation>
+			<xs:documentation>A person can be a recipient of income.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="IncomeSourceAbstract" abstract="true">
+		<xs:annotation>
+			<xs:documentation>A data concept for the type of entities that can disburse income.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	
+	<xs:element name="IncomeSourceOrganization" type="nc:OrganizationType" substitutionGroup="emp:IncomeSourceAbstract">
+		<xs:annotation>
+			<xs:documentation>An organization can be a source of income.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="IncomeSourcePerson" type="nc:PersonType" substitutionGroup="emp:IncomeSourceAbstract">
+		<xs:annotation>
+			<xs:documentation>A person can be a source of income.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="IncomeSourceProgram" type="nc:ProgramType" substitutionGroup="emp:IncomeSourceAbstract">
+		<xs:annotation>
+			<xs:documentation>A program can be a source of income.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="OtherIncome" type="emp:OtherIncomeType"/>
+	<xs:element name="OtherIncomeAugmentationPoint" abstract="true"/>
+	<xs:complexType name="OtherIncomeType">
+		<xs:annotation>
+			<xs:documentation>A data type for income received from any source except employment.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="structures:ObjectType">
+				<xs:sequence>
+					<xs:element ref="emp:IncomeRecipientAbstract" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="emp:IncomeSourceAbstract" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="emp:IncomeDisbursement" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="emp:OtherIncomeAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:element name="Income" type="emp:IncomeType"/>
+	<xs:element name="IncomeAugmentationPoint" abstract="true"/>
+	<xs:complexType name="IncomeType">
+		<xs:annotation>
+			<xs:documentation>A data type for information about a person's income.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="structures:ObjectType">
+				<xs:sequence>
+					<xs:element ref="emp:EmploymentIncome" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="emp:OtherIncome" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="emp:IncomeAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:element name="WorkPermitHolder" type="emp:WorkPermitHolderType"/>
+	<xs:complexType name="WorkPermitHolderType">
+		<xs:annotation>
+			<xs:documentation>A data type for information about the instrument permitting a person to work in a country where they do not permanently
+				reside.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="structures:ObjectType">
+				<xs:sequence>
+					<xs:element ref="nc:RoleOfPerson" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="nc:Permit" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="nc:Address" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="emp:WorkPermitHolderAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="WorkPermitHolderAugmentationPoint" abstract="true">
+		<xs:annotation>
+			<xs:documentation>An augmentation point for WorkPermitHolderType.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+</xs:schema>

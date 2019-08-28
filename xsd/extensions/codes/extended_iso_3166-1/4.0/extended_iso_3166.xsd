@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<xs:schema targetNamespace="http://interoperability.gc.ca/codes/iso_3166-1/4.0/" version="1"
+	xsi:schemaLocation="http://release.niem.gov/niem/appinfo/4.0/ ../../../utility/appinfo/4.0/appinfo.xsd http://release.niem.gov/niem/conformanceTargets/3.0/ ../../../utility/conformanceTargets/3.0/conformanceTargets.xsd"
+	ct:conformanceTargets="http://reference.niem.gov/niem/specification/naming-and-design-rules/4.0/#ReferenceSchemaDocument" xmlns:appinfo="http://release.niem.gov/niem/appinfo/4.0/"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ext_iso_3166="http://interoperability.gc.ca/codes/iso_3166-1/4.0/" xmlns:ct="http://release.niem.gov/niem/conformanceTargets/3.0/"
+	xmlns:iso_3166="http://release.niem.gov/niem/codes/iso_3166-1/4.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<xs:annotation>
+		<xs:documentation>User Assigned Country and country subdivision codes. Source: Immigration, Refugee and Citizenship Canada; https://www.iso.org/iso-3166-country-codes.html.
+			https://www.iso.org/obp/ui/#iso:std:iso:3166:-1:ed-3:v1:en,fr</xs:documentation>
+	</xs:annotation>
+	<xs:import schemaLocation="../../../../niem/codes/iso_3166-1/4.0/iso_3166.xsd" namespace="http://release.niem.gov/niem/codes/iso_3166-1/4.0/"/>
+
+	<xs:simpleType name="UserAssignedCountryAlpha3CodeSimpleType">
+		<xs:annotation>
+			<xs:documentation>A data type for country, territory, or dependency codes. Sourced from ISO 3166 Part 1, v7-8.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="QBC">
+				<xs:annotation>
+					<xs:documentation>Wales</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="QCD">
+				<xs:annotation>
+					<xs:documentation>Azores</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="QCF">
+				<xs:annotation>
+					<xs:documentation>Canary Islands</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="QCH">
+				<xs:annotation>
+					<xs:documentation>Channel Islands</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="QCK">
+				<xs:annotation>
+					<xs:documentation>Madiera</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="QCM">
+				<xs:annotation>
+					<xs:documentation>Nevis</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="QCO">
+				<xs:annotation>
+					<xs:documentation>North Vietnam</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="QCS">
+				<xs:annotation>
+					<xs:documentation>Stateless</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="QCT">
+				<xs:annotation>
+					<xs:documentation>Tibet (Autonomous Region)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="QCX">
+				<xs:annotation>
+					<xs:documentation>China (Macao SAR)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="QRA">
+				<xs:annotation>
+					<xs:documentation>Northern Ireland</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="QRB">
+				<xs:annotation>
+					<xs:documentation>Scotland</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="QRG">
+				<xs:annotation>
+					<xs:documentation>England</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="CountryAlpha3CodeSimpleType">
+		<xs:union memberTypes="iso_3166:CountryAlpha3CodeSimpleType ext_iso_3166:UserAssignedCountryAlpha3CodeSimpleType"/>
+	</xs:simpleType>
+
+</xs:schema>

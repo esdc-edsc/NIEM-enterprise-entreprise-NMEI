@@ -1,0 +1,523 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:epc="http://interoperability.gc.ca/employment/EmploymentProgramCase/2.0/" xmlns:niem-xs="http://release.niem.gov/niem/proxy/xsd/4.0/"
+	xmlns:structures="http://release.niem.gov/niem/structures/4.0/" xmlns:nc="http://release.niem.gov/niem/niem-core/4.0/" xmlns:j="http://release.niem.gov/niem/domains/jxdm/6.1/"
+	xmlns:tran="http://interoperability.gc.ca/technical/transaction/2.0/" xmlns:add="http://interoperability.gc.ca/address/Address/2.0/" xmlns:con="http://interoperability.gc.ca/address/Contact/2.0/"
+	xmlns:org="http://interoperability.gc.ca/organization/Organization/2.0/" xmlns:emp="http://interoperability.gc.ca/employment/PersonEmploymentAssociation/2.0/"
+	xmlns:per="http://interoperability.gc.ca/person/Person/2.0/" xmlns:edu="http://interoperability.gc.ca/education/Education/2.0/"
+	targetNamespace="http://interoperability.gc.ca/employment/EmploymentProgramCase/2.0/" elementFormDefault="qualified" version="2.0">
+	<xs:annotation>
+		<xs:documentation>Elements for employment cases (inspections) for employment related programs.</xs:documentation>
+	</xs:annotation>
+
+	<xs:import namespace="http://release.niem.gov/niem/structures/4.0/" schemaLocation="../../../niem/utility/structures/4.0/structures.xsd"/>
+	<xs:import namespace="http://release.niem.gov/niem/niem-core/4.0/" schemaLocation="../../../niem/niem-core/4.0/niem-core.xsd"/>
+	<xs:import namespace="http://release.niem.gov/niem/proxy/xsd/4.0/" schemaLocation="../../../niem/proxy/xsd/4.0/xs.xsd"/>
+	<xs:import namespace="http://release.niem.gov/niem/domains/jxdm/6.1/" schemaLocation="../../../niem/domains/jxdm/6.1/jxdm.xsd"/>
+	<xs:import namespace="http://interoperability.gc.ca/employment/PersonResidenceAssociation/2.0/" schemaLocation="../../person/2.0/PersonResidenceAssociation.xsd"/>
+	<xs:import namespace="http://interoperability.gc.ca/employment/PersonEmploymentAssociation/2.0/" schemaLocation="PersonEmploymentAssociation.xsd"/>
+	<xs:import namespace="http://interoperability.gc.ca/technical/transaction/2.0/" schemaLocation="../../technical/2.0/transaction.xsd"/>
+	<xs:import namespace="http://interoperability.gc.ca/address/Address/2.0/" schemaLocation="../../address/2.0/Address.xsd"/>
+	<xs:import namespace="http://interoperability.gc.ca/address/Contact/2.0/" schemaLocation="../../address/2.0/Contact.xsd"/>
+	<xs:import namespace="http://interoperability.gc.ca/organization/Organization/2.0/" schemaLocation="../../organization/2.0/Organization.xsd"/>
+	<xs:import namespace="http://interoperability.gc.ca/education/Education/2.0/" schemaLocation="../../education/2.0/Education.xsd"/>
+	<xs:import namespace="http://interoperability.gc.ca/person/Person/2.0/" schemaLocation="../../person/2.0/Person.xsd"/>
+
+	<xs:element name="ProgramCaseAugmentationPoint" abstract="true"/>
+	<xs:complexType name="ProgramCaseType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Program Case</xs:documentation>
+			<xs:documentation xml:lang="en">An Program Case is a Case that pertains to one or more Programs.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="nc:CaseType">
+				<xs:sequence>
+					<xs:element ref="nc:Program" minOccurs="1" maxOccurs="unbounded"/>
+					<xs:element ref="epc:ProgramCaseAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="ProgramCase" type="epc:ProgramCaseType"/>
+	<xs:element name="EmploymentProgramCaseAugmentationPoint" abstract="true"/>
+	<xs:complexType name="EmploymentProgramCaseType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Employment Program Case</xs:documentation>
+			<xs:documentation xml:lang="en">An Employment Program Case is a Case that pertains to a Person's employment association with an organization within the context of one or more
+				Programs.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="epc:ProgramCaseType">
+				<xs:sequence>
+					<xs:element ref="nc:PersonEmploymentAssociation" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="emp:WorkPermitHolder" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="epc:EmploymentProgramCaseAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tran:Transaction" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="EmploymentProgramCase" type="epc:EmploymentProgramCaseType"/>
+
+	<xs:element name="ActivityResponsibleEntity" type="nc:EntityType" substitutionGroup="nc:ActivityAugmentationPoint" nillable="true">
+		<xs:annotation>
+			<xs:documentation>A person or organization responsible to perform an activity.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="ActivityReasonCodeSimpleType">
+		<xs:annotation>
+			<xs:documentation>A data type for the type of reasons for performing an activity.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="01">
+				<xs:annotation>
+					<xs:documentation>Reason to Suspect + Allegation</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="02">
+				<xs:annotation>
+					<xs:documentation>Past non-compliance (known non-compliance)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="03">
+				<xs:annotation>
+					<xs:documentation>Random Selection (Random)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="04">
+				<xs:annotation>
+					<xs:documentation>Predictive Model</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="05">
+				<xs:annotation>
+					<xs:documentation>Review under Ministerial Instructions</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="06">
+				<xs:annotation>
+					<xs:documentation>Other</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="ActivityReasonCodeType">
+		<xs:annotation>
+			<xs:documentation>A data type for a kind of labour market impact assessment exemption.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="epc:ActivityReasonCodeSimpleType">
+				<xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="ActivityReasonCode" type="epc:ActivityReasonCodeType" substitutionGroup="nc:ActivityAugmentationPoint" nillable="true">
+		<xs:annotation>
+			<xs:documentation>A data type for the types of reasons that justify performing an activity.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="ActivityCategoryCodeSimpleType">
+		<xs:annotation>
+			<xs:documentation>A data type for the types of activities.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="01">
+				<xs:annotation>
+					<xs:documentation>Desk-based with discretionary on-site (Paper Based)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="02">
+				<xs:annotation>
+					<xs:documentation>Desk-based with mandatory on-site (Paper Based and On-Site)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="03">
+				<xs:annotation>
+					<xs:documentation>On-site only (On-Site IRCC)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="04">
+				<xs:annotation>
+					<xs:documentation>Unannounced</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="400">
+				<xs:annotation>
+					<xs:documentation>R204(a) Canada-International Agreement </xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="401">
+				<xs:annotation>
+					<xs:documentation>R204(b) Provincial/Territorial-International</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="402">
+				<xs:annotation>
+					<xs:documentation>R204(c) Canada - Provincial/Territorial</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="403">
+				<xs:annotation>
+					<xs:documentation>R205(a) Significant Benefit</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="404">
+				<xs:annotation>
+					<xs:documentation>R205(b) Reciprocal Employment</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="405">
+				<xs:annotation>
+					<xs:documentation>R205(c) Designated by Minister</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="406">
+				<xs:annotation>
+					<xs:documentation>R205(d)Charitable/Religious work</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="407">
+				<xs:annotation>
+					<xs:documentation>R207 Applicants in Canada</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="421">
+				<xs:annotation>
+					<xs:documentation>Formal</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="422">
+				<xs:annotation>
+					<xs:documentation>Major Investigation-SISO</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="423">
+				<xs:annotation>
+					<xs:documentation>Selective</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="425">
+				<xs:annotation>
+					<xs:documentation>Auxiliary</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+
+	</xs:simpleType>
+	<xs:complexType name="ActivityCategoryCodeType">
+		<xs:annotation>
+			<xs:documentation>A data type for a kind of labour market impact assessment exemption.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="epc:ActivityCategoryCodeSimpleType">
+				<xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="ActivityCategoryCode" type="epc:ActivityCategoryCodeType" substitutionGroup="nc:ActivityAugmentationPoint" nillable="true">
+		<xs:annotation>
+			<xs:documentation>A person or organization responsible to perform an activity.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+	<xs:element name="RiskMediationIndicator" type="niem-xs:boolean" substitutionGroup="j:RiskAugmentationPoint" nillable="true"/>
+	<xs:element name="Risk" type="j:RiskType" substitutionGroup="nc:OrganizationAugmentationPoint" nillable="true"/>
+
+	<xs:simpleType name="CaseDispositionCodeSimpleType">
+		<xs:annotation>
+			<xs:documentation>A data type for the list of case dispositions/statuses.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="loaded">
+				<xs:annotation>
+					<xs:documentation>Case loaded</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="referred">
+				<xs:annotation>
+					<xs:documentation>Case referred</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="screened out">
+				<xs:annotation>
+					<xs:documentation>Case screened out</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="deselected">
+				<xs:annotation>
+					<xs:documentation>Case deselected</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="assigned">
+				<xs:annotation>
+					<xs:documentation>Case assigned</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="initiated">
+				<xs:annotation>
+					<xs:documentation>Case initiated</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="recalled">
+				<xs:annotation>
+					<xs:documentation>Case recalled</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="on hold">
+				<xs:annotation>
+					<xs:documentation>Case on hold</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="in progress">
+				<xs:annotation>
+					<xs:documentation>Case in progress</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="reopened">
+				<xs:annotation>
+					<xs:documentation>Case reopened</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="reactivated">
+				<xs:annotation>
+					<xs:documentation>Case reactivated</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="completed">
+				<xs:annotation>
+					<xs:documentation>Case completed</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="returned">
+				<xs:annotation>
+					<xs:documentation>Case returned</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="decision rendered">
+				<xs:annotation>
+					<xs:documentation>Case decision rendered</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="finalized">
+				<xs:annotation>
+					<xs:documentation>Case finalized</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="decision updated">
+				<xs:annotation>
+					<xs:documentation>Case decision updated</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="not loaded">
+				<xs:annotation>
+					<xs:documentation>Not Loaded</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="document submitted">
+				<xs:annotation>
+					<xs:documentation>Document Submitted</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="CaseDispositionCodeType">
+		<xs:annotation>
+			<xs:documentation>A data type for a kind of case disposition/status.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="epc:CaseDispositionCodeSimpleType">
+				<xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="CaseDispositionCode" type="epc:CaseDispositionCodeType" substitutionGroup="nc:CaseDispositionAugmentationPoint"/>
+	<xs:simpleType name="CaseDispositionDecisionCategoryCodeSimpleType">
+		<xs:annotation>
+			<xs:documentation>A data type for the list of case decisions.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="1">
+				<xs:annotation>
+					<xs:documentation>Compliant (Satisfactory)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="2">
+				<xs:annotation>
+					<xs:documentation>Compliant with Justification</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="3">
+				<xs:annotation>
+					<xs:documentation>Non-Compliant</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="CaseDispositionDecisionCategoryCodeType">
+		<xs:annotation>
+			<xs:documentation>A data type for a kind of case disposition/status.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="epc:CaseDispositionDecisionCategoryCodeSimpleType">
+				<xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="CaseDispositionDecisionCategoryCode" type="epc:CaseDispositionDecisionCategoryCodeType" substitutionGroup="nc:CaseDispositionDecisionAugmentationPoint"/>
+	<xs:element name="CaseDispositionDecisionJustificationAugmentationPoint" abstract="true">
+		<xs:annotation>
+			<xs:documentation>An augmentation point for CaseDispositionDecisionJustificationType.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:simpleType name="CaseDispositionDecisionJustificationCategoryCodeSimpleType">
+		<xs:annotation>
+			<xs:documentation>A data type for the list of case decisions.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="1">
+				<xs:annotation>
+					<xs:documentation>209.2(3) - (a) Change in federal/provincial law</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="2">
+				<xs:annotation>
+					<xs:documentation>209.2(3) - (b) Change to collective agreement provisions</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="3">
+				<xs:annotation>
+					<xs:documentation>209.2(3) - (c) Implementation of measures to a dramatic change in economic conditions</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="4">
+				<xs:annotation>
+					<xs:documentation>209.2(3) - (d) Error in interpretation made in good faith AND provided compensation</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="5">
+				<xs:annotation>
+					<xs:documentation>209.2(3) - (e) unintentional accounting or administrative error AND provided compensation</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="6">
+				<xs:annotation>
+					<xs:documentation>209.2(3) - (f) Circumstances similar to (a) to (e)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="7">
+				<xs:annotation>
+					<xs:documentation>209.2(3) - (g) Force majeure</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="8">
+				<xs:annotation>
+					<xs:documentation>209.2(4) for conditions under S. 209.2(1)(b)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="9">
+				<xs:annotation>
+					<xs:documentation>209.4(2) for conditions under S. 209.4(1)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="CaseDispositionDecisionJustificationCategoryCodeType">
+		<xs:annotation>
+			<xs:documentation>A data type for a kind of justification for a case disposition/status.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="epc:CaseDispositionDecisionJustificationCategoryCodeSimpleType">
+				<xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="CaseDispositionDecisionJustificationCategoryCode" type="epc:CaseDispositionDecisionJustificationCategoryCodeType"/>
+	<xs:element name="CaseDispositionDecisionJustificationCategoryText" type="nc:TextType" nillable="true">
+		<xs:annotation>
+			<xs:documentation>A kind of justification for a decision made in a case disposition.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="CaseDispositionDecisionJustificationText" type="nc:TextType">
+		<xs:annotation>
+			<xs:documentation>A literal language of a justification for a decision.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="CaseDispositionDecisionJustificationType">
+		<xs:annotation>
+			<xs:documentation>A data type for the justification of a disposition of a case occurring as a result of some decision.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="structures:ObjectType">
+				<xs:sequence>
+					<xs:element ref="epc:CaseDispositionDecisionJustificationText" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="epc:CaseDispositionDecisionJustificationCategoryCode" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="epc:CaseDispositionDecisionJustificationCategoryText" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="epc:CaseDispositionDecisionJustificationAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="CaseDispositionDecisionJustification" type="epc:CaseDispositionDecisionJustificationType" substitutionGroup="nc:CaseDispositionDecisionAugmentationPoint"/>
+	<xs:simpleType name="ConditionViolationCodeSimpleType">
+		<xs:annotation>
+			<xs:documentation>A data type for the list of case decisions.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="1">
+				<xs:annotation>
+					<xs:documentation>A</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="2">
+				<xs:annotation>
+					<xs:documentation>B</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="3">
+				<xs:annotation>
+					<xs:documentation>C</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="ConditionViolationCodeType">
+		<xs:annotation>
+			<xs:documentation>A data type for a kind of a violation of a condition.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="epc:ConditionViolationCodeSimpleType">
+				<xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="ConditionViolationCode" type="epc:ConditionViolationCodeType" substitutionGroup="nc:ConditionAugmentationPoint"/>
+	<xs:element name="ConditionViolationQuantity" type="nc:QuantityType" substitutionGroup="nc:ConditionAugmentationPoint"/>
+	<xs:element name="ConditionViolationWarningIssuedIndicator" type="niem-xs:boolean" substitutionGroup="nc:ConditionAugmentationPoint"/>
+	<xs:element name="ConditionViolationWarningIssuedIndicatorText" type="nc:TextType" substitutionGroup="nc:ConditionAugmentationPoint" nillable="true"/>
+	<xs:element name="ActivityPrescribedDurationText" type="nc:TextType" substitutionGroup="nc:ActivityAugmentationPoint" nillable="true"/>
+
+	<xs:element name="ConditionViolationExternallyPublishedIndicator" type="niem-xs:boolean" substitutionGroup="nc:ConditionAugmentationPoint">
+		<xs:annotation>
+			<xs:documentation>A data type for indicating whether the identity of a violator of a condition will be published externally (e.g. on a public list).</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="ConditionViolationInternallyPublishedIndicator" type="niem-xs:boolean" substitutionGroup="nc:ConditionAugmentationPoint">
+		<xs:annotation>
+			<xs:documentation>A data type for indicating whether the identity of a violator of a condition will be published internally (e.g. on a government list or shared with another government
+				department).</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Duration" type="nc:TextType" substitutionGroup="nc:DateRangeAugmentationPoint"/>
+	<xs:element name="EmploymentProgramCaseList" type="epc:EmploymentProgramCaseListType"/>
+	<xs:complexType name="EmploymentProgramCaseListType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">A list of electronic document transferred to ESDC by a citizen or an agent or a automated system of a Program.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="structures:ObjectType">
+				<xs:sequence>
+					<xs:element ref="epc:EmploymentProgramCase" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tran:Transaction" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

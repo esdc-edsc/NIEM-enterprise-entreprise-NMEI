@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://interoperability.gc.ca/finance/ProgramPaymentLot/2.0/"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:pay="http://interoperability.gc.ca/finance/ProgramPaymentLot/2.0/" xmlns:po="http://interoperability.gc.ca/finance/ProgramObligation/2.0/" 
+    xmlns:structures="http://release.niem.gov/niem/structures/4.0/"
+    xmlns:nc="http://release.niem.gov/niem/niem-core/4.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:iso_639-3="http://release.niem.gov/niem/codes/iso_639-3/4.0/" xmlns:j="http://release.niem.gov/niem/domains/jxdm/6.1/" xmlns:tran="http://interoperability.gc.ca/technical/transaction/2.0/" xmlns:per="http://interoperability.gc.ca/person/Person/2.0/" version="2.0">
+    
+    <xs:annotation>
+        <xs:documentation>Elements for any Program Payments.</xs:documentation>
+    </xs:annotation>
+    
+    <xs:import schemaLocation="../../../niem/utility/structures/4.0/structures.xsd" namespace="http://release.niem.gov/niem/structures/4.0/"/>
+    <xs:import schemaLocation="../../../niem/codes/iso_639-3/4.0/iso_639-3.xsd" namespace="http://release.niem.gov/niem/codes/iso_639-3/4.0/"/>
+    <xs:import schemaLocation="../../../niem/niem-core/4.0/niem-core.xsd" namespace="http://release.niem.gov/niem/niem-core/4.0/"/>
+    <xs:import schemaLocation="../../../niem/domains/jxdm/6.1/jxdm.xsd" namespace="http://release.niem.gov/niem/domains/jxdm/6.1/"/>
+    <xs:import schemaLocation="../../technical/2.0/transaction.xsd" namespace="http://interoperability.gc.ca/technical/transaction/2.0/"/>
+    <xs:import schemaLocation="ProgramObligation.xsd" namespace="http://interoperability.gc.ca/finance/ProgramObligation/2.0/"/>
+    <xs:import schemaLocation="../../person/2.0/Person.xsd" namespace="http://interoperability.gc.ca/person/Person/2.0/"/>
+
+    <xs:element name="PaymentMethodCode" type="pay:PaymentMethodCodeType" substitutionGroup="nc:PaymentMethodAbstract"/>
+    <xs:simpleType name="PaymentMethodCodeSimpleType">
+        <xs:annotation>
+            <xs:documentation>A data type for a specific method of payment.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="0">
+                <xs:annotation>
+                    <xs:documentation>None</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="1">
+                <xs:annotation>
+                    <xs:documentation>Cash</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="2">
+                <xs:annotation>
+                    <xs:documentation>Negotiable Item</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="3">
+                <xs:annotation>
+                    <xs:documentation>Visa Card</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="4">
+                <xs:annotation>
+                    <xs:documentation>MasterCard</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="5">
+                <xs:annotation>
+                    <xs:documentation>Debit Card</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="6">
+                <xs:annotation>
+                    <xs:documentation>Return</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="8">
+                <xs:annotation>
+                    <xs:documentation>American Express</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="MAILDCASH">
+                <xs:annotation>
+                    <xs:documentation>cash or foreign cheques</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="MAILDOTHR">
+                <xs:annotation>
+                    <xs:documentation>domestic cheques</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="H6PAP">
+                <xs:annotation>
+                    <xs:documentation>H6 paper transactions (OTC)</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration> 
+            <xs:enumeration value="H6ELE">
+                <xs:annotation>
+                    <xs:documentation>Online banking transactions</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration> 
+            <xs:enumeration value="MAILDUSDS">
+                <xs:annotation>
+                    <xs:documentation>USD denominated items</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration> 
+            <xs:enumeration value="MAILDPOSD">
+                <xs:annotation>
+                    <xs:documentation>post dated cheques now encashable</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="CHRGBACK">
+                <xs:annotation>
+                    <xs:documentation>charged back (returned) items</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="FORCEPYMT">
+                <xs:annotation>
+                    <xs:documentation>forced payment</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="PaymentMethodCodeType">
+        <xs:annotation>
+            <xs:documentation>A data type for a specific method of payment.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:extension base="pay:PaymentMethodCodeSimpleType">
+                <xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:element name="PaymentFinancialInstitution" type="nc:OrganizationType" nillable="true">
+        <xs:annotation>
+            <xs:documentation>An financial institution through whom a payment is made.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="PaymentClearingFinancialInstitution" substitutionGroup="pay:PaymentFinancialInstitution">
+        <xs:annotation>
+            <xs:documentation>An financial institution through whom a payment was cleared.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="PaymentAddress" type="nc:AddressType" nillable="true">
+        <xs:annotation>
+            <xs:documentation>An address where a payment is mailed.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="Payment" type="pay:PaymentType"/>
+    <xs:element name="PaymentAugmentationPoint" abstract="true"/>
+    <xs:element name="PaymentDate" type="nc:DateType"/>
+    <xs:element name="PaymentIdentification" type="nc:IdentificationType"/>
+	<xs:element name="PaymentOtherIdentification" type="nc:IdentificationType"/>
+    <xs:element name="PaymentAuthorization" type="nc:IdentificationType" substitutionGroup="nc:PaymentAugmentationPoint" nillable="true"/>
+    <xs:element name="Payer" type="nc:EntityType" nillable="true">
+        <xs:annotation>
+            <xs:documentation>A party/entity (organization or person) who makes a payment.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="Payee" type="nc:EntityType" nillable="true">
+        <xs:annotation>
+            <xs:documentation>A party/entity (organization or person) who receives a payment.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="PaymentType">
+        <xs:annotation>
+            <xs:documentation>A data type for a payment.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="nc:PaymentType">
+                <xs:sequence>
+                    <xs:element ref="pay:PaymentDate" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="pay:PaymentIdentification" minOccurs="0" maxOccurs="unbounded"/>
+                	<xs:element ref="pay:PaymentOtherIdentification" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="pay:PaymentFinancialInstitution" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="pay:PaymentAddress" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="pay:Payer" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="pay:Payee" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="pay:PaymentAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>  
+
+    <xs:element name="PaymentItem" type="pay:PaymentItemType"/>
+    <xs:element name="PaymentItemAugmentationPoint" abstract="true"/>
+    <xs:complexType name="PaymentItemType">
+        <xs:annotation>
+            <xs:documentation>A data type for a payment.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="nc:ItemType">
+                <xs:sequence>
+                    <xs:element ref="nc:Person" minOccurs="0" maxOccurs="1"/>
+                    <xs:element ref="nc:Program" minOccurs="0" maxOccurs="1"/>
+                    <xs:element ref="pay:PaymentItemAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="ProgramPayment" type="pay:ProgramPaymentType"/>
+    <xs:element name="ProgramPaymentAugmentationPoint" abstract="true"/>
+    <xs:complexType name="ProgramPaymentType">
+        <xs:annotation>
+            <xs:documentation>A data type for an obligation arising from a person or organization who received program benefits that should be recovered.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pay:PaymentType">
+                <xs:sequence>
+                    <xs:element ref="pay:PaymentItem" minOccurs="1" maxOccurs="unbounded"/>
+                    <xs:element ref="pay:ProgramPaymentAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>    
+    <xs:element name="ProgramObligationPayment" type="pay:ProgramObligationPaymentType"/>
+    <xs:element name="ProgramObligationPaymentAugmentationPoint" abstract="true"/>
+    <xs:complexType name="ProgramObligationPaymentType">
+        <xs:annotation>
+            <xs:documentation>A data type for payment to be applied against an obligation arising from a person or organization who received program benefits that should be recovered.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pay:PaymentType">
+                <xs:sequence>
+                    <xs:element ref="po:ProgramObligation" minOccurs="1" maxOccurs="unbounded"/>
+                    <xs:element ref="pay:ProgramObligationPaymentAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="ProgramObligationReturnedPayment" type="pay:ProgramObligationReturnedPaymentType" substitutionGroup="pay:ProgramObligationPayment"/>
+    <xs:element name="ProgramObligationReturnedPaymentAugmentationPoint" abstract="true"/>
+    <xs:element name="ProgramObligationReturnedPaymentReasonText" type="nc:TextType"/>
+    <xs:element name="ReferenceProgramObligationPaymentDate" type="nc:DateType"/>
+    <xs:complexType name="ProgramObligationReturnedPaymentType">
+        <xs:annotation>
+            <xs:documentation>A data type for returned payment to be applied against an obligation arising from a person or organization who received program benefits that should be recovered.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="pay:ProgramObligationPaymentType">
+                <xs:sequence>
+                    <xs:element ref="pay:ProgramObligationReturnedPaymentReasonText" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="pay:ReferenceProgramObligationPaymentDate" minOccurs="0" maxOccurs="1"/>
+                    <xs:element ref="pay:ProgramObligationReturnedPaymentAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:element name="ProgramPaymentLot" type="pay:ProgramPaymentLotType"/>
+    <xs:element name="ProgramPaymentLotDate" type="nc:DateType"/>
+    
+    <xs:element name="ProgramPaymentLotIdentification" type="nc:IdentificationType"/>
+    <xs:element name="ProgramPaymentLotAugmentationPoint" abstract="true" nillable="true"/>
+    <xs:complexType name="ProgramPaymentLotType">
+        <xs:annotation>
+            <xs:documentation>A data type for a group of program payments made together.</xs:documentation>
+        	<xs:appinfo>
+        		<pattern xmlns="http://purl.oclc.org/dsdl/schematron">
+        			<rule context="pay:ProgramPaymentLot[tran:Transaction/tran:TransactionOperationName='CreateProgramPaymentLotOfOne']">
+        				<assert test="(count(pay:ProgramObligationPayment)=0) and (count(pay:ProgramPayment)=1)">
+        					Only one Program Payment is required and no ProgramObligation Payments are allowed when creating a ProgramPaymentLotOfOne
+        				</assert>
+        			</rule>
+        		</pattern>
+        	</xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="structures:ObjectType">
+                <xs:sequence>
+                    <xs:element ref="pay:ProgramPaymentLotIdentification" minOccurs="0" maxOccurs="1"/>
+                    <xs:element ref="pay:ProgramPaymentLotDate" minOccurs="0" maxOccurs="1"/>
+                    <xs:element ref="pay:ProgramPayment" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="pay:ProgramObligationPayment" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="pay:ProgramPaymentLotAugmentationPoint" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="tran:Transaction" minOccurs="0" maxOccurs="1"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>  
+</xs:schema>

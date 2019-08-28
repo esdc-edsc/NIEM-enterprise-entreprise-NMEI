@@ -1,0 +1,74 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:structures="http://release.niem.gov/niem/structures/4.0/" xmlns:nc="http://release.niem.gov/niem/niem-core/4.0/"
+	xmlns:con="http://interoperability.gc.ca/address/Contact/2.0/" targetNamespace="http://interoperability.gc.ca/address/Contact/2.0/" elementFormDefault="qualified" version="2.0">
+	<xs:annotation>
+		<xs:documentation>Elements for employment cases (inspections) for employment related programs.</xs:documentation>
+	</xs:annotation>
+
+	<xs:import namespace="http://release.niem.gov/niem/structures/4.0/" schemaLocation="../../../niem/utility/structures/4.0/structures.xsd"/>
+	<xs:import namespace="http://release.niem.gov/niem/niem-core/4.0/" schemaLocation="../../../niem/niem-core/4.0/niem-core.xsd"/>
+
+	<xs:element name="ContactEmailCategoryCode" type="con:ContactEmailCategoryCodeType"/>
+	<xs:complexType name="ContactEmailCategoryCodeType">
+		<xs:annotation>
+			<xs:documentation>A data type for a kind of email address.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="con:ContactEmailCategoryCodeSimpleType">
+				<xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="ContactEmailCategoryCodeSimpleType">
+		<xs:annotation>
+			<xs:documentation>A data type for a kind of email address.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="Primary">
+				<xs:annotation>
+					<xs:documentation>Alternate</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Alternate">
+				<xs:annotation>
+					<xs:documentation>Asserted</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="ContactEmailIDType">
+		<xs:annotation>
+			<xs:documentation>An electronic mailing address by which a person or organization may be contacted.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="structures:ObjectType">
+				<xs:sequence>
+					<xs:element ref="nc:ContactEmailID" minOccurs="1" maxOccurs="1"/>
+					<xs:element ref="con:ContactEmailCategoryCode" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="ContactEmailID" type="con:ContactEmailIDType" substitutionGroup="nc:ContactMeansAbstract"/>
+	<xs:simpleType name="AddressCategoryCodeSimpleType">
+		<xs:annotation>
+			<xs:documentation>A data type for a kind of address.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="business">
+				<xs:annotation>
+					<xs:documentation>business</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="mailing">
+				<xs:annotation>
+					<xs:documentation>mailing</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="work location">
+				<xs:annotation>
+					<xs:documentation>work location</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

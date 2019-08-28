@@ -1,0 +1,28 @@
+<xs:schema elementFormDefault="qualified" targetNamespace="http://interoperability.gc.ca/employment/PersonResidenceAssociation/2.0/"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:pra="http://interoperability.gc.ca/employment/PersonResidenceAssociation/2.0/" 
+    xmlns:nc="http://release.niem.gov/niem/niem-core/4.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:mo="http://release.niem.gov/niem/domains/militaryOperations/4.1/"
+    xmlns:tran="http://interoperability.gc.ca/technical/transaction/2.0/" version="2.0">
+
+    <xs:annotation>
+        <xs:documentation>Schema for any operations with nc:PersonResidenceAssociation as the root element.</xs:documentation>
+    </xs:annotation>
+
+    <xs:import schemaLocation="../../../niem/niem-core/4.0/niem-core.xsd" namespace="http://release.niem.gov/niem/niem-core/4.0/"/>
+	<xs:import schemaLocation="../../../niem/domains/militaryOperations/4.1/mo.xsd" namespace="http://release.niem.gov/niem/domains/militaryOperations/4.1/"/>
+    <xs:import schemaLocation="../../technical/2.0/transaction.xsd" namespace="http://interoperability.gc.ca/technical/transaction/2.0/"/>
+    <xs:element name="PersonResidenceAssociation" type="pra:PersonResidenceAssociationType" substitutionGroup="nc:PersonAugmentationPoint"/>
+	<xs:complexType name="PersonResidenceAssociationType">
+		<xs:annotation>
+			<xs:documentation>A data type for an association between a person and a location where that person lives.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="nc:PersonResidenceAssociationType">
+				<xs:sequence>
+					<xs:element ref="tran:Transaction" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>
